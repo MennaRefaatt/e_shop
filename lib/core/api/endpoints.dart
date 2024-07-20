@@ -1,0 +1,22 @@
+
+class EndPoints {
+  static const String baseUrl = 'https://student.valuxapps.com/api/';
+  static const String login = 'login';
+  static const String register ="register";
+  static const String home = 'home';
+  static const String categories = 'categories';
+  static const String products = 'products';
+  static const String updateProfile = 'update-profile';
+static const String settings = 'settings';
+static const String productDetails = 'products/';
+static const String fAQs = 'faqs';
+static const String changePassword = 'change-password';
+static const String notifications = 'notifications';
+static const String languages = 'languages';
+static const String contactUs = 'contacts';
+static const String complaints = 'complaints';
+static const String logout = 'logout';
+static const String categoryDetails = 'categories/';
+static const String favorites = 'favorites';
+
+}
