@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../favorite/manager/favourite_cubit.dart';
 import '../../manager/category_details_cubit.dart';
 
 class CategoryDetailsScreen extends StatefulWidget {
   const CategoryDetailsScreen({super.key, required this.args});
+
   final CategoryDetailsArgs args;
 
   @override
@@ -17,12 +19,20 @@ class CategoryDetailsScreen extends StatefulWidget {
 
 class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
   final cubit = CategoryDetailsCubit();
+  final favoriteCubit = FavouriteCubit();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          cubit..getCategoryDetails(categoryId: widget.args.id.toString()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              cubit..getCategoryDetails(categoryId: widget.args.id.toString()),
+        ),
+        BlocProvider(
+          create: (context) => favoriteCubit,
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -56,11 +66,11 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
               children: [
                 CategoryDetailsWidget(
                   categoryDetailsData: state.categoryDetailsModel.data!,
+                  favouriteCubit: favoriteCubit,
                 ),
               ],
             );
           }
-
           return const SizedBox();
         }),
       ),

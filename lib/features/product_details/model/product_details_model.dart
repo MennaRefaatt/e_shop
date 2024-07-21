@@ -29,9 +29,9 @@ class ProductDetailsData {
   int? _id;
   String? _name;
   String? _description;
-  int? _price;
-  int? _oldPrice;
-  int? _discount;
+  String? _price;
+  String? _oldPrice;
+  String? _discount;
   String? _image;
   List<String>? _images;
   bool? _inFavorites;
@@ -40,9 +40,9 @@ class ProductDetailsData {
   ProductDetailsData({
     required String name,
     required String image,
-    required int price,
-    required int oldPrice,
-    required int discount,
+    required String price,
+    required String oldPrice,
+    required String discount,
     required List<String> images,
     required bool inFavorites,
     required bool inCart,
@@ -69,9 +69,9 @@ class ProductDetailsData {
   int get id => _id??0;
   String get name => _name??"";
   String get description => _description??"";
-  int get price => _price??0;
-  int get oldPrice => _oldPrice??0;
-  int get discount => _discount??0;
+  String get price => _price??"";
+  String get oldPrice => _oldPrice??'';
+  String get discount => _discount??'';
   String get image => _image??"";
   List<String> get images => _images??[];
   bool get inFavorites => _inFavorites??false;
@@ -81,9 +81,9 @@ class ProductDetailsData {
     _id = json['id'];
     _name = json['name'];
     _description = json['description'];
-    _price = json['price'];
-    _oldPrice = json['old_price'];
-    _discount = json['discount'];
+    _price = json['price'].toString();
+    _oldPrice = json['old_price'].toString();
+    _discount = json['discount'].toString();
     _image = json['image'];
     _images = json['images'].cast<String>();
     _inFavorites = json['in_favorites'];

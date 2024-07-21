@@ -1,4 +1,5 @@
 import 'package:e_shop/features/categories/manager/categories_cubit.dart';
+import 'package:e_shop/features/favorite/manager/favourite_cubit.dart';
 import 'package:e_shop/features/home/view/widgets/home_app_bar.dart';
 import 'package:e_shop/features/home/view/widgets/home_categories.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_shop/features/home/manager/home_cubit.dart';
 import '../../../../core/styles/colors.dart';
 import '../widgets/home_carousel_slider.dart';
-import '../widgets/homeProductsListView.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final cubit = HomeCubit();
   final categoryCubit = CategoriesCubit();
-
+  final favoriteCubit = FavouriteCubit();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider(
           create: (context) => categoryCubit..getCategoriesData(),
         ),
+        BlocProvider(create: (context) => favoriteCubit),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
@@ -39,15 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else if (state is HomeSuccess) {
-            return ListView(children: [
+            return ListView(
+                children: [
               const HomeAppbar(),
               HomeCarouselSlider(
                 banners: state.homeModel.data!.banners,
               ),
-              HomeCategories(),
-              HomeProductsListView(
-                products: state.homeModel.data!.products,
-              ),
+              const HomeCategories(),
+              // HomeProductsListView(
+              //   products: state.homeModel.data!.products,
+              //   favoriteCubit: favoriteCubit,
+              // ),
             ]);
           } else {
             return const SizedBox();

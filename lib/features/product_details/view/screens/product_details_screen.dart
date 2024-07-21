@@ -12,8 +12,8 @@ import '../../../../generated/l10n.dart';
 import '../../../favorite/manager/favourite_cubit.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-   const ProductDetailsScreen({super.key, required this.args});
-   final ProductDetailsArgs args;
+  const ProductDetailsScreen({super.key, required this.args});
+  final ProductDetailsArgs args;
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
 }
@@ -25,15 +25,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-  providers: [
-    BlocProvider(
-      create: (context) => cubit..getProductDetails(productId: widget.args.id.toString()),
-),
-    BlocProvider(
-      create: (context) => favoriteCubit,
-    ),
-  ],
-  child: Scaffold(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              cubit..getProductDetails(productId: widget.args.id.toString()),
+        ),
+        BlocProvider(
+          create: (context) => favoriteCubit,
+        ),
+      ],
+      child: Scaffold(
         appBar: AppBar(
           title: Text(
             S().productDetails,
@@ -75,20 +76,27 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 children: [
                   ImageSlideshow(
                     indicatorColor: AppColors.primary,
-                     initialPage: 0,
+                    initialPage: 0,
                     onPageChanged: (value) {
                       debugPrint('Page changed: $value');
                     },
                     autoPlayInterval: 3000,
                     isLoop: false,
-                    children: state.productDetailsModel.data!.images.map((e) => AppImage(
-                        imageUrl: e,
-                        width: double.infinity,
-                        borderRadius: BorderRadius.circular(0.sp)),).toList(),
+                    children: state.productDetailsModel.data!.images
+                        .map(
+                          (e) => AppImage(
+                              imageUrl: e,
+                              width: double.infinity,
+                              borderRadius: BorderRadius.circular(0.sp)),
+                        )
+                        .toList(),
                   ),
-
                   ProductDetailsDescription(
-                      productDetailsData: state.productDetailsModel.data!, productId: widget.args.id, isFavourite: state.productDetailsModel.data!.inFavorites, favoriteCubit: favoriteCubit,),
+                    productDetailsData: state.productDetailsModel.data!,
+                    productId: widget.args.id,
+                    isFavourite: state.productDetailsModel.data!.inFavorites,
+                    favoriteCubit: favoriteCubit,
+                  ),
                 ],
               );
             }
@@ -96,6 +104,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           }),
         ),
       ),
-);
+    );
   }
 }

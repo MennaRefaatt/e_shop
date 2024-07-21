@@ -1,9 +1,7 @@
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
-import 'package:e_shop/features/product_details/manager/product_details_cubit.dart';
 import 'package:e_shop/features/product_details/model/product_details_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../generated/l10n.dart';
@@ -29,83 +27,69 @@ class ProductDetailsDescription extends StatefulWidget {
 class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ProductDetailsCubit, ProductDetailsState>(
-      listener: (context, state) {
-        if (state is ProductDetailsError) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(state.error.toString()),
-          ));
-        }
-
-        if (state is ProductDetailsLoading) {
-          const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.primary,
-            ),
-          );
-        }
-      },
-      child: Container(
+    return  Container(
           margin: EdgeInsets.all(15.sp),
           child: Column(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.star,
-                              color: AppColors.primary,
-                            ),
-                            horizontalSpacing(5.sp),
-                            Text(
-                              "4.9",
-                              style: TextStyle(
-                                  fontSize: 18.sp, fontWeight: FontWeight.w800),
-                            ),
-                            horizontalSpacing(5.sp),
-                            widget.productDetailsData.discount != 0
-                                ? Text(
-                                    "(%${widget.productDetailsData.discount})",
-                                    style:
-                                        const TextStyle(color: AppColors.grey),
-                                  )
-                                : Container(),
-                          ],
+                  Expanded(
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: AppColors.primary,
                         ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            widget.favoriteCubit.toggleFavourite(
-                              productId: widget.productDetailsData.id,
-                            );
-                            setState(() {
-                              widget.isFavourite = !widget.isFavourite;
-                            });
-                          },
-                          icon: Icon(
-                            widget.isFavourite
-                                ? Icons.favorite
-                                : Icons.favorite_border_outlined,
-                            color: AppColors.black,
-                            size: 30.sp,
-                          )),
-                    ],
-                  ),
-                  Text(
-                    widget.productDetailsData.name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.sp,
-                      overflow: TextOverflow.visible,
+                        horizontalSpacing(5.sp),
+                        Text(
+                          "4.9",
+                          style: TextStyle(
+                              fontSize: 18.sp, fontWeight: FontWeight.w800),
+                        ),
+                        horizontalSpacing(5.sp),
+                        widget.productDetailsData.discount != ""
+                            ? Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10.sp, vertical: 3.sp),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  color: AppColors.primary.withOpacity(0.4),
+                                ),
+                                child: Text(
+                                  "${widget.productDetailsData.discount}%",
+                                  style: const TextStyle(
+                                      color: AppColors.greyBorder),
+                                ))
+                            : Container(),
+                      ],
                     ),
                   ),
+                  IconButton(
+                      onPressed: () {
+                        widget.favoriteCubit.toggleFavourite(
+                          productId: widget.productDetailsData.id,
+                        );
+                        setState(() {
+                          widget.isFavourite = !widget.isFavourite;
+                        });
+                      },
+                      icon: Icon(
+                        widget.isFavourite
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: AppColors.black,
+                        size: 30.sp,
+                      )),
                 ],
+              ),
+              Text(
+                widget.productDetailsData.name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.sp,
+                  overflow: TextOverflow.visible,
+                ),
               ),
               verticalSpacing(10.h),
               Row(
@@ -166,7 +150,7 @@ class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
                 ],
               )
             ],
-          )),
+          ),
     );
   }
 }

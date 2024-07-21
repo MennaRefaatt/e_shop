@@ -1,6 +1,5 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/svg.dart';
-import 'package:e_shop/features/categories/view/screens/categories_screen.dart';
 import 'package:e_shop/features/favorite/view/screens/favorite_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_shop/features/home/view/screens/home_screen.dart';
@@ -18,8 +17,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens = [
     const HomeScreen(),
-    const CategoriesScreen(),
-    FavoriteScreen(),
+   SizedBox(),
+    const FavoriteScreen(),
     const SettingsScreen()
   ];
   int index = 0;
@@ -58,10 +57,10 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           BottomNavigationBarItem(
-            icon: const AppSVG(assetName: "search"),
+            icon: const AppSVG(assetName: "heart"),
             label: S().favorite,
             activeIcon: const AppSVG(
-              assetName: "search",
+              assetName: "heart",
               color: AppColors.primary,
             ),
           ),

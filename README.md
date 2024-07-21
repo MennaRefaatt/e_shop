@@ -1,16 +1,14 @@
-# e_shop
+// finish fav cycle
+// cart cycle(add-remove-update-delete)
+// address cycle(add-delete-get)
+// refactor all project code to be cleeeeeeeeeeeen code not spagity coooooooooooooode !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+================Next Month=====================
+// search
+// confirm order
+// get orders 
+// cancel order (only if status is pending)
 
-Eshop
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
