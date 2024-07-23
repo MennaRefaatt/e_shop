@@ -22,8 +22,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   register() async {
     emit(RegisterLoadingState());
-    await MyDio.postData(
-        endPoint: EndPoints.register, data: {
+    await MyDio.postData(endPoint: EndPoints.register, data: {
       "email": emailController.text,
       "password": passController.text,
       "name": nameController.text,
@@ -34,23 +33,24 @@ class RegisterCubit extends Cubit<RegisterState> {
       }, (ifRight) async {
         if (ifRight['status'] == false) {
           emit(RegisterErrorState(ifRight['message']!.toString()));
-          SnackBar(content: Text(ifRight['message']),);
+          SnackBar(
+            content: Text(ifRight['message']),
+          );
         }
         if (ifRight['status'] == true) {
           RegisterSuccessResponse registerSuccessResponse =
-          RegisterSuccessResponse.fromJson(ifRight);
+              RegisterSuccessResponse.fromJson(ifRight);
           safePrint(registerSuccessResponse.data!.token);
-            emit(RegisterSuccessState());
-            nameController.clear();
-            phoneController.clear();
-            emailController.clear();
-            passController.clear();
-            confirmPasswordController.clear();
+          emit(RegisterSuccessState());
+          nameController.clear();
+          phoneController.clear();
+          emailController.clear();
+          passController.clear();
+          confirmPasswordController.clear();
         }
       });
     }).catchError((onError) {
       emit(RegisterErrorState(onError.toString()));
     });
   }
-
 }

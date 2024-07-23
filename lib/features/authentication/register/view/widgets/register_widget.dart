@@ -3,7 +3,6 @@ import 'package:e_shop/features/authentication/register/manager/register_cubit.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/utils/spacing.dart';
 import '../../../../../core/utils/validators.dart';
@@ -27,203 +26,203 @@ class RegisterWidget extends StatefulWidget {
 class _RegisterWidgetState extends State<RegisterWidget> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => widget.cubit,
-      child: BlocListener<RegisterCubit, RegisterState>(
-        listener: (context, state) {
-          if (state is RegisterLoadingState) {
-            const Text("Loading");
-          } else if (state is RegisterSuccessState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("S().registerSuccessfully"),
-              ),
-            );
-            pushNamed(context, Routes.login);
-          }
-
-          if (state is RegisterErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.error),
-              ),
-            );
-          }
-        },
-        child: Container(
-          margin: EdgeInsets.all(15.sp),
-          child: Form(
-            key: widget.cubit.formKey,
-            child: Column(children: [
-              AppTextField(
-                withTitle: true,
+    return BlocListener<RegisterCubit, RegisterState>(
+      listener: (context, state) {
+        if (state is RegisterLoadingState) {
+          const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
+          );
+        } else if (state is RegisterSuccessState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("S().registerSuccessfully"),
+            ),
+          );
+          pushNamedAndRemoveUntil(context, Routes.login);
+        }
+        if (state is RegisterErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+      },
+      child: Container(
+        margin: EdgeInsets.all(15.sp),
+        child: Form(
+          key: widget.cubit.formKey,
+          child: Column(children: [
+            AppTextField(
+              withTitle: true,
+              textInputAction: TextInputAction.next,
+              controller: widget.cubit.nameController,
+              backgroundColor: AppColors.primaryLight,
+              keyboardType: TextInputType.name,
+              hint: "shop",
+              title: S().name,
+              filledColor: AppColors.greyInput,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return S().pleaseEnterYourName;
+                }
+                return null;
+              },
+            ),
+            verticalSpacing(15.h),
+            AppTextField(
+              withTitle: true,
+              textInputAction: TextInputAction.next,
+              backgroundColor: AppColors.primaryLight,
+              keyboardType: TextInputType.phone,
+              hint: "01XXXXXXXXX",
+              title:S().phone,
+              filledColor: AppColors.greyInput,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return S().pleaseEnterYourPhone;
+                }
+                if (!value.contains('01')) {
+                  return S().invalidPhone;
+                }
+                if (value.length != 11) {
+                  return S().lengthMustBeEqual11;
+                }
+                return null;
+              },
+              controller: widget.cubit.phoneController,
+              maxLength: 11,
+            ),
+            verticalSpacing(15.h),
+            AppTextField(
                 textInputAction: TextInputAction.next,
-                controller: widget.cubit.nameController,
-                backgroundColor: AppColors.primaryLight,
-                keyboardType: TextInputType.name,
-                hint: "shop",
-                title: S().name,
-                filledColor: AppColors.greyInput,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return S().pleaseEnterYourName;
-                  }
-                  return null;
-                },
-              ),
-              verticalSpacing(15.h),
-              AppTextField(
                 withTitle: true,
-                textInputAction: TextInputAction.next,
+                controller: widget.cubit.emailController,
                 backgroundColor: AppColors.primaryLight,
-                keyboardType: TextInputType.phone,
-                hint: "01XXXXXXXXX",
-                title:S().phone,
+                keyboardType: TextInputType.emailAddress,
+                hint: "shop@gmail.com",
+                title:S().email,
                 filledColor: AppColors.greyInput,
                 validator: (value) {
-                  if (value!.isEmpty) {
-                    return S().pleaseEnterYourPhone;
+                  if (value == null || value.isEmpty) {
+                    return S().pleaseEnterYourEmail;
                   }
-                  if (!value.contains('01')) {
-                    return S().invalidPhone;
+                  if (!value.contains('@') || !value.contains('.')) {
+                    return S().invalidEmail;
                   }
-                  if (value.length != 11) {
-                    return S().lengthMustBeEqual11;
-                  }
-                  return null;
-                },
-                controller: widget.cubit.phoneController,
-                maxLength: 11,
-              ),
-              verticalSpacing(15.h),
-              AppTextField(
-                  textInputAction: TextInputAction.next,
-                  withTitle: true,
-                  controller: widget.cubit.emailController,
-                  backgroundColor: AppColors.primaryLight,
-                  keyboardType: TextInputType.emailAddress,
-                  hint: "shop@gmail.com",
-                  title:S().email,
-                  filledColor: AppColors.greyInput,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return S().pleaseEnterYourEmail;
-                    }
-                    if (!value.contains('@') || !value.contains('.')) {
-                      return S().invalidEmail;
-                    }
-                    if (!Validators.isValidEmail(value)) {
-                      return S().invalidEmail;
-                    }
-                    return null;
-                  }),
-              verticalSpacing(15.h),
-              AppTextField(
-                withTitle: true,
-                hint: "xxxxxxxxx",
-                textInputAction: TextInputAction.next,
-                title: S().password,
-                backgroundColor: AppColors.primaryLight,
-                keyboardType: TextInputType.visiblePassword,
-                filledColor: AppColors.greyInput,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return S().pleaseEnterYourPassword;
-                  }
-                  if (value.length < 6) {
-                    return S().invalidPassword;
+                  if (!Validators.isValidEmail(value)) {
+                    return S().invalidEmail;
                   }
                   return null;
+                }),
+            verticalSpacing(15.h),
+            AppTextField(
+              withTitle: true,
+              hint: "xxxxxxxxx",
+              textInputAction: TextInputAction.next,
+              title: S().password,
+              backgroundColor: AppColors.primaryLight,
+              keyboardType: TextInputType.visiblePassword,
+              filledColor: AppColors.greyInput,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return S().pleaseEnterYourPassword;
+                }
+                if (value.length < 6) {
+                  return S().invalidPassword;
+                }
+                return null;
+              },
+              suffixIcon: IconButton(
+                onPressed: () {
+                  widget.cubit.obscureText1 = !widget.cubit.obscureText1;
+                  setState(() {});
                 },
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    widget.cubit.obscureText1 = !widget.cubit.obscureText1;
-                    setState(() {});
-                  },
-                  icon: Icon(widget.cubit.obscureText1
-                      ? Icons.visibility_off
-                      : Icons.visibility),
-                ),
-                obscureText: widget.cubit.obscureText1,
-                controller: widget.cubit.passController,
+                icon: Icon(widget.cubit.obscureText1
+                    ? Icons.visibility_off
+                    : Icons.visibility),
               ),
-              verticalSpacing(15.h),
-              AppTextField(
-                textInputAction: TextInputAction.done,
-                withTitle: true,
-                backgroundColor: AppColors.primaryLight,
-                keyboardType: TextInputType.visiblePassword,
-                hint: "xxxxxxxxx",
-                title: S().confirmPassword,
-                controller: widget.cubit.confirmPasswordController,
-                filledColor: AppColors.greyInput,
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    widget.cubit.obscureText2 = !widget.cubit.obscureText2;
-                    setState(() {});
-                  },
-                  icon: Icon(widget.cubit.obscureText2
-                      ? Icons.visibility_off
-                      : Icons.visibility),
-                ),
-                obscureText: widget.cubit.obscureText2,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return S().pleaseEnterConfirmPassword;
-                  }
-                  if (value.length < 6) {
-                    return S().invalidPassword;
-                  }
-                  if (widget.cubit.passController.text != value) {
-                    return S().passwordNotMatch;
-                  }
-                  return null;
+              obscureText: widget.cubit.obscureText1,
+              controller: widget.cubit.passController,
+            ),
+            verticalSpacing(15.h),
+            AppTextField(
+              textInputAction: TextInputAction.done,
+              withTitle: true,
+              backgroundColor: AppColors.primaryLight,
+              keyboardType: TextInputType.visiblePassword,
+              hint: "xxxxxxxxx",
+              title: S().confirmPassword,
+              controller: widget.cubit.confirmPasswordController,
+              filledColor: AppColors.greyInput,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  widget.cubit.obscureText2 = !widget.cubit.obscureText2;
+                  setState(() {});
                 },
+                icon: Icon(widget.cubit.obscureText2
+                    ? Icons.visibility_off
+                    : Icons.visibility),
               ),
-              verticalSpacing(15.h),
-              BlocBuilder<RegisterCubit, RegisterState>(
-                builder: (context, state) {
-                  if (state is RegisterLoadingState) {
-                    return const Center(
-                        child: CircularProgressIndicator(
-                      color: AppColors.primary,
-                      backgroundColor: Colors.white70,
-                    ));
-                  } else {
-                      return AppButton(
-                        margin: const EdgeInsets.all(0),
-                        backgroundColor: AppColors.primary,
-                        onPressed: () {
-                          if (widget.cubit.formKey.currentState!.validate()) {
-                            widget.cubit.register();
-                          }
-                        },
-                        label: S().register,
-                        fontSize: 20.sp,
-                        textColor: AppColors.primaryLight,
-                      );
-                  }
-                },
-              ),
-              verticalSpacing(20.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   Text(
-                    S().iAlreadyHaveAnAccount,
-                  ),
-                  TextButton(
+              obscureText: widget.cubit.obscureText2,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return S().pleaseEnterConfirmPassword;
+                }
+                if (value.length < 6) {
+                  return S().invalidPassword;
+                }
+                if (widget.cubit.passController.text != value) {
+                  return S().passwordNotMatch;
+                }
+                return null;
+              },
+            ),
+            verticalSpacing(15.h),
+            BlocBuilder<RegisterCubit, RegisterState>(
+              builder: (context, state) {
+                if (state is RegisterLoadingState) {
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    color: AppColors.primary,
+                    backgroundColor: Colors.white70,
+                  ));
+                } else {
+                    return AppButton(
+                      margin: const EdgeInsets.all(0),
+                      backgroundColor: AppColors.primary,
                       onPressed: () {
-                        Navigator.pop(context);
+                        if (widget.cubit.formKey.currentState!.validate()) {
+                          widget.cubit.register();
+                        }
                       },
-                      child:  Text(
-                        S().login,
-                        style: const TextStyle(color: AppColors.primary),
-                      )),
-                ],
-              )
-            ]),
-          ),
+                      label: S().register,
+                      fontSize: 20.sp,
+                      textColor: AppColors.primaryLight,
+                    );
+                }
+              },
+            ),
+            verticalSpacing(20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                 Text(
+                  S().iAlreadyHaveAnAccount,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child:  Text(
+                      S().login,
+                      style: const TextStyle(color: AppColors.primary),
+                    )),
+              ],
+            )
+          ]),
         ),
       ),
     );

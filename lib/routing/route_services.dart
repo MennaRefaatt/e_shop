@@ -1,3 +1,4 @@
+import 'package:e_shop/features/address/view/screens/address_screen.dart';
 import 'package:e_shop/features/authentication/register/view/screen/register_screen.dart';
 import 'package:e_shop/features/categories/view/screens/categories_screen.dart';
 import 'package:e_shop/features/product_details/product_details_args.dart';
@@ -16,7 +17,7 @@ import '../features/category_details/category_details_args.dart';
 import '../features/category_details/view/screens/category_details_screen.dart';
 import '../features/favorite/manager/favourite_cubit.dart';
 import '../features/settings/complaints_screen/view/screens/complaints_screen.dart';
-import '../features/settings/fAQs_screen/view/screens/fAQs_screen.dart';
+import '../features/settings/fAQs_screen/view/screens/f_a_q_s_screen.dart';
 import '../features/settings/profile_screen/view/screens/change_password/view/screens/change_password_screen.dart';
 import '../features/settings/profile_screen/view/screens/profile_screen.dart';
 import '../features/settings/profile_screen/view/screens/update_account/view/screens/update_account_screen.dart';
@@ -43,6 +44,9 @@ class RouteServices {
 
       case Routes.profileScreen:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
+
+      case Routes.addressScreen:
+        return MaterialPageRoute(builder: (_) =>  AddressScreen());
 
       // case Routes.notificationScreen:
       // return MaterialPageRoute(builder: (_) =>  const NotificationScreen());

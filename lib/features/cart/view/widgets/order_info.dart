@@ -1,10 +1,12 @@
 import 'package:e_shop/core/styles/colors.dart';
+import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../routing/routes.dart';
 import '../../manager/cart_cubit.dart';
 import '../../model/cart_model.dart';
 
@@ -40,7 +42,7 @@ class _OrderInfoState extends State<OrderInfo> {
         width: double.infinity,
         padding: EdgeInsets.all(15.sp),
         decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white,
             boxShadow: [
               BoxShadow(
                 color: AppColors.greyBorder.withOpacity(0.2),
@@ -58,7 +60,7 @@ class _OrderInfoState extends State<OrderInfo> {
           children: [
             Text(
               S().orderInfo,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
             ),
             verticalSpacing(10.h),
             Row(
@@ -79,10 +81,10 @@ class _OrderInfoState extends State<OrderInfo> {
             ),
             verticalSpacing(5.h),
             Text(
-              "------------------------------------------",
+              "-------------------------------",
               style: TextStyle(
                   color: AppColors.greyBorder.withOpacity(0.2),
-                  fontSize: 30.sp),
+                  fontSize: 40.sp),
             ),
             verticalSpacing(5.h),
             Row(
@@ -101,24 +103,22 @@ class _OrderInfoState extends State<OrderInfo> {
               ],
             ),
             verticalSpacing(10.h),
-            Center(
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () =>pushNamed(context, Routes.addressScreen),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
-                  child: Text(
-                    S().checkout,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                        color: AppColors.primaryLight),
-                  ),
+                ),
+                child: Text(
+                  S().checkout,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                      color: AppColors.primaryLight),
                 ),
               ),
             ),

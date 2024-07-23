@@ -1,6 +1,5 @@
 import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/core/utils/svg.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,10 +14,13 @@ class DefaultAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15.sp),
+      width: double.infinity,
+      height: 70.h,
+      padding: EdgeInsets.all(10.sp),
       color: Colors.transparent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Visibility(
             visible: backArrow == true,

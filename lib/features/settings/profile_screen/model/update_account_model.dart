@@ -1,4 +1,3 @@
-import 'package:e_shop/generated/l10n.dart';
 
 class UpdateAccountModel {
 bool? _status;

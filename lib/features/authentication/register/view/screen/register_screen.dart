@@ -17,8 +17,8 @@ class RegisterScreen extends StatelessWidget {
       create: (context) => cubit,
       child: Scaffold(
           body: SingleChildScrollView(
-            child: Column(
-                    children: [
+        child: Column(
+          children: [
             Container(
                 width: double.infinity,
                 height: 230.h,
@@ -26,10 +26,7 @@ class RegisterScreen extends StatelessWidget {
                     gradient: LinearGradient(
                         begin: Alignment.bottomLeft,
                         end: Alignment.bottomRight,
-                        colors: [
-                          AppColors.black,
-                          AppColors.primary
-                        ])),
+                        colors: [AppColors.black, AppColors.primary])),
                 padding: EdgeInsets.all(20.sp),
                 child: SafeArea(
                   child: Column(
@@ -59,9 +56,9 @@ class RegisterScreen extends StatelessWidget {
             RegisterWidget(
               cubit: cubit,
             ),
-                    ],
-                  ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }

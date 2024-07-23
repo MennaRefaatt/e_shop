@@ -1,14 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:e_shop/core/cubits/language/language_cubit.dart';
 import 'package:e_shop/core/shared_preferences/my_shared.dart';
 import 'package:e_shop/core/utils/navigators.dart';
-import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/core/utils/spacing.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:e_shop/features/settings/settings_screen/view/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/shared_preferences/my_shared_keys.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../routing/routes.dart';
@@ -55,13 +52,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       context: context,
                       onTap: () => pushNamed(context, Routes.profileScreen),
                     ),
-                    verticalSpacing(50.h),
+                    verticalSpacing(20.h),
                     inkWell(
                         icon: Icons.notifications_active_outlined,
                         text: S().notification,
                         context: context,
                         onTap: () {}),
-                    verticalSpacing(50.h),
+                    verticalSpacing(20.h),
                     inkWell(
                         icon: Icons.language_outlined,
                         text: S().appLanguage,
@@ -70,64 +67,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           showModalBottomSheet<void>(
                               context: context,
                               builder: (BuildContext context) {
-                                return Container(
-                                  padding: EdgeInsets.all(15.sp),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primary.withOpacity(0.6),
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(21.sp),
-                                        topRight: Radius.circular(21.sp)),
-                                  ),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        TextButton(
-                                            child: Text(
-                                              S().english,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18.sp),
-                                            ),
-                                            onPressed: () {
-                                              context
-                                                  .read<LanguageCubit>()
-                                                  .changeLanguageToEn();
-                                              pop(context);
-                                              safePrint(MyShared.getString(key: MySharedKeys.currentLanguage));
-
-
-                                            }),
-                                        const Divider(
-                                          color: AppColors.primaryLight,
-                                        ),
-                                        TextButton(
-                                            child: Text(
-                                              S().arabic,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18.sp),
-                                            ),
-                                            onPressed: () {
-                                              context
-                                                  .read<LanguageCubit>()
-                                                  .changeLanguageToAr();
-                                              pop(context);
-                                              safePrint(MyShared.getString(key: MySharedKeys.currentLanguage));
-                                            }),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                return const BottomSheetContainer();
                               });
                         }),
-                    verticalSpacing(50.h),
+                    verticalSpacing(20.h),
                     inkWell(
                       icon: Icons.warning_amber_outlined,
                       text: S().termsAndConditions,
@@ -135,7 +78,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onTap: () =>
                           pushNamed(context, Routes.termsAndConditionsScreen),
                     ),
-                    verticalSpacing(50.h),
+                    verticalSpacing(20.h),
                     inkWell(
                       icon: Icons.help_outline_outlined,
                       text: S().fAQs,
@@ -162,14 +105,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       context: context,
                       onTap: () => pushNamed(context, Routes.contactUsScreen),
                     ),
-                    verticalSpacing(50.h),
+                    verticalSpacing(20.h),
                     inkWell(
                         icon: Icons.people_outline,
                         text: S().complaints,
                         context: context,
                         onTap: () =>
                             pushNamed(context, Routes.complaintsScreen)),
-                    verticalSpacing(50.h),
+                    verticalSpacing(20.h),
                     inkWell(
                       icon: Icons.logout,
                       text: S().logOut,
@@ -177,10 +120,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onTap: () {
                         awesomeDialog(
                             S().logOut, context);
-                        MyShared.clearUserData().then((onValue){
-                          pushNamedAndRemoveUntil(context,  Routes.login,);
-                        });
-                        setState(() {});
                       },
                     ),
                     verticalSpacing(20.h),
@@ -208,8 +147,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       //desc: message,
       btnCancelOnPress: () {},
       btnOkOnPress: () {
-        cubit.logOut();
-        //Navigator.popAndPushNamed(context, Routes.login, arguments: false,);
+        MyShared.clearUserData().then((onValue){
+          pushNamedAndRemoveUntil(context,  Routes.login,);
+        });
         setState(() {});
       },
     ).show();

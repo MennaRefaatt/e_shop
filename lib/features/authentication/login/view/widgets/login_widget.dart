@@ -1,5 +1,6 @@
 import 'package:e_shop/features/authentication/login/manager/login_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/utils/navigators.dart';
@@ -12,6 +13,7 @@ import '../../../../../routing/routes.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key, required this.cubit});
+
   final LoginCubit cubit;
 
   @override
@@ -21,82 +23,120 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.sp),
-      child: Form(
-        key: widget.cubit.formKey,
-        child: Column(children: [
-          AppTextField(
-              textInputAction: TextInputAction.next,
+    return BlocListener<LoginCubit, LoginState>(
+      listener: (context, state) {
+        if (state is LoginSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("login successfully"),
+            ),
+          );
+          Navigator.pushNamedAndRemoveUntil(
+              context, Routes.mainScreen, (route) => false);
+        }
+        if (state is LoginError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+        if (state is LoginLoading) {
+          const Center(
+              child: CircularProgressIndicator(
+            color: AppColors.primary,
+          ));
+        }
+      },
+      child: Container(
+        margin: EdgeInsets.all(15.sp),
+        child: Form(
+          key: widget.cubit.formKey,
+          child: Column(children: [
+            AppTextField(
+                textInputAction: TextInputAction.next,
+                withTitle: true,
+                controller: widget.cubit.emailController,
+                backgroundColor: AppColors.primaryLight,
+                keyboardType: TextInputType.emailAddress,
+                hint: "shop@gmail.com",
+                title: S().email,
+                filledColor: AppColors.greyInput,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return S().pleaseEnterYourEmail;
+                  }
+                  if (!value.contains('@') || !value.contains('.')) {
+                    return S().invalidEmail;
+                  }
+                  if (!Validators.isValidEmail(value)) {
+                    return S().invalidEmail;
+                  }
+                  return null;
+                }),
+            verticalSpacing(15.h),
+            AppTextField(
               withTitle: true,
-              controller: widget.cubit.emailController,
+              hint: "xxxxxxxxx",
+              textInputAction: TextInputAction.next,
+              title: S().password,
               backgroundColor: AppColors.primaryLight,
-              keyboardType: TextInputType.emailAddress,
-              hint: "shop@gmail.com",
-              title: S().email,
+              keyboardType: TextInputType.visiblePassword,
               filledColor: AppColors.greyInput,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return S().pleaseEnterYourEmail;
+                if (value!.isEmpty) {
+                  return S().pleaseEnterYourPassword;
                 }
-                if (!value.contains('@') || !value.contains('.')) {
-                  return S().invalidEmail;
-                }
-                if (!Validators.isValidEmail(value)) {
-                  return S().invalidEmail;
+                if (value.length < 6) {
+                  return S().invalidPassword;
                 }
                 return null;
-              }),
-          verticalSpacing(15.h),
-          AppTextField(
-            withTitle: true,
-            hint: "xxxxxxxxx",
-            textInputAction: TextInputAction.next,
-            title: S().password,
-            backgroundColor: AppColors.primaryLight,
-            keyboardType: TextInputType.visiblePassword,
-            filledColor: AppColors.greyInput,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return S().pleaseEnterYourPassword;
-              }
-              if (value.length < 6) {
-                return S().invalidPassword;
-              }
-              return null;
-            },
-            suffixIcon: IconButton(
-              onPressed: () {
-                widget.cubit.obscureText1 = !widget.cubit.obscureText1;
-                setState(() {});
               },
-              icon: Icon(widget.cubit.obscureText1
-                  ? Icons.visibility_off
-                  : Icons.visibility),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  widget.cubit.obscureText1 = !widget.cubit.obscureText1;
+                  setState(() {});
+                },
+                icon: Icon(widget.cubit.obscureText1
+                    ? Icons.visibility_off
+                    : Icons.visibility),
+              ),
+              obscureText: widget.cubit.obscureText1,
+              controller: widget.cubit.passwordController,
             ),
-            obscureText: widget.cubit.obscureText1,
-            controller: widget.cubit.passwordController,
-          ),
-          verticalSpacing(15.h),
-          AppButton(
-            margin: const EdgeInsets.all(0),
-            backgroundColor: AppColors.primary,
-            onPressed: () {
-              widget.cubit.login();
-            },
-            label: S().signIn,
-          ),
-          verticalSpacing(10.h),
-          AppButton(
-            margin: const EdgeInsets.all(0),
-            backgroundColor: AppColors.primaryLight,
-            onPressed: () {
-              pushNamed(context, Routes.register);
-            },
-            label:S().signUp,
-            textColor: AppColors.primary,
-          )
-        ]),
+            verticalSpacing(15.h),
+            BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+              if (state is LoginLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primary,
+                  ),
+                );
+              } else {
+                return AppButton(
+                  margin: const EdgeInsets.all(0),
+                  backgroundColor: AppColors.primary,
+                  onPressed: () {
+                    if (!widget.cubit.formKey.currentState!.validate()) {
+                      widget.cubit.login();
+                    }
+                  },
+                  label: S().signIn,
+                );
+              }
+            }),
+            verticalSpacing(10.h),
+            AppButton(
+              margin: const EdgeInsets.all(0),
+              backgroundColor: AppColors.primaryLight,
+              onPressed: () {
+                pushNamed(context, Routes.register);
+              },
+              label: S().signUp,
+              textColor: AppColors.primary,
+            )
+          ]),
+        ),
       ),
     );
   }

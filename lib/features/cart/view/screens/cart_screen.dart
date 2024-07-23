@@ -1,5 +1,6 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/spacing.dart';
+import 'package:e_shop/core/widgets/app_bar.dart';
 import 'package:e_shop/features/cart/manager/cart_cubit.dart';
 import 'package:e_shop/features/cart/view/widgets/cart_widget.dart';
 import 'package:e_shop/features/cart/view/widgets/order_info.dart';
@@ -19,17 +20,6 @@ class CartScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => cubit..getCartData(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(S().cart,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp)),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_ios),
-          ),
-        ),
         body: BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
             if (state is CartLoading) {
@@ -45,6 +35,7 @@ class CartScreen extends StatelessWidget {
             } else if (state is CartSuccess) {
               return Column(
                 children: [
+                  DefaultAppBar(text: S().cart, cartIcon: false, backArrow: true),
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.all(15.sp),

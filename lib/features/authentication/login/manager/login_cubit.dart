@@ -20,8 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   login() async {
     emit(LoginLoading());
-    await MyDio.postData(
-        endPoint: EndPoints.login, data: {
+    await MyDio.postData(endPoint: EndPoints.login, data: {
       "email": emailController.text,
       "password": passwordController.text,
     }).then((onValue) {
@@ -38,6 +37,8 @@ class LoginCubit extends Cubit<LoginState> {
           await saveDataToLocal(loginData: loginSuccessResponse.data!)
               .then((value) {
             emit(LoginSuccess());
+            emailController.clear();
+            passwordController.clear();
           });
         }
       });
