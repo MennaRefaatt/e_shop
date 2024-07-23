@@ -30,6 +30,11 @@ class _OrderInfoState extends State<OrderInfo> {
         if (state is CartError) {
           const Text("Error");
         }
+        if (state is CartSuccess) {
+          setState(() {
+            widget.cartModel.data!.subTotal=state.cartModel.data!.subTotal;
+          });
+        }
       },
       child: Container(
         width: double.infinity,

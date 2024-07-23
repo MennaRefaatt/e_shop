@@ -80,8 +80,8 @@ class HomeProducts{
      required  String image,
      required String name,
      required  bool isFav,
-     String? oldPrice,
-     String? discount,
+     required String oldPrice,
+     required String discount,
 }){
     _id = id;
     _price = price;
@@ -101,6 +101,8 @@ class HomeProducts{
    String get name => _name  ?? "";
 
    bool get isFav => _isFav ?? false;
+
+
 
 
    set isFav(bool value) {

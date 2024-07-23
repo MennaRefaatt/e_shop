@@ -1,8 +1,8 @@
+import 'package:e_shop/core/widgets/app_bar.dart';
 import 'package:e_shop/features/category_details/category_details_args.dart';
 import 'package:e_shop/features/category_details/view/widgets/category_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../favorite/manager/favourite_cubit.dart';
@@ -34,19 +34,6 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            S().categoryDetails,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
-          ),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_ios),
-          ),
-        ),
         body: BlocBuilder<CategoryDetailsCubit, CategoryDetailsState>(
             builder: (context, state) {
           if (state is CategoryDetailsLoading) {
@@ -64,6 +51,7 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
           if (state is CategoryDetailsSuccess) {
             return Column(
               children: [
+               DefaultAppBar(text: S().categoryDetails, cartIcon: true, backArrow: true,),
                 CategoryDetailsWidget(
                   categoryDetailsData: state.categoryDetailsModel.data!,
                   favouriteCubit: favoriteCubit,

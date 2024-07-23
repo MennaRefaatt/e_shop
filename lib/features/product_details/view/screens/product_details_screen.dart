@@ -1,5 +1,4 @@
 import 'package:e_shop/core/utils/navigators.dart';
-import 'package:e_shop/core/utils/svg.dart';
 import 'package:e_shop/core/widgets/app_image.dart';
 import 'package:e_shop/features/product_details/manager/product_details_cubit.dart';
 import 'package:e_shop/features/product_details/product_details_args.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
+import '../../../../core/widgets/app_bar.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
@@ -44,28 +44,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         BlocProvider(create: (context) => cartCubit),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            S().productDetails,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
-          ),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_ios),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.all(15.sp),
-              child: InkWell(
-                  borderRadius: BorderRadius.circular(10.sp),
-                  onTap: () => pushNamed(context, Routes.cartScreen),
-                  child: const AppSVG(assetName: "shopping-cart")),
-            )
-          ],
-        ),
         body: SingleChildScrollView(
           child: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
               builder: (context, state) {
@@ -84,6 +62,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             if (state is ProductDetailsSuccess) {
               return Column(
                 children: [
+                  DefaultAppBar(text: S().productDetails, cartIcon: false, backArrow: true,),
                   ImageSlideshow(
                     indicatorColor: AppColors.primary,
                     initialPage: 0,

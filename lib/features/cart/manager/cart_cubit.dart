@@ -41,6 +41,7 @@ class CartCubit extends Cubit<CartState> {
         }
         if (ifRight['status'] == true) {
           CartModel cartModel = CartModel.fromJson(ifRight);
+          _recalculateTotals(cartModel);
           safePrint(cartModel.data!);
           emit(CartSuccess(cartModel: cartModel));
         }
@@ -60,6 +61,7 @@ class CartCubit extends Cubit<CartState> {
         }
         if (ifRight['status'] == true) {
           CartModel cartModel = CartModel.fromJson(ifRight);
+          _recalculateTotals(cartModel);
           safePrint(cartModel.data!);
           emit(CartSuccess(cartModel: cartModel));
         }
@@ -80,10 +82,27 @@ class CartCubit extends Cubit<CartState> {
         }
         if (ifRight['status'] == true) {
           CartModel cartModel = CartModel.fromJson(ifRight);
+          _recalculateTotals(cartModel);
           safePrint(cartModel.data!);
           emit(CartSuccess(cartModel: cartModel));
         }
       });
     });
+  }
+
+  void _recalculateTotals(CartModel cartModel) {
+    int newSubTotal = 0;
+    int newTotal = 0;
+
+    for (var item in cartModel.data!.items) {
+      int itemTotal = item.quantity * int.parse(item.product!.price);
+      newSubTotal += itemTotal;
+    }
+
+    // Add any additional logic for total calculation if needed
+    newTotal = newSubTotal; // Adjust if there are other fees or discounts
+
+    cartModel.data!.subTotal = newSubTotal;
+    cartModel.data!.total = newTotal;
   }
 }

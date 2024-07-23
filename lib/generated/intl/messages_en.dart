@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "RepeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat Password"),
         "addToCart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "appLanguage": MessageLookupByLibrary.simpleMessage("App Language"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "arabicLanguage": MessageLookupByLibrary.simpleMessage("Arabic"),

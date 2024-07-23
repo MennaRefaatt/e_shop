@@ -34,6 +34,11 @@ class _CartWidgetState extends State<CartWidget> {
         if (state is CartError) {
           const Text("Error");
         }
+        if (state is CartSuccess) {
+          setState(() {
+            widget.cartModel.data != state.cartModel.data;
+          });
+        }
       },
       child: Expanded(
         child: ListView.builder(
@@ -44,21 +49,15 @@ class _CartWidgetState extends State<CartWidget> {
                 margin: EdgeInsets.all(15.sp),
                 padding: EdgeInsets.all(15.sp),
                 decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.greyBorder.withOpacity(0.2),
-                      spreadRadius: 10,
-                      blurRadius: 10,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
-                  color: AppColors.primary.withOpacity(0.1),
+                  color: AppColors.primaryLight.withOpacity(0.1),
+                  border: Border.all(color: AppColors.greyBorder),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Row(
                   children: [
                     AppImage(
-                      imageUrl: widget.cartModel.data!.items[index].product!.image,
+                      imageUrl:
+                          widget.cartModel.data!.items[index].product!.image,
                       width: 100.w,
                       height: 100.h,
                       borderRadius: BorderRadius.circular(10.r),
@@ -92,7 +91,8 @@ class _CartWidgetState extends State<CartWidget> {
                     Column(
                       children: [
                         Visibility(
-                          visible: widget.cartModel.data!.items[index].quantity != 0,
+                          visible:
+                              widget.cartModel.data!.items[index].quantity != 0,
                           child: Container(
                             height: 40.h,
                             width: 40.w,
@@ -102,22 +102,26 @@ class _CartWidgetState extends State<CartWidget> {
                             ),
                             child: IconButton(
                               onPressed: () {
-                                widget.cartCubit.removeProductFromCart(
-                                    cartId: widget.cartModel.data!.items[index].id);
-                                if (widget.cartModel.data!.items[index].quantity == 0) {
-                                  return;
+                                if (widget
+                                        .cartModel.data!.items[index].quantity >
+                                    0) {
+                                  widget.cartCubit.updateProductQuantity(
+                                    cartId:
+                                        widget.cartModel.data!.items[index].id,
+                                    quantity: widget.cartModel.data!
+                                            .items[index].quantity -
+                                        1,
+                                  );
                                 }
-                                widget.cartModel.data!.items[index].quantity -= 1;
-                                widget.cartModel.data!.subTotal -=widget.cartModel.data!.subTotal ;
-                                widget.cartModel.data!.total -=widget.cartModel.data!.total ;
-                                setState(() {});
                               },
                               icon: const Icon(Icons.remove),
                             ),
                           ),
                         ),
                         verticalSpacing(5.h),
-                        Text(widget.cartModel.data!.items[index].quantity.toString(),
+                        Text(
+                            widget.cartModel.data!.items[index].quantity
+                                .toString(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
@@ -131,12 +135,12 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                           child: IconButton(
                             onPressed: () {
-                              widget.cartCubit.addProductToCart(
-                                  productId: widget.cartModel.data!.items[index].id);
-                              widget.cartModel.data!.items[index].quantity += 1;
-                              widget.cartModel.data!.subTotal +=widget.cartModel.data!.subTotal ;
-                              widget.cartModel.data!.total +=widget.cartModel.data!.total ;
-                              setState(() {});
+                              widget.cartCubit.updateProductQuantity(
+                                cartId: widget.cartModel.data!.items[index].id,
+                                quantity: widget
+                                        .cartModel.data!.items[index].quantity +
+                                    1,
+                              );
                             },
                             icon: const Icon(
                               Icons.add,

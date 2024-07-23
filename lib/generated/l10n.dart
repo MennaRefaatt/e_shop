@@ -294,6 +294,16 @@ class S {
     );
   }
 
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buy Now`
   String get buyNow {
     return Intl.message(

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_shop/features/home/manager/home_cubit.dart';
 import '../../../../core/styles/colors.dart';
 import '../widgets/home_carousel_slider.dart';
+import '../widgets/home_products_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -47,10 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 banners: state.homeModel.data!.banners,
               ),
               const HomeCategories(),
-              // HomeProductsListView(
-              //   products: state.homeModel.data!.products,
-              //   favoriteCubit: favoriteCubit,
-              // ),
+              HomeProductsListView(
+                products: state.homeModel.data!.products,
+                favoriteCubit: favoriteCubit,
+              ),
             ]);
           } else {
             return const SizedBox();

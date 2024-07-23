@@ -22,6 +22,9 @@ static const String cart = 'carts';
 static const String cartAdd = 'carts';
 static const String cartDelete = 'carts/';
 static const String cartUpdate = 'carts/';
+static const String address = 'addresses';
+static const String addressUpdate = 'addresses/';
+static const String addressDelete = 'addresses/';
 
 
 }

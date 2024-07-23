@@ -82,7 +82,7 @@ class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
                     widget.isFavourite
                         ? Icons.favorite
                         : Icons.favorite_border_outlined,
-                    color: AppColors.black,
+                    color: AppColors.primary,
                     size: 30.sp,
                   )),
             ],

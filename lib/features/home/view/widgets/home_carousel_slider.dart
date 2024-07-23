@@ -49,7 +49,7 @@ class HomeCarouselSlider extends StatelessWidget {
             ),
             options: CarouselOptions(
               autoPlay: true,
-              height: 100.h,
+              height: 120.h,
               enlargeCenterPage: true,
               enableInfiniteScroll: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 800),
