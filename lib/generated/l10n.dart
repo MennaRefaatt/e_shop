@@ -224,6 +224,76 @@ class S {
     );
   }
 
+  /// `Cart`
+  String get cart {
+    return Intl.message(
+      'Cart',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Info`
+  String get orderInfo {
+    return Intl.message(
+      'Order Info',
+      name: 'orderInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sub Total`
+  String get subTotal {
+    return Intl.message(
+      'Sub Total',
+      name: 'subTotal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products`
+  String get products {
+    return Intl.message(
+      'Products',
+      name: 'products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check Out`
+  String get checkout {
+    return Intl.message(
+      'Check Out',
+      name: 'checkout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buy Now`
   String get buyNow {
     return Intl.message(

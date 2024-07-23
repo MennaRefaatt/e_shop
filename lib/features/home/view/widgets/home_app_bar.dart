@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/navigators.dart';
 import '../../../../core/utils/svg.dart';
 import '../../../../core/widgets/app_asset.dart';
+import '../../../../routing/routes.dart';
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({super.key});
@@ -25,8 +28,11 @@ class HomeAppbar extends StatelessWidget {
             bottomLeftRadius: 0,
             bottomRightRadius: 0, fit: BoxFit.fill,
           ),
-          const AppSVG(
-            assetName: "shopping-cart",
+          InkWell(
+            onTap: () =>pushNamed(context, Routes.cartScreen),
+            child: const AppSVG(
+              assetName: "shopping-cart",
+            ),
           ),
         ],
       ),

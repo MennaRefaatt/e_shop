@@ -4,6 +4,7 @@ import 'package:e_shop/features/product_details/view/widgets/product_details_des
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/styles/colors.dart';
+import '../../../cart/manager/cart_cubit.dart';
 import '../../../favorite/manager/favourite_cubit.dart';
 
 class ProductDetailsWidget extends StatefulWidget {
@@ -12,11 +13,12 @@ class ProductDetailsWidget extends StatefulWidget {
       required this.productDetailsData,
       required this.productId,
       required this.isFavourite,
-      required this.favoriteCubit});
+      required this.favoriteCubit, required this.cartCubit});
   final ProductDetailsData productDetailsData;
   final int productId;
   late bool isFavourite;
   final FavouriteCubit favoriteCubit;
+  final CartCubit cartCubit;
 
   @override
   State<ProductDetailsWidget> createState() => _ProductDetailsWidgetState();
@@ -45,7 +47,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
           productDetailsData: widget.productDetailsData,
           productId: widget.productId,
           isFavourite: widget.isFavourite,
-          favoriteCubit: widget.favoriteCubit,
+          favoriteCubit: widget.favoriteCubit, cartCubit: widget.cartCubit,
         ));
   }
 }

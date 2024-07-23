@@ -18,5 +18,10 @@ static const String complaints = 'complaints';
 static const String logout = 'logout';
 static const String categoryDetails = 'categories/';
 static const String favorites = 'favorites';
+static const String cart = 'carts';
+static const String cartAdd = 'carts';
+static const String cartDelete = 'carts/';
+static const String cartUpdate = 'carts/';
+
 
 }

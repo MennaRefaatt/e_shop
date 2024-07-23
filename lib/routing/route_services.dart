@@ -11,9 +11,9 @@ import 'package:e_shop/features/splash/splash_screen.dart';
 import 'package:e_shop/routing/routes.dart';
 
 import '../features/authentication/login/view/screens/login_screen.dart';
+import '../features/cart/view/screens/cart_screen.dart';
 import '../features/category_details/category_details_args.dart';
 import '../features/category_details/view/screens/category_details_screen.dart';
-import '../features/favorite/view/screens/favorite_screen.dart';
 import '../features/settings/complaints_screen/view/screens/complaints_screen.dart';
 import '../features/settings/fAQs_screen/view/screens/fAQs_screen.dart';
 import '../features/settings/profile_screen/view/screens/change_password/view/screens/change_password_screen.dart';
@@ -61,6 +61,9 @@ class RouteServices {
             args: args,
           );
         });
+
+        case Routes.cartScreen:
+        return MaterialPageRoute(builder: (_) =>  CartScreen());
 
       case Routes.categoriesScreen:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());

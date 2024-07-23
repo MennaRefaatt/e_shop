@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "arabicLanguage": MessageLookupByLibrary.simpleMessage("Arabic"),
         "buyNow": MessageLookupByLibrary.simpleMessage("Buy Now"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "categoryComplaint":
             MessageLookupByLibrary.simpleMessage("Category Complaint"),
@@ -40,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "checkout": MessageLookupByLibrary.simpleMessage("Check Out"),
         "complaints": MessageLookupByLibrary.simpleMessage("Complaints"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm New Password"),
@@ -49,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
@@ -121,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
+        "orderInfo": MessageLookupByLibrary.simpleMessage("Order Info"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordChanged":
@@ -150,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Enter Your Phone"),
         "productDetails":
             MessageLookupByLibrary.simpleMessage("Product Details"),
+        "products": MessageLookupByLibrary.simpleMessage("Products"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
@@ -166,10 +171,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "spacialForYou":
             MessageLookupByLibrary.simpleMessage("Spacial For You"),
+        "subTotal": MessageLookupByLibrary.simpleMessage("Sub Total"),
         "suggestedForYou":
             MessageLookupByLibrary.simpleMessage("Suggested For You"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
         "updateAccount": MessageLookupByLibrary.simpleMessage("Update Account"),
         "writeYourComplaintHere":
             MessageLookupByLibrary.simpleMessage("Write Your Complaint Here"),

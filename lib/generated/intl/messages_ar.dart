@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "arabicLanguage": MessageLookupByLibrary.simpleMessage("عربي"),
         "buyNow": MessageLookupByLibrary.simpleMessage("اشتري الان"),
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+        "cart": MessageLookupByLibrary.simpleMessage("عربة التسوق"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
         "categoryComplaint":
             MessageLookupByLibrary.simpleMessage("الفئات المقترحة"),
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("الكلمة الحالية"),
+        "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "done": MessageLookupByLibrary.simpleMessage("تم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("انجليزي"),
@@ -125,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "or": MessageLookupByLibrary.simpleMessage("او"),
+        "orderInfo": MessageLookupByLibrary.simpleMessage("معلومات الطلب"),
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordChanged": MessageLookupByLibrary.simpleMessage(
@@ -153,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnterYourPhone":
             MessageLookupByLibrary.simpleMessage("من فضلك ادخل رقم هاتفك"),
         "productDetails": MessageLookupByLibrary.simpleMessage("تفاصيل المنتج"),
+        "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("معلومات الحساب"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
@@ -167,9 +171,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل حساب جديد"),
         "spacialForYou": MessageLookupByLibrary.simpleMessage("مميز لك"),
+        "subTotal": MessageLookupByLibrary.simpleMessage("المجموع الفرعي"),
         "suggestedForYou": MessageLookupByLibrary.simpleMessage("مقترح لك"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("الشروط والاحكام"),
+        "total": MessageLookupByLibrary.simpleMessage("المجموع"),
         "updateAccount": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
         "writeYourComplaintHere":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك هنا"),

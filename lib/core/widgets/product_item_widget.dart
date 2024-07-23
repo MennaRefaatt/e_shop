@@ -129,7 +129,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
           Row(
             children: [
               Text(
-                widget.price,
+                "\$${widget.price}",
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                     fontWeight: FontWeight.w800,
@@ -139,7 +139,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
               horizontalSpacing(5.w),
               Expanded(
                 child: Text(
-                  widget.oldPrice,
+                  "\$${widget.oldPrice}",
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
