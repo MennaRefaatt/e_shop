@@ -24,11 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "RepeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat Password"),
+        "addNewAddress":
+            MessageLookupByLibrary.simpleMessage("Add New Address"),
         "addToCart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "appLanguage": MessageLookupByLibrary.simpleMessage("App Language"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "arabicLanguage": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "areYouSureYouWantToDeleteThisAddress":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to delete this address ?"),
+        "areYouSuretyYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you surely you want to logout ?"),
         "buyNow": MessageLookupByLibrary.simpleMessage("Buy Now"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
@@ -43,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Check Out"),
+        "city": MessageLookupByLibrary.simpleMessage("City"),
         "complaints": MessageLookupByLibrary.simpleMessage("Complaints"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm New Password"),
@@ -53,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "details": MessageLookupByLibrary.simpleMessage("Details"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
@@ -93,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidPassword":
             MessageLookupByLibrary.simpleMessage("Invalid Password"),
         "invalidPhone": MessageLookupByLibrary.simpleMessage("Invalid Phone"),
+        "latitude": MessageLookupByLibrary.simpleMessage("Latitude"),
         "lengthMustBeEqual11":
             MessageLookupByLibrary.simpleMessage("Length Must Be Equal 11"),
         "logOut": MessageLookupByLibrary.simpleMessage("logOut"),
@@ -101,10 +111,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutText": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to logout ?"),
+        "longitude": MessageLookupByLibrary.simpleMessage("Longitude"),
         "manageAccount": MessageLookupByLibrary.simpleMessage("Manage Account"),
         "mobilePhone": MessageLookupByLibrary.simpleMessage("Mobile Phone"),
         "mustBeDifferent":
             MessageLookupByLibrary.simpleMessage("Must Be Different"),
+        "myAddresses": MessageLookupByLibrary.simpleMessage("My Addresses"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
@@ -122,8 +134,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Not Valid Password"),
         "notValidPhone":
             MessageLookupByLibrary.simpleMessage("Not Valid Phone"),
+        "notes": MessageLookupByLibrary.simpleMessage("Notes"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
+        "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "orderInfo": MessageLookupByLibrary.simpleMessage("Order Info"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
@@ -158,11 +172,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "products": MessageLookupByLibrary.simpleMessage("Products"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
+        "region": MessageLookupByLibrary.simpleMessage("Region"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerText": MessageLookupByLibrary.simpleMessage("Register Screen"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat Password"),
+        "required": MessageLookupByLibrary.simpleMessage("Required"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "savedAddresses":
+            MessageLookupByLibrary.simpleMessage("Saved Addresses"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),

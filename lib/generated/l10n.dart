@@ -304,6 +304,126 @@ class S {
     );
   }
 
+  /// `My Addresses`
+  String get myAddresses {
+    return Intl.message(
+      'My Addresses',
+      name: 'myAddresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Address`
+  String get addNewAddress {
+    return Intl.message(
+      'Add New Address',
+      name: 'addNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saved Addresses`
+  String get savedAddresses {
+    return Intl.message(
+      'Saved Addresses',
+      name: 'savedAddresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get notes {
+    return Intl.message(
+      'Notes',
+      name: 'notes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Longitude`
+  String get longitude {
+    return Intl.message(
+      'Longitude',
+      name: 'longitude',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latitude`
+  String get latitude {
+    return Intl.message(
+      'Latitude',
+      name: 'latitude',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details`
+  String get details {
+    return Intl.message(
+      'Details',
+      name: 'details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get region {
+    return Intl.message(
+      'Region',
+      name: 'region',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get required {
+    return Intl.message(
+      'Required',
+      name: 'required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optional`
+  String get optional {
+    return Intl.message(
+      'Optional',
+      name: 'optional',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buy Now`
   String get buyNow {
     return Intl.message(
@@ -364,7 +484,25 @@ class S {
     );
   }
 
-  // skipped getter for the 'areYouSuretyYouWantToLogout?' key
+  /// `Are you surely you want to logout ?`
+  String get areYouSuretyYouWantToLogout {
+    return Intl.message(
+      'Are you surely you want to logout ?',
+      name: 'areYouSuretyYouWantToLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this address ?`
+  String get areYouSureYouWantToDeleteThisAddress {
+    return Intl.message(
+      'Are you sure you want to delete this address ?',
+      name: 'areYouSureYouWantToDeleteThisAddress',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Category Complaint`
   String get categoryComplaint {

@@ -24,11 +24,15 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "RepeatPassword":
             MessageLookupByLibrary.simpleMessage("اعادة كلمة المرور"),
+        "addNewAddress":
+            MessageLookupByLibrary.simpleMessage("اضافة عنوان جديد"),
         "addToCart": MessageLookupByLibrary.simpleMessage("اضف الى السلة"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان"),
         "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
         "arabic": MessageLookupByLibrary.simpleMessage("عربي"),
         "arabicLanguage": MessageLookupByLibrary.simpleMessage("عربي"),
+        "areYouSuretyYouWantToLogout":
+            MessageLookupByLibrary.simpleMessage("هل تريد تسجيل الخروج ؟"),
         "buyNow": MessageLookupByLibrary.simpleMessage("اشتري الان"),
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "cart": MessageLookupByLibrary.simpleMessage("عربة التسوق"),
@@ -41,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeLanguage": MessageLookupByLibrary.simpleMessage(" تغيير اللغة"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "city": MessageLookupByLibrary.simpleMessage("المدينة"),
         "complaints":
             MessageLookupByLibrary.simpleMessage("الشكاوي والاقتراحات"),
         "confirmNewPassword":
@@ -52,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("الكلمة الحالية"),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
+        "details": MessageLookupByLibrary.simpleMessage("التفاصيل"),
         "done": MessageLookupByLibrary.simpleMessage("تم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("انجليزي"),
@@ -94,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("غير صالح كلمة المرور"),
         "invalidPhone":
             MessageLookupByLibrary.simpleMessage("غير صالح رقم الهاتف"),
+        "latitude": MessageLookupByLibrary.simpleMessage("خط العرض"),
         "lengthMustBeEqual11":
             MessageLookupByLibrary.simpleMessage("يجب ان يكون الرقم 11 رقم"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
@@ -102,11 +109,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logoutText":
             MessageLookupByLibrary.simpleMessage("هل تريد تسجيل الخروج ؟"),
+        "longitude": MessageLookupByLibrary.simpleMessage("خط الطول"),
         "manageAccount": MessageLookupByLibrary.simpleMessage("ادارة الحساب"),
         "mobilePhone":
             MessageLookupByLibrary.simpleMessage("رقم الهاتف المحمول"),
         "mustBeDifferent":
             MessageLookupByLibrary.simpleMessage("يجب الا تتطابق كلمة المرور"),
+        "myAddresses": MessageLookupByLibrary.simpleMessage("عناويني"),
         "name": MessageLookupByLibrary.simpleMessage("اسمك"),
         "newPassword": MessageLookupByLibrary.simpleMessage("الكلمة الجديدة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
@@ -124,9 +133,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("غير صالح كلمة المرور"),
         "notValidPhone":
             MessageLookupByLibrary.simpleMessage("غير صالح رقم الهاتف"),
+        "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
         "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
         "oldPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
+        "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
         "or": MessageLookupByLibrary.simpleMessage("او"),
         "orderInfo": MessageLookupByLibrary.simpleMessage("معلومات الطلب"),
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
@@ -160,10 +171,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("معلومات الحساب"),
+        "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerText": MessageLookupByLibrary.simpleMessage("تسجيل حساب جديد"),
+        "required": MessageLookupByLibrary.simpleMessage("مطلوب"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("اعادة تعيين كلمة المرور"),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+        "savedAddresses":
+            MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيد"),
         "settings": MessageLookupByLibrary.simpleMessage("اعدادات"),

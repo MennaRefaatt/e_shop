@@ -27,8 +27,8 @@ class _LoginWidgetState extends State<LoginWidget> {
       listener: (context, state) {
         if (state is LoginSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("login successfully"),
+             SnackBar(
+              content: Text(state.message),
             ),
           );
           Navigator.pushNamedAndRemoveUntil(
@@ -40,12 +40,6 @@ class _LoginWidgetState extends State<LoginWidget> {
               content: Text(state.error),
             ),
           );
-        }
-        if (state is LoginLoading) {
-          const Center(
-              child: CircularProgressIndicator(
-            color: AppColors.primary,
-          ));
         }
       },
       child: Container(

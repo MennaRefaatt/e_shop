@@ -119,7 +119,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       context: context,
                       onTap: () {
                         awesomeDialog(
-                            S().logOut, context);
+                            S().areYouSuretyYouWantToLogout, context);
                       },
                     ),
                     verticalSpacing(20.h),

@@ -6,7 +6,7 @@ class LoginSuccessResponse{
   LoginSuccessResponse({
     required bool status,
     required String message,
-    LoginData? data
+     required LoginData data
   }){
     _status = status;
     _message = message;
@@ -20,8 +20,8 @@ class LoginSuccessResponse{
   }
 
   LoginData? get data => _data;
-  bool? get status => _status;
-  String? get message => _message;
+  bool get status => _status??false;
+  String get message => _message??'';
 }
 
 class  LoginData{
@@ -53,10 +53,10 @@ class  LoginData{
     _token = json['token'];
   }
 
-  String? get id => _id;
-  String? get name => _name;
-  String? get email => _email;
-  String? get phone => _phone;
-  String? get token => _token;
+  String get id => _id??"";
+  String get name => _name??'';
+  String get email => _email??'';
+  String get phone => _phone??'';
+  String get token => _token??'';
 
 }

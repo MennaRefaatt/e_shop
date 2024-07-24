@@ -36,7 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
           safePrint(loginSuccessResponse.data!.token);
           await saveDataToLocal(loginData: loginSuccessResponse.data!)
               .then((value) {
-            emit(LoginSuccess());
+            emit(LoginSuccess(loginSuccessResponse.message));
             emailController.clear();
             passwordController.clear();
           });

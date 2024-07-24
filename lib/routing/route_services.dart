@@ -1,3 +1,4 @@
+import 'package:e_shop/features/address/view/screens/add_address_screen/view/address_args.dart';
 import 'package:e_shop/features/address/view/screens/address_screen.dart';
 import 'package:e_shop/features/authentication/register/view/screen/register_screen.dart';
 import 'package:e_shop/features/categories/view/screens/categories_screen.dart';
@@ -11,6 +12,7 @@ import 'package:e_shop/features/main_screen/view/screens/main_screen.dart';
 import 'package:e_shop/features/splash/splash_screen.dart';
 import 'package:e_shop/routing/routes.dart';
 
+import '../features/address/view/screens/add_address_screen/view/screen/add_address_screen.dart';
 import '../features/authentication/login/view/screens/login_screen.dart';
 import '../features/cart/view/screens/cart_screen.dart';
 import '../features/category_details/category_details_args.dart';
@@ -47,6 +49,12 @@ class RouteServices {
 
       case Routes.addressScreen:
         return MaterialPageRoute(builder: (_) =>  AddressScreen());
+
+        case Routes.addAddressScreen:
+        return MaterialPageRoute(builder: (_) {
+          final args = routeSettings.arguments as AddressArgs;
+          return AddAddressScreen(args: args,);
+        });
 
       // case Routes.notificationScreen:
       // return MaterialPageRoute(builder: (_) =>  const NotificationScreen());
