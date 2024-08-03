@@ -1,5 +1,5 @@
+import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/features/address/manager/address_cubit.dart';
-import 'package:e_shop/features/address/model/address_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,33 +7,30 @@ import '../../../../../../../core/styles/colors.dart';
 import '../../../../../../../core/utils/spacing.dart';
 import '../../../../../../../core/widgets/app_text_field.dart';
 import '../../../../../../../generated/l10n.dart';
+import '../../../../../../../routing/routes.dart';
 
 class AddressDataEntry extends StatelessWidget {
   const AddressDataEntry(
-      {super.key, required this.cubit, required this.addressModel});
+      {super.key, required this.cubit,});
   final AddressCubit cubit;
-  final AddressModel addressModel;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddressCubit, AddressState>(
       listener: (context, state) {
-        if (state is AddressLoading) {
-          const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.primary,
-            ),
-          );
-        } else if (state is AddressSuccess) {
+        if (state is AddressSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
              SnackBar(
               content: Text(state.addressModel.message),
+              backgroundColor: Colors.green[900],
             ),
           );
+          pushNamedAndRemoveUntil(context, Routes.addressScreen);
         }
         if (state is AddressError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
+              backgroundColor: Colors.red[900],
             ),
           );
         }
@@ -98,7 +95,7 @@ class AddressDataEntry extends StatelessWidget {
               textInputAction: TextInputAction.next,
               controller: cubit.longitude,
               backgroundColor: AppColors.primaryLight,
-              keyboardType: TextInputType.name,
+              keyboardType: TextInputType.number,
               hint: "35.6876875",
               title: S().longitude,
               filledColor: AppColors.greyInput,
@@ -115,7 +112,7 @@ class AddressDataEntry extends StatelessWidget {
               textInputAction: TextInputAction.next,
               controller: cubit.latitude,
               backgroundColor: AppColors.primaryLight,
-              keyboardType: TextInputType.name,
+              keyboardType: TextInputType.number,
               hint: "35.6876875",
               title: S().latitude,
               filledColor: AppColors.greyInput,

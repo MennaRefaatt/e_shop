@@ -1,4 +1,3 @@
-import 'package:e_shop/features/address/view/screens/add_address_screen/view/address_args.dart';
 import 'package:e_shop/features/address/view/screens/address_screen.dart';
 import 'package:e_shop/features/authentication/register/view/screen/register_screen.dart';
 import 'package:e_shop/features/categories/view/screens/categories_screen.dart';
@@ -52,8 +51,8 @@ class RouteServices {
 
         case Routes.addAddressScreen:
         return MaterialPageRoute(builder: (_) {
-          final args = routeSettings.arguments as AddressArgs;
-          return AddAddressScreen(args: args,);
+          //final args = routeSettings.arguments as AddressArgs;
+          return AddAddressScreen();
         });
 
       // case Routes.notificationScreen:

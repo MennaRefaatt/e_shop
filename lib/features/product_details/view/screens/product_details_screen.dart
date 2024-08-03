@@ -124,7 +124,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           child: AppButton(
                             onPressed: () {
                              cartCubit.addProductToCart(
-                                productId: productDetailsData.id,
+                                productId:  widget.args.id,
                               );
                             },
                             label: S().addToCart,

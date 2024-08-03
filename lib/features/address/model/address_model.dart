@@ -1,3 +1,4 @@
+
 class AddressModel {
   bool? _status;
   String? _message;
@@ -17,18 +18,31 @@ class AddressModel {
   }
 
 
-  AddressModel.fromJson(dynamic json) {
+  AddressModel.fromJson(Map<String, dynamic> json) {
     _status = json["status"];
     _message = json["message"];
-    if (json["data"] != null) {
-      _data = [];
-      json["data"].forEach((v) {
-        _data?.add(AddressDataListModel.fromJson(v));
-      });
-    }
+   //  if (json["data"] != null) {
+   //   _data = [];
+   //    json["data"].forEach((v) {
+   //      _data?.add(AddressDataListModel.fromJson(v));
+   //    });
+   // }
     _addressData = json["data"] != null
         ? AddressData.fromJson(json["data"])
         : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["status"] = _status;
+    data["message"] = _message;
+    if (_data != null) {
+      data["data"] = _data?.map((v) => v.toJson()).toList();
+    }
+    if (_addressData != null) {
+      data["data"] = _addressData?.toJson();
+    }
+    return data;
   }
 
 
@@ -47,7 +61,7 @@ class AddressData{
     _data = data;
   }
 
-  AddressData.fromJson(dynamic json) {
+  AddressData.fromJson(Map<String, dynamic> json) {
     if (json["data"] != null) {
       _data = [];
       json["data"].forEach((v) {
@@ -56,7 +70,17 @@ class AddressData{
     }
   }
 
-  List<AddressDataListModel>? get data => _data;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (_data != null) {
+      data["data"] = _data?.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+
+  List<AddressDataListModel> get data => _data??[];
+
+  set data(List<AddressDataListModel> value) => _data = value;
 }
 
 class AddressDataListModel {
@@ -88,7 +112,7 @@ class AddressDataListModel {
     _id = id;
   }
 
-  AddressDataListModel.fromJson(dynamic json) {
+  AddressDataListModel.fromJson(Map<String, dynamic>  json) {
     _name = json["name"];
     _city = json["city"];
     _region = json["region"];
@@ -99,6 +123,19 @@ class AddressDataListModel {
     _id = json["id"];
   }
 
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["name"] = _name;
+    data["city"] = _city;
+    data["region"] = _region;
+    data["details"] = _details;
+    data["notes"] = _notes;
+    data["latitude"] = _latitude.toString();
+    data["longitude"] = _longitude.toString();
+    data["id"] = _id;
+    return data;
+  }
 
   set name(String value) {
     _name = value;

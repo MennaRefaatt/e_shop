@@ -16,7 +16,7 @@ class DefaultAppBar extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 70.h,
-      padding: EdgeInsets.all(10.sp),
+      padding: EdgeInsets.all(15.sp),
       color: Colors.transparent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

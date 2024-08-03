@@ -19,22 +19,23 @@ class AddressCubit extends Cubit<AddressState> {
   TextEditingController notesController = TextEditingController();
   TextEditingController latitude = TextEditingController();
   TextEditingController longitude = TextEditingController();
+  List<AddressDataListModel> addressData = [];
 
 
-  getAddress() async {
+ void getAddress()  {
     emit(AddressLoading());
     MyDio.getData(endPoint: EndPoints.address).then((onValue) {
       onValue.fold((ifLeft) {
         emit(AddressError(error: ifLeft.toString()));
       }, (ifRight) async {
         if (ifRight['status'] == false) {
-          emit(AddressError(error: ifRight['message']!.toString()));
+          emit(AddressError(error: ifRight['message']!));
           SnackBar(content: Text(ifRight['message']),);
         }
         if (ifRight['status'] == true) {
           AddressModel addressModel =
           AddressModel.fromJson(ifRight);
-          safePrint(addressModel.data);
+          safePrint(addressModel.addressData);
           emit(AddressSuccess(addressModel: addressModel));
         }
       });
@@ -42,7 +43,7 @@ class AddressCubit extends Cubit<AddressState> {
       emit(AddressError(error: onError.toString()));
     });
   }
-  void addAddress({required AddressModel address}) {
+  void addAddress() {
     emit(AddressLoading());
     MyDio.postData(endPoint: EndPoints.address, data:{
       "name": nameController.text,
@@ -63,7 +64,7 @@ class AddressCubit extends Cubit<AddressState> {
         if (ifRight['status'] == true) {
           AddressModel addressModel =
           AddressModel.fromJson(ifRight);
-          safePrint(addressModel.data);
+          safePrint(addressModel.addressData);
           emit(AddressSuccess(addressModel: addressModel));
           nameController.clear();
           cityController.clear();
@@ -79,7 +80,7 @@ class AddressCubit extends Cubit<AddressState> {
     });
   }
 
-  deleteAddress({required String addressId}) async {
+  deleteAddress({required String addressId})  {
     emit(AddressLoading());
     MyDio.deleteData(endPoint: EndPoints.addressDelete + addressId).then((onValue) {
       onValue.fold((ifLeft) {
@@ -91,7 +92,7 @@ class AddressCubit extends Cubit<AddressState> {
         }
         if (ifRight['status'] == true) {
           AddressModel addressModel = AddressModel.fromJson(ifRight);
-          safePrint(addressModel.data);
+          safePrint(addressModel.addressData);
           emit(AddressSuccess(addressModel:addressModel));
         }
       });
@@ -100,17 +101,15 @@ class AddressCubit extends Cubit<AddressState> {
     });
   }
 
-  updateAddress({required AddressModel address}) async {
+  updateAddress({required AddressModel address})  {
     emit(AddressLoading());
-    MyDio.putData(endPoint: EndPoints.addressUpdate, data: {
-      "name": nameController.text,
-      "city": cityController.text,
-      "region": regionController.text,
-      "details": detailsController.text,
-      "notes": notesController.text,
-      "latitude": latitude.text,
-      "longitude": longitude.text,
-    }).then((onValue) {
+    // Convert the AddressDataListModel list to a map
+    Map<String, dynamic> addressDataMap = {
+      for (var item in address.data) item.id.toString(): item.toJson()
+    };
+
+    MyDio.putData(endPoint: EndPoints.addressUpdate,
+        data:addressDataMap).then((onValue) {
       onValue.fold((ifLeft) {
         emit(AddressError(error: ifLeft.toString()));
       }, (ifRight) async {
@@ -120,7 +119,7 @@ class AddressCubit extends Cubit<AddressState> {
         }
         if (ifRight['status'] == true) {
           AddressModel addressModel = AddressModel.fromJson(ifRight);
-          safePrint(addressModel.data);
+          safePrint(addressModel.addressData);
           emit(AddressSuccess(addressModel:addressModel));
         }
       });

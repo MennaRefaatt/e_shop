@@ -1,3 +1,4 @@
+import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/features/authentication/login/manager/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,8 +32,8 @@ class _LoginWidgetState extends State<LoginWidget> {
               content: Text(state.message),
             ),
           );
-          Navigator.pushNamedAndRemoveUntil(
-              context, Routes.mainScreen, (route) => false);
+          pushNamed(
+              context, Routes.mainScreen);
         }
         if (state is LoginError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -99,26 +100,37 @@ class _LoginWidgetState extends State<LoginWidget> {
               controller: widget.cubit.passwordController,
             ),
             verticalSpacing(15.h),
-            BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
-              if (state is LoginLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primary,
-                  ),
-                );
-              } else {
-                return AppButton(
-                  margin: const EdgeInsets.all(0),
-                  backgroundColor: AppColors.primary,
-                  onPressed: () {
-                    if (!widget.cubit.formKey.currentState!.validate()) {
-                      widget.cubit.login();
-                    }
-                  },
-                  label: S().signIn,
-                );
-              }
-            }),
+            AppButton(
+              margin: const EdgeInsets.all(0),
+              backgroundColor: AppColors.primary,
+              onPressed: () {
+                safePrint("clicked");
+                if (!widget.cubit.formKey.currentState!.validate()) {
+                  widget.cubit.login();
+                }
+              },
+              label: S().signIn,
+            ),
+            // BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+            //   if (state is LoginLoading) {
+            //     return const Center(
+            //       child: CircularProgressIndicator(
+            //         color: AppColors.primary,
+            //       ),
+            //     );
+            //   } else {
+            //     return AppButton(
+            //       margin: const EdgeInsets.all(0),
+            //       backgroundColor: AppColors.primary,
+            //       onPressed: () {
+            //         if (!widget.cubit.formKey.currentState!.validate()) {
+            //           widget.cubit.login();
+            //         }
+            //       },
+            //       label: S().signIn,
+            //     );
+            //   }
+            // }),
             verticalSpacing(10.h),
             AppButton(
               margin: const EdgeInsets.all(0),

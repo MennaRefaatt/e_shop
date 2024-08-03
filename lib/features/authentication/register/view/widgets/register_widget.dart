@@ -36,8 +36,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           );
         } else if (state is RegisterSuccessState) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("S().registerSuccessfully"),
+             SnackBar(
+              content: Text(S().register),
             ),
           );
           pushNamedAndRemoveUntil(context, Routes.login);
