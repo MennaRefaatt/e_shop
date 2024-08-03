@@ -85,7 +85,7 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
                                     S().areYouSureYouWantToDeleteThisAddress,
                                     context,
                                     DialogType.warning,
-                                    widget.addressData.data[index].id),
+                                    widget.cubit.deleteAddress(addressId: widget.addressData.data[index].id.toString())),
                             icon: const Icon(
                               Icons.delete,
                               color: AppColors.red,
