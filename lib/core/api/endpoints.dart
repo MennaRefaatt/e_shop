@@ -25,6 +25,7 @@ static const String cartUpdate = 'carts/';
 static const String address = 'addresses';
 static const String addressUpdate = 'addresses/';
 static const String addressDelete = 'addresses/';
+static const String search = 'products/search';
 
 
 }

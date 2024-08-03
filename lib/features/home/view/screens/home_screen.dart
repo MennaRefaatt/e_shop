@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_shop/features/home/manager/home_cubit.dart';
 import '../../../../core/styles/colors.dart';
+import '../../manager/search/search_cubit.dart';
 import '../widgets/home_carousel_slider.dart';
 import '../widgets/home_products_list_view.dart';
+import '../widgets/search.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final cubit = HomeCubit();
   final categoryCubit = CategoriesCubit();
   final favoriteCubit = FavouriteCubit();
+  final searchCubit = SearchCubit();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -31,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           create: (context) => categoryCubit..getCategoriesData(),
         ),
         BlocProvider(create: (context) => favoriteCubit),
+        BlocProvider(create: (context) => searchCubit),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
@@ -41,9 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else if (state is HomeSuccess) {
-            return ListView(
-                children: [
+            return ListView(children: [
               const HomeAppbar(),
+              Search(searchCubit: searchCubit,),
               HomeCarouselSlider(
                 banners: state.homeModel.data!.banners,
               ),
