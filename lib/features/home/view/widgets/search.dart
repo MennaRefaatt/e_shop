@@ -1,10 +1,13 @@
 import 'package:e_shop/core/styles/colors.dart';
+import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/features/home/manager/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../routing/routes.dart';
+import '../../../product_details/product_details_args.dart';
 import '../../model/search_model/search_model.dart';
 
 class Search extends StatelessWidget {
@@ -86,12 +89,20 @@ class Search extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: searchDataList.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Image.network(
-                              searchDataList[index].image.toString()),
-                          title: Text(searchDataList[index].name.toString()),
-                          subtitle:
-                              Text(searchDataList[index].price.toString()),
+                        return InkWell(
+                          onTap: () => pushNamed(
+                              context, Routes.productDetailsScreen,
+                              arguments: ProductDetailsArgs(
+                                id: searchDataList[index].id,
+                              )),
+                          borderRadius: BorderRadius.circular(20.r),
+                          child: ListTile(
+                            leading: Image.network(
+                                searchDataList[index].image.toString()),
+                            title: Text(searchDataList[index].name.toString()),
+                            subtitle:
+                                Text(searchDataList[index].price.toString()),
+                          ),
                         );
                       })
                 else if (state is SearchError)

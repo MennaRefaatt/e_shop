@@ -13,7 +13,8 @@ class ProductDetailsWidget extends StatefulWidget {
       required this.productDetailsData,
       required this.productId,
       required this.isFavourite,
-      required this.favoriteCubit, required this.cartCubit});
+      required this.favoriteCubit,
+      required this.cartCubit});
   final ProductDetailsData productDetailsData;
   final int productId;
   late bool isFavourite;
@@ -32,6 +33,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
           if (state is ProductDetailsError) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.error.toString()),
+              backgroundColor: Colors.red[900],
             ));
           }
 
@@ -47,7 +49,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
           productDetailsData: widget.productDetailsData,
           productId: widget.productId,
           isFavourite: widget.isFavourite,
-          favoriteCubit: widget.favoriteCubit, cartCubit: widget.cartCubit,
+          favoriteCubit: widget.favoriteCubit,
+          cartCubit: widget.cartCubit,
         ));
   }
 }
