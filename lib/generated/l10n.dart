@@ -1313,6 +1313,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Save And Continue`
+  String get saveAndContinue {
+    return Intl.message(
+      'Save And Continue',
+      name: 'saveAndContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Order`
+  String get confirmOrder {
+    return Intl.message(
+      'Confirm Order',
+      name: 'confirmOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Method`
+  String get paymentMethod {
+    return Intl.message(
+      'Payment Method',
+      name: 'paymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Address`
+  String get addAddress {
+    return Intl.message(
+      'Add Address',
+      name: 'addAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item Details`
+  String get itemDetails {
+    return Intl.message(
+      'Item Details',
+      name: 'itemDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Details`
+  String get orderDetails {
+    return Intl.message(
+      'Order Details',
+      name: 'orderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Shopping`
+  String get continueShopping {
+    return Intl.message(
+      'Continue Shopping',
+      name: 'continueShopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon`
+  String get yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon {
+    return Intl.message(
+      'Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon',
+      name: 'yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

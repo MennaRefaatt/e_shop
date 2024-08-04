@@ -126,7 +126,16 @@
   "enterYourConfirmPassword": "ادخل تأكيد كلمة المرور",
   "enterYourOldPassword": "ادخل كلمة المرور القديمة",
   "confirmPassword": " تأكيد كلمة المرور",
-  "oldPassword": "كلمة المرور القديمة"
+  "oldPassword": "كلمة المرور القديمة",
+  "saveAndContinue": "حفظ والتالي",
+  "confirmOrder": "تأكيد الطلب",
+  "paymentMethod": "طريقة الدفع",
+  "addAddress": "اضافة عنوان",
+  "itemDetails": "تفاصيل العنصر",
+  "orderDetails": "تفاصيل الطلب",
+  "continueShopping": "الذهاب للتسوق",
+ "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "تم تقديم طلبك بنجاح وهو في الطريق لك قريبا"
+
 
 
 }

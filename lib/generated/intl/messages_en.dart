@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "RepeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat Password"),
+        "addAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
         "addNewAddress":
             MessageLookupByLibrary.simpleMessage("Add New Address"),
         "addToCart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
@@ -54,9 +55,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "complaints": MessageLookupByLibrary.simpleMessage("Complaints"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm New Password"),
+        "confirmOrder": MessageLookupByLibrary.simpleMessage("Confirm Order"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "continueShopping":
+            MessageLookupByLibrary.simpleMessage("Continue Shopping"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
@@ -102,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidPassword":
             MessageLookupByLibrary.simpleMessage("Invalid Password"),
         "invalidPhone": MessageLookupByLibrary.simpleMessage("Invalid Phone"),
+        "itemDetails": MessageLookupByLibrary.simpleMessage("Item Details"),
         "latitude": MessageLookupByLibrary.simpleMessage("Latitude"),
         "lengthMustBeEqual11":
             MessageLookupByLibrary.simpleMessage("Length Must Be Equal 11"),
@@ -139,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
+        "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
         "orderInfo": MessageLookupByLibrary.simpleMessage("Order Info"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -152,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password Not Changed Successfully"),
         "passwordNotMatch":
             MessageLookupByLibrary.simpleMessage("Password Not Match"),
+        "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "pleaseEnterConfirmPassword": MessageLookupByLibrary.simpleMessage(
             "Please Enter Confirm Password"),
@@ -180,6 +187,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "required": MessageLookupByLibrary.simpleMessage("Required"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "saveAndContinue":
+            MessageLookupByLibrary.simpleMessage("Save And Continue"),
         "savedAddresses":
             MessageLookupByLibrary.simpleMessage("Saved Addresses"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -202,6 +211,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Write Your Complaint Here"),
         "wrongPassword": MessageLookupByLibrary.simpleMessage("Wrong Password"),
         "wrongPhone": MessageLookupByLibrary.simpleMessage("Wrong Phone"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon":
+            MessageLookupByLibrary.simpleMessage(
+                "Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon")
       };
 }

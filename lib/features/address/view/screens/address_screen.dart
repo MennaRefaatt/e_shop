@@ -62,6 +62,13 @@ class AddressScreen extends StatelessWidget {
                             addressData: state.addressModel.addressData!,
                             args: AddressArgs(addressModel: state.addressModel),
                           ),
+                          verticalSpacing(20.h),
+                          AppButton(
+                              width: 200.w,
+                              onPressed: () =>
+                                  pushNamed(context, Routes.confirmOrderScreen),
+                              backgroundColor: AppColors.primary,
+                              label: S().saveAndContinue),
                         ],
                       ),
                     );

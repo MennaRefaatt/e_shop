@@ -1,6 +1,7 @@
 import 'package:e_shop/features/address/view/screens/address_screen.dart';
 import 'package:e_shop/features/authentication/register/view/screen/register_screen.dart';
 import 'package:e_shop/features/categories/view/screens/categories_screen.dart';
+import 'package:e_shop/features/confirm_order/view/screens/confirm_order_screen.dart';
 import 'package:e_shop/features/product_details/product_details_args.dart';
 import 'package:e_shop/features/product_details/view/screens/product_details_screen.dart';
 import 'package:e_shop/features/settings/contact_us_screen/view/screens/contact_us_screen.dart';
@@ -103,6 +104,11 @@ class RouteServices {
           return ProductDetailsScreen(
             args: args,
           );
+        });
+
+        case Routes.confirmOrderScreen:
+        return MaterialPageRoute(builder: (_) {
+          return ConfirmOrderScreen();
         });
 
       default:

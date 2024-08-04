@@ -127,7 +127,14 @@
   "enterYourNewPassword": "Enter Your New Password",
   "enterYourConfirmPassword": "Enter Your Confirm Password",
   "enterYourOldPassword": "Enter Your Old Password",
-  "confirmPassword": "Confirm Password"
-
+  "confirmPassword": "Confirm Password",
+  "saveAndContinue": "Save And Continue",
+  "confirmOrder": "Confirm Order",
+  "paymentMethod": "Payment Method",
+  "addAddress": "Add Address",
+  "itemDetails": "Item Details",
+  "orderDetails": "Order Details",
+  "continueShopping": "Continue Shopping",
+  "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon"
 
 }

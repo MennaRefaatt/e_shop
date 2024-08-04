@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "RepeatPassword":
             MessageLookupByLibrary.simpleMessage("اعادة كلمة المرور"),
+        "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان"),
         "addNewAddress":
             MessageLookupByLibrary.simpleMessage("اضافة عنوان جديد"),
         "addToCart": MessageLookupByLibrary.simpleMessage("اضف الى السلة"),
@@ -50,9 +51,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الشكاوي والاقتراحات"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
+        "confirmOrder": MessageLookupByLibrary.simpleMessage("تأكيد الطلب"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage(" تأكيد كلمة المرور"),
         "contactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "continueShopping":
+            MessageLookupByLibrary.simpleMessage("الذهاب للتسوق"),
         "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("الكلمة الحالية"),
@@ -100,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("غير صالح كلمة المرور"),
         "invalidPhone":
             MessageLookupByLibrary.simpleMessage("غير صالح رقم الهاتف"),
+        "itemDetails": MessageLookupByLibrary.simpleMessage("تفاصيل العنصر"),
         "latitude": MessageLookupByLibrary.simpleMessage("خط العرض"),
         "lengthMustBeEqual11":
             MessageLookupByLibrary.simpleMessage("يجب ان يكون الرقم 11 رقم"),
@@ -139,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
         "or": MessageLookupByLibrary.simpleMessage("او"),
+        "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
         "orderInfo": MessageLookupByLibrary.simpleMessage("معلومات الطلب"),
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -152,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة المرور لم تتغير بنجاح"),
         "passwordNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير متطابقة"),
+        "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "pleaseEnterConfirmPassword": MessageLookupByLibrary.simpleMessage(
             "من فضلك ادخل تأكيد كلمة المرور"),
@@ -178,6 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("اعادة تعيين كلمة المرور"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+        "saveAndContinue": MessageLookupByLibrary.simpleMessage("حفظ والتالي"),
         "savedAddresses":
             MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
@@ -199,6 +207,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "wrongPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور خاطئة"),
         "wrongPhone": MessageLookupByLibrary.simpleMessage("رقم الهاتف خاطئ"),
-        "yes": MessageLookupByLibrary.simpleMessage("نعم")
+        "yes": MessageLookupByLibrary.simpleMessage("نعم"),
+        "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon":
+            MessageLookupByLibrary.simpleMessage(
+                "تم تقديم طلبك بنجاح وهو في الطريق لك قريبا")
       };
 }
