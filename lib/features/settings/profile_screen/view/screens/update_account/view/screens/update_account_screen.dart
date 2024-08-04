@@ -34,18 +34,18 @@ class UpdateAccountScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
-          body: Column(
-            children: [
-              DefaultAppBar(
-                  text: S().profileInfo, cartIcon: false, backArrow: true),
-              SingleChildScrollView(
-                child: Container(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                DefaultAppBar(
+                    text: S().profileInfo, cartIcon: false, backArrow: true),
+                Container(
                   margin: EdgeInsets.all(15.sp),
                   padding: EdgeInsets.all(15.sp),
                   child: UpdateAccountForm(cubit: cubit),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

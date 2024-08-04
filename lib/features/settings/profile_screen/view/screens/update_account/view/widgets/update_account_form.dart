@@ -67,6 +67,7 @@ final UpdateAccountCubit cubit;
             controller: cubit.emailController,
             backgroundColor: AppColors.greyBorder,
             keyboardType: TextInputType.emailAddress,
+            enabled: false,
             hint: MyShared.getString(key: MySharedKeys.email),
             title: S().email,
             validator: (value) {

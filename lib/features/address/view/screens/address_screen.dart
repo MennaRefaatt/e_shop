@@ -66,15 +66,17 @@ class AddressScreen extends StatelessWidget {
                             args: AddressArgs(addressModel: state.addressModel),
                           ),
                           verticalSpacing(20.h),
-                          AppButton(
-                              width: 200.w,
-                              onPressed: () {
-                                pushNamed(
-                                  context, Routes.confirmOrderScreen,);
-                                safePrint(MyShared.getInt(key: MySharedKeys.defaultAddressId));
-                              },
-                              backgroundColor: AppColors.primary,
-                              label: S().saveAndContinue),
+                          Center(
+                            child: AppButton(
+                                width: 200.w,
+                                onPressed: () {
+                                  pushNamed(
+                                    context, Routes.confirmOrderScreen,);
+                                  safePrint(MyShared.getInt(key: MySharedKeys.defaultAddressId));
+                                },
+                                backgroundColor: AppColors.primary,
+                                label: S().saveAndContinue),
+                          ),
                         ],
                       ),
                     );

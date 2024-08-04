@@ -49,6 +49,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future saveDataToLocal({required LoginData loginData}) async {
     MyShared.putString(key: MySharedKeys.apiToken, value: loginData.token);
+    MyShared.putString(key: MySharedKeys.email, value: loginData.email);
+    MyShared.putString(key: MySharedKeys.name, value: loginData.name);
     MyShared.putString(key: MySharedKeys.userId, value: loginData.id);
     MyShared.putString(key: MySharedKeys.userName, value: loginData.name);
     MyShared.putString(key: MySharedKeys.phone, value: loginData.phone);
