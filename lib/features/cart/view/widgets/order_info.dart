@@ -1,6 +1,7 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/core/utils/spacing.dart';
+import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,7 @@ class _OrderInfoState extends State<OrderInfo> {
         }
         if (state is CartSuccess) {
           setState(() {
-            widget.cartModel.data!.subTotal=state.cartModel.data!.subTotal;
+            widget.cartModel.data!.subTotal = state.cartModel.data!.subTotal;
           });
         }
       },
@@ -103,25 +104,15 @@ class _OrderInfoState extends State<OrderInfo> {
               ],
             ),
             verticalSpacing(10.h),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () =>pushNamed(context, Routes.addressScreen),
-                style: ElevatedButton.styleFrom(
+            Visibility(
+              visible: widget.cartModel.data!.items!.isNotEmpty,
+              child: AppButton(
+                  onPressed: () => pushNamed(context, Routes.addressScreen),
                   backgroundColor: AppColors.primary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                ),
-                child: Text(
-                  S().checkout,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                      color: AppColors.primaryLight),
-                ),
+                  label: S().checkout,
+                  fontSize: 18.sp,
               ),
-            ),
+            )
           ],
         ),
       ),

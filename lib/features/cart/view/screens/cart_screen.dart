@@ -33,6 +33,10 @@ class CartScreen extends StatelessWidget {
                 child: Text(state.error.toString()),
               );
             } else if (state is CartSuccess) {
+              final cartList = state.cartModel.data!.items;
+              if (cartList!.isEmpty) {
+                return const Center(child: Text('No products found'));
+              }
               return Column(
                 children: [
                   DefaultAppBar(text: S().cart, cartIcon: false, backArrow: true),
@@ -44,7 +48,7 @@ class CartScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                state.cartModel.data!.items.length.toString(),
+                                state.cartModel.data!.items!.length.toString(),
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),

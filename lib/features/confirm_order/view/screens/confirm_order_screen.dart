@@ -1,25 +1,46 @@
+import 'package:e_shop/core/shared_preferences/my_shared.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:e_shop/features/confirm_order/manager/confirm_order_cubit.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/default_address.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/item_details.dart';
+import 'package:e_shop/features/confirm_order/view/widgets/payment_method.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../core/shared_preferences/my_shared_keys.dart';
 import '../../../../core/styles/colors.dart';
-import '../../../../core/utils/spacing.dart';
 import '../../../../core/widgets/app_bar.dart';
-import '../../../../core/widgets/app_text_field.dart';
 import '../../../../generated/l10n.dart';
 import '../../../address/manager/address_cubit.dart';
 import '../../../cart/manager/cart_cubit.dart';
 
-class ConfirmOrderScreen extends StatelessWidget {
-  ConfirmOrderScreen({super.key});
+class ConfirmOrderScreen extends StatefulWidget {
+  const ConfirmOrderScreen({
+    super.key,
+  });
 
+  @override
+  State<ConfirmOrderScreen> createState() => _ConfirmOrderScreenState();
+}
+
+class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
   final cubit = ConfirmOrderCubit();
   final addressCubit = AddressCubit();
   final cartCubit = CartCubit();
+  late int selectedPaymentMethod;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedPaymentMethod = 1; // Default to "Cash on Delivery"
+  }
+
+  void _updatePaymentMethod(String method) {
+    setState(() {
+      selectedPaymentMethod = method == 'Cash on Delivery' ? 1 : 2;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -57,57 +78,21 @@ class ConfirmOrderScreen extends StatelessWidget {
                 thickness: 5.sp,
                 color: AppColors.greyBorder.withOpacity(0.1),
               ),
-              BlocBuilder<ConfirmOrderCubit, ConfirmOrderState>(
-                builder: (context, state) {
-                  if (state is ConfirmOrderInitial) {
-                    return Container(); // Handle the initial state
-                  }
-                  if (state is ConfirmOrderLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primary,
-                      ),
-                    );
-                  } else if (state is ConfirmOrderError) {
-                    return Center(
-                      child: Text(state.error),
-                    );
-                  } else if (state is ConfirmOrderSuccess) {
-                    return Container(
-                      margin: EdgeInsets.all(15.sp),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppTextField(
-                            withTitle: true,
-                            textInputAction: TextInputAction.next,
-                            controller: cubit.paymentMethodController,
-                            backgroundColor: AppColors.primaryLight,
-                            keyboardType: TextInputType.name,
-                            hint: "payment method",
-                            title: S().paymentMethod,
-                            filledColor: AppColors.greyInput,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return S().required;
-                              }
-                              return null;
-                            },
-                          ),
-                          verticalSpacing(15.h),
-                          AppButton(
-                            onPressed: () {},
-                            label: S().confirmOrder +
-                                state.confirmOrderModel.data!.total,
-                            backgroundColor: AppColors.primary,
-                            fontSize: 20.sp,
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  return Container(); // Handle unexpected states
+              PaymentMethod(
+                initialPaymentMethod: selectedPaymentMethod.toString(),
+                onChange: _updatePaymentMethod,
+              ),
+              AppButton(
+                onPressed: () {
+                  cubit.addConfirmOrderData(
+                    addressId:
+                        MyShared.getInt(key: MySharedKeys.defaultAddressId),
+                    paymentMethod: selectedPaymentMethod,
+                  );
                 },
+                label: S().confirmOrder,
+                backgroundColor: AppColors.primary,
+                fontSize: 20.sp,
               ),
             ],
           ),

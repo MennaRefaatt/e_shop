@@ -1,5 +1,7 @@
+import 'package:e_shop/core/shared_preferences/my_shared.dart';
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/navigators.dart';
+import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/core/widgets/app_bar.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
@@ -8,6 +10,7 @@ import 'package:e_shop/features/address/view/widgets/saved_addresses_list_view.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/shared_preferences/my_shared_keys.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 import 'add_address_screen/view/address_args.dart';
@@ -65,8 +68,11 @@ class AddressScreen extends StatelessWidget {
                           verticalSpacing(20.h),
                           AppButton(
                               width: 200.w,
-                              onPressed: () =>
-                                  pushNamed(context, Routes.confirmOrderScreen),
+                              onPressed: () {
+                                pushNamed(
+                                  context, Routes.confirmOrderScreen,);
+                                safePrint(MyShared.getInt(key: MySharedKeys.defaultAddressId));
+                              },
                               backgroundColor: AppColors.primary,
                               label: S().saveAndContinue),
                         ],

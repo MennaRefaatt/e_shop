@@ -11,7 +11,6 @@ import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/features/main_screen/view/screens/main_screen.dart';
 import 'package:e_shop/features/splash/splash_screen.dart';
 import 'package:e_shop/routing/routes.dart';
-
 import '../features/address/view/screens/add_address_screen/view/screen/add_address_screen.dart';
 import '../features/authentication/login/view/screens/login_screen.dart';
 import '../features/cart/view/screens/cart_screen.dart';
@@ -48,26 +47,24 @@ class RouteServices {
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
 
       case Routes.addressScreen:
-        return MaterialPageRoute(builder: (_) =>  AddressScreen());
+        return MaterialPageRoute(builder: (_) => AddressScreen());
 
-        case Routes.addAddressScreen:
+      case Routes.addAddressScreen:
         return MaterialPageRoute(builder: (_) {
           //final args = routeSettings.arguments as AddressArgs;
           return AddAddressScreen();
         });
 
-      // case Routes.notificationScreen:
-      // return MaterialPageRoute(builder: (_) =>  const NotificationScreen());
-      //
       case Routes.suggestedProductsScreen:
         return MaterialPageRoute(builder: (_) {
           final args = routeSettings.arguments as SuggestedProductsArgs;
           return SuggestedProductsScreen(
-            args: args, favouriteCubit: FavouriteCubit(),
+            args: args,
+            favouriteCubit: FavouriteCubit(),
           );
         });
 
-        case Routes.categoryDetailsScreen:
+      case Routes.categoryDetailsScreen:
         return MaterialPageRoute(builder: (_) {
           final args = routeSettings.arguments as CategoryDetailsArgs;
           return CategoryDetailsScreen(
@@ -75,8 +72,8 @@ class RouteServices {
           );
         });
 
-        case Routes.cartScreen:
-        return MaterialPageRoute(builder: (_) =>  CartScreen());
+      case Routes.cartScreen:
+        return MaterialPageRoute(builder: (_) => CartScreen());
 
       case Routes.categoriesScreen:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
@@ -106,7 +103,7 @@ class RouteServices {
           );
         });
 
-        case Routes.confirmOrderScreen:
+      case Routes.confirmOrderScreen:
         return MaterialPageRoute(builder: (_) {
           return ConfirmOrderScreen();
         });

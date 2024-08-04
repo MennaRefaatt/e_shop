@@ -67,7 +67,7 @@ class CartData {
   int get quantity => _quantity ?? 0;
   int get subTotal => _subTotal ?? 0;
   int get total => _total ?? 0;
-  List<CartItems> get items => _items ?? [];
+  List<CartItems>? get items => _items;
 
   set quantity(int value) {
     _quantity = value;

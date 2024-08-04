@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
-
 import '../../../core/api/endpoints.dart';
 import '../../../core/api/my_dio.dart';
 import '../../../core/utils/safe_print.dart';
@@ -11,11 +10,17 @@ part 'confirm_order_state.dart';
 
 class ConfirmOrderCubit extends Cubit<ConfirmOrderState> {
   ConfirmOrderCubit() : super(ConfirmOrderInitial());
-  final paymentMethodController = TextEditingController();
-  addConfirmOrderData() {
+
+  addConfirmOrderData({required int addressId, required int paymentMethod}) {
     safePrint("Calling addConfirmOrderData...");
     emit(ConfirmOrderLoading());
-    MyDio.postData(endPoint: EndPoints.addOrders, data: {}).then((onValue) {
+    MyDio.postData(
+            endPoint: EndPoints.addOrders,
+            data: {"address_id": addressId,
+              "payment_method": paymentMethod,
+            "use_points": 0
+            })
+        .then((onValue) {
       onValue.fold((ifLeft) {
         safePrint("API call failed: $ifLeft");
         emit(ConfirmOrderError(error: ifLeft.toString()));

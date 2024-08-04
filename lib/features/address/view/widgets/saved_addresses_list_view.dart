@@ -1,6 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_shop/core/shared_preferences/my_shared.dart';
+import 'package:e_shop/core/shared_preferences/my_shared_keys.dart';
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/navigators.dart';
+import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/features/address/manager/address_cubit.dart';
 import 'package:e_shop/features/address/model/address_model.dart';
@@ -12,10 +15,11 @@ import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 
 class SavedAddressesListView extends StatefulWidget {
-  const SavedAddressesListView({super.key,
-    required this.cubit,
-    required this.addressData,
-    required this.args});
+  const SavedAddressesListView(
+      {super.key,
+      required this.cubit,
+      required this.addressData,
+      required this.args});
 
   final AddressCubit cubit;
   final AddressData addressData;
@@ -26,13 +30,13 @@ class SavedAddressesListView extends StatefulWidget {
 }
 
 class _SavedAddressesListViewState extends State<SavedAddressesListView> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
     return BlocListener<AddressCubit, AddressState>(
       listener: (context, state) {
         if (state is AddressLoading) {
-            const Center(
+          const Center(
             child: CircularProgressIndicator(
               color: AppColors.primary,
             ),
@@ -47,8 +51,14 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
               onTap: () {
                 setState(() {
                   selectedIndex = index;
-                  widget.cubit
-                      .updateAddress(address: widget.args.addressModel);
+                  MyShared.putInt(key: MySharedKeys.defaultAddressId, value: widget.addressData.data[index].id);
+                  safePrint(selectedIndex.toString());
+                  safePrint(MyShared.getInt(key: MySharedKeys.defaultAddressId));
+                  MyShared.putString(
+                      key: MySharedKeys.city, value: widget.addressData.data[index].city);
+                  MyShared.putString(
+                      key: MySharedKeys.addressDetails, value: widget.addressData.data[index].details);
+
                 });
               },
               child: Container(
@@ -69,23 +79,27 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
                       children: [
                         Expanded(
                             child: Text(
-                              S().address,
-                              style: TextStyle(
-                                  fontSize: 18.sp, fontWeight: FontWeight.bold),
-                            )),
+                          S().address,
+                          style: TextStyle(
+                              fontSize: 18.sp, fontWeight: FontWeight.bold),
+                        )),
                         IconButton(
-                            onPressed: () =>pushNamed(context, Routes.addAddressScreen,),
+                            onPressed: () => pushNamed(
+                                  context,
+                                  Routes.addAddressScreen,
+                                ),
                             icon: const Icon(
                               Icons.edit,
                               color: AppColors.greyBorder,
                             )),
                         IconButton(
-                            onPressed: () =>
-                                awesomeDialog(
-                                    S().areYouSureYouWantToDeleteThisAddress,
-                                    context,
-                                    DialogType.warning,
-                                    widget.cubit.deleteAddress(addressId: widget.addressData.data[index].id.toString())),
+                            onPressed: () => awesomeDialog(
+                                S().areYouSureYouWantToDeleteThisAddress,
+                                context,
+                                DialogType.warning,
+                                widget.cubit.deleteAddress(
+                                    addressId: widget.addressData.data[index].id
+                                        .toString())),
                             icon: const Icon(
                               Icons.delete,
                               color: AppColors.red,
@@ -101,9 +115,9 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
                         ),
                         Expanded(
                             child: Text(
-                              widget.addressData.data[index].name,
-                              style: TextStyle(fontSize: 16.sp),
-                            )),
+                          widget.addressData.data[index].name,
+                          style: TextStyle(fontSize: 16.sp),
+                        )),
                       ],
                     ),
                     verticalSpacing(10.h),
@@ -115,9 +129,9 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
                         ),
                         Expanded(
                             child: Text(
-                              widget.addressData.data[index].city,
-                              style: TextStyle(fontSize: 16.sp),
-                            )),
+                          widget.addressData.data[index].city,
+                          style: TextStyle(fontSize: 16.sp),
+                        )),
                       ],
                     ),
                   ],
@@ -128,8 +142,8 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
     );
   }
 
-  void awesomeDialog(String message, BuildContext context, DialogType type,
-      click) {
+  void awesomeDialog(
+      String message, BuildContext context, DialogType type, click) {
     AwesomeDialog(
       context: context,
       dialogType: type,

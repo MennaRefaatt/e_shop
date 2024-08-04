@@ -16,5 +16,10 @@ enum MySharedKeys {
   orderCategories,
   canSendPackage,
   canBuyForMe,
-  canMoveAndTransfer, userId, lastName, firstName, userName,
+  canMoveAndTransfer,
+  userId,
+  lastName,
+  firstName,
+  userName,
+  defaultAddressId, city, addressDetails,
 }

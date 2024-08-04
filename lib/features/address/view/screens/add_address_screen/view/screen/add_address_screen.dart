@@ -1,3 +1,6 @@
+import 'package:e_shop/core/shared_preferences/my_shared.dart';
+import 'package:e_shop/core/shared_preferences/my_shared_keys.dart';
+import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/core/widgets/app_bar.dart';
 import 'package:e_shop/features/address/manager/address_cubit.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +12,10 @@ import '../../../../../../../generated/l10n.dart';
 import '../widgets/address_data_entry.dart';
 
 class AddAddressScreen extends StatelessWidget {
-   AddAddressScreen({super.key,
-   });
-final cubit= AddressCubit();
+  AddAddressScreen({
+    super.key,
+  });
+  final cubit = AddressCubit();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -22,39 +26,43 @@ final cubit= AddressCubit();
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DefaultAppBar(
-                text: S().addNewAddress,
-                cartIcon: false,
-                backArrow: true),
+                  text: S().addNewAddress, cartIcon: false, backArrow: true),
               Container(
                 margin: EdgeInsets.all(15.sp),
                 child: Column(
                   children: [
                     AddressDataEntry(
-                      cubit:cubit,
-                     ),
+                      cubit: cubit,
+                    ),
                     BlocBuilder<AddressCubit, AddressState>(
                       builder: (context, state) {
                         if (state is AddressLoading) {
                           return const Center(
                               child: CircularProgressIndicator(
-                                color: AppColors.primary,
-                                backgroundColor: Colors.white70,
-                              ));
-                        } else {
+                            color: AppColors.primary,
+                            backgroundColor: Colors.white70,
+                          ));
+                        } else{
                           return AppButton(
                             margin: const EdgeInsets.all(0),
                             backgroundColor: AppColors.primary,
                             onPressed: () {
                               if (cubit.formKey.currentState!.validate()) {
                                 cubit.addAddress();
+                                safePrint(MyShared.getString(key: MySharedKeys.defaultAddressId));
+                                MyShared.putString(
+                                    key: MySharedKeys.city, value: cubit.addressData.last.city);
+                                MyShared.putString(
+                                    key: MySharedKeys.addressDetails, value: cubit.addressData.last.details);
+                                MyShared.putInt(
+                                    key: MySharedKeys.defaultAddressId, value: cubit.addressData.first.id);
                               }
                             },
                             label: S().save,
                             fontSize: 20.sp,
                             textColor: AppColors.primaryLight,
                           );
-                        }
-                      },
+                        }},
                     ),
                   ],
                 ),

@@ -36,9 +36,9 @@ class ItemDetails extends StatelessWidget {
                         fontSize: 20.sp, fontWeight: FontWeight.bold)),
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: state.cartModel.data!.items.length,
+                  itemCount: state.cartModel.data!.items!.length,
                   itemBuilder: (context, index) {
-                    final item = state.cartModel.data!.items[index];
+                    final item = state.cartModel.data!.items![index];
                     return Container(
                       margin: EdgeInsets.only(bottom: 15.sp),
                       child: Row(

@@ -1,7 +1,9 @@
+import 'package:e_shop/core/shared_preferences/my_shared.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/shared_preferences/my_shared_keys.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/spacing.dart';
 import '../../../address/manager/address_cubit.dart';
@@ -23,7 +25,6 @@ class DefaultAddress extends StatelessWidget {
         if (addressList==null) {
           return const Center(child: Text('No address found'));
         } else {
-          final defaultAddress = addressList.data.first; // Assuming the first address is the default
           return Padding(
       padding:  EdgeInsets.all(15.sp),
       child: Row(
@@ -37,7 +38,7 @@ class DefaultAddress extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-               defaultAddress.city,
+              MyShared.getString(key: MySharedKeys.city),
                 style: TextStyle(
                     color: AppColors.black,
                     fontSize: 18.sp,
@@ -45,13 +46,12 @@ class DefaultAddress extends StatelessWidget {
               ),
               verticalSpacing(5.sp),
               Text(
-                defaultAddress.details,
+                MyShared.getString(key: MySharedKeys.addressDetails),
                 style: TextStyle(
-                    color: AppColors.greyBorder,
+                    color: AppColors.black,
                     fontSize: 16.sp,
                 ),
               ),
-
             ],
           ),
         ],  ),

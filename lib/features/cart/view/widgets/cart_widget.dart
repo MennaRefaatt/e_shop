@@ -43,7 +43,7 @@ class _CartWidgetState extends State<CartWidget> {
       child: Expanded(
         child: ListView.builder(
             shrinkWrap: true,
-            itemCount: widget.cartModel.data!.items.length,
+            itemCount: widget.cartModel.data!.items!.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.all(15.sp),
@@ -57,7 +57,7 @@ class _CartWidgetState extends State<CartWidget> {
                   children: [
                     AppImage(
                       imageUrl:
-                          widget.cartModel.data!.items[index].product!.image,
+                          widget.cartModel.data!.items![index].product!.image,
                       width: 100.w,
                       height: 100.h,
                       borderRadius: BorderRadius.circular(10.r),
@@ -68,7 +68,7 @@ class _CartWidgetState extends State<CartWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.cartModel.data!.items[index].product!.name,
+                            widget.cartModel.data!.items![index].product!.name,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -78,7 +78,7 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                           verticalSpacing(5.h),
                           Text(
-                            "\$${widget.cartModel.data!.items[index].product!.price}",
+                            "\$${widget.cartModel.data!.items![index].product!.price}",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
@@ -92,7 +92,8 @@ class _CartWidgetState extends State<CartWidget> {
                       children: [
                         Visibility(
                           visible:
-                              widget.cartModel.data!.items[index].quantity != 0,
+                              widget.cartModel.data!.items![index].quantity !=
+                                  0,
                           child: Container(
                             height: 40.h,
                             width: 40.w,
@@ -102,14 +103,14 @@ class _CartWidgetState extends State<CartWidget> {
                             ),
                             child: IconButton(
                               onPressed: () {
-                                if (widget
-                                        .cartModel.data!.items[index].quantity >
+                                if (widget.cartModel.data!.items![index]
+                                        .quantity >
                                     0) {
                                   widget.cartCubit.updateProductQuantity(
                                     cartId:
-                                        widget.cartModel.data!.items[index].id,
+                                        widget.cartModel.data!.items![index].id,
                                     quantity: widget.cartModel.data!
-                                            .items[index].quantity -
+                                            .items![index].quantity -
                                         1,
                                   );
                                 }
@@ -120,7 +121,7 @@ class _CartWidgetState extends State<CartWidget> {
                         ),
                         verticalSpacing(5.h),
                         Text(
-                            widget.cartModel.data!.items[index].quantity
+                            widget.cartModel.data!.items![index].quantity
                                 .toString(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -136,9 +137,9 @@ class _CartWidgetState extends State<CartWidget> {
                           child: IconButton(
                             onPressed: () {
                               widget.cartCubit.updateProductQuantity(
-                                cartId: widget.cartModel.data!.items[index].id,
-                                quantity: widget
-                                        .cartModel.data!.items[index].quantity +
+                                cartId: widget.cartModel.data!.items![index].id,
+                                quantity: widget.cartModel.data!.items![index]
+                                        .quantity +
                                     1,
                               );
                             },

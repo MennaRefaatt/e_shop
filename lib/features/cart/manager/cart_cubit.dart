@@ -1,11 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-
 import '../../../core/api/endpoints.dart';
 import '../../../core/api/my_dio.dart';
 import '../../../core/utils/safe_print.dart';
 import '../model/cart_model.dart';
-
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
@@ -94,7 +92,7 @@ class CartCubit extends Cubit<CartState> {
     int newSubTotal = 0;
     int newTotal = 0;
 
-    for (var item in cartModel.data!.items) {
+    for (var item in cartModel.data!.items!) {
       int itemTotal = item.quantity * int.parse(item.product!.price);
       newSubTotal += itemTotal;
     }
