@@ -31,58 +31,62 @@ class AddressScreen extends StatelessWidget {
                 cartIcon: false,
                 backArrow: true,
               ),
-              BlocBuilder<AddressCubit, AddressState>(
-                builder: (context, state) {
-                  if (state is AddressLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primary,
-                      ),
-                    );
-                  } else if (state is AddressError) {
-                    return Center(
-                      child: Text(state.error),
-                    );
-                  } else if (state is AddressSuccess) {
-                    return Container(
-                      margin: EdgeInsets.all(15.sp),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppButton(
-                              onPressed: () =>
-                                  pushNamed(context, Routes.addAddressScreen),
-                              backgroundColor: AppColors.primary,
-                              label: S().addNewAddress),
-                          verticalSpacing(20.h),
-                          Text(
-                            S().savedAddresses,
-                            style: TextStyle(
-                                fontSize: 20.sp, fontWeight: FontWeight.bold),
-                          ),
-                          SavedAddressesListView(
+              Container(
+                margin: EdgeInsets.all(15.sp),
+                child: Column(
+                  children: [
+                    AppButton(
+                        onPressed: () =>
+                            pushNamed(context, Routes.addAddressScreen),
+                        backgroundColor: AppColors.primary,
+                        label: S().addNewAddress),
+                    verticalSpacing(20.h),
+                    Text(
+                      S().savedAddresses,
+                      style: TextStyle(
+                          fontSize: 20.sp, fontWeight: FontWeight.bold),
+                    ),
+                    BlocBuilder<AddressCubit, AddressState>(
+                      builder: (context, state) {
+                        if (state is AddressLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.primary,
+                            ),
+                          );
+                        } else if (state is AddressError) {
+                          return Center(
+                            child: Text(state.error),
+                          );
+                        } else if (state is AddressSuccess) {
+                          if (state.addressModel.addressData == null) {
+                            return const Center(
+                              child: Text('No address found'),
+                            );
+                          }
+                          return SavedAddressesListView(
                             cubit: cubit,
                             addressData: state.addressModel.addressData!,
                             args: AddressArgs(addressModel: state.addressModel),
-                          ),
-                          verticalSpacing(20.h),
-                          Center(
-                            child: AppButton(
-                                width: 200.w,
-                                onPressed: () {
-                                  pushNamed(
-                                    context, Routes.confirmOrderScreen,);
-                                  safePrint(MyShared.getInt(key: MySharedKeys.defaultAddressId));
-                                },
-                                backgroundColor: AppColors.primary,
-                                label: S().saveAndContinue),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  return const SizedBox();
-                },
+                          );
+                        }
+                        return const SizedBox();
+                      },
+                    ),
+                    verticalSpacing(20.h),
+                    Center(
+                      child: AppButton(
+                          width: 200.w,
+                          onPressed: () {
+                            pushNamed(
+                              context, Routes.confirmOrderScreen,);
+                            safePrint(MyShared.getInt(key: MySharedKeys.defaultAddressId));
+                          },
+                          backgroundColor: AppColors.primary,
+                          label: S().saveAndContinue),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -38,6 +38,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         child: Text(state.error.toString()),
                       );
                     } else if (state is FavouriteSuccess) {
+                      if (state.favouriteModel.data!.data.isEmpty) {
+                        return const Center(
+                          child: Text('No favourite products found'),
+                        );
+                      }
                       return FavouriteWidget(
                           favouriteCubit: cubit, data: state.favouriteModel.data!, inFavorites: true);
                     }
