@@ -1,5 +1,6 @@
 import 'package:e_shop/features/suggested_products/view/suggested_products_args.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/app_bar.dart';
 import '../../../../core/widgets/product_item_widget.dart';
@@ -9,10 +10,10 @@ import '../../../favorite/manager/favourite_cubit.dart';
 class SuggestedProductsScreen extends StatefulWidget {
   const SuggestedProductsScreen({
     super.key,
-    required this.args, required this.favouriteCubit,
+    required this.args,
   });
+
   final SuggestedProductsArgs args;
-  final FavouriteCubit favouriteCubit;
 
 
   @override
@@ -21,40 +22,46 @@ class SuggestedProductsScreen extends StatefulWidget {
 }
 
 class _SuggestedProductsScreenState extends State<SuggestedProductsScreen> {
+  final favouriteCubit = FavouriteCubit();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          DefaultAppBar(text: S().suggestedForYou, cartIcon: false, backArrow: true,),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.sp,
-                crossAxisSpacing: 10.sp,
-                childAspectRatio: 0.62.sp,
+    return BlocProvider(
+      create: (context) => favouriteCubit,
+      child: Scaffold(
+        body: Column(
+          children: [
+            DefaultAppBar(
+              text: S().suggestedForYou, cartIcon: false, backArrow: true,),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10.sp,
+                  crossAxisSpacing: 0.sp,
+                  childAspectRatio: 0.62.sp,
+                ),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: widget.args.products.length,
+                itemBuilder: (context, index) {
+                  return ProductItemWidget(
+                    price: widget.args.products[index].price,
+                    name: widget.args.products[index].name,
+                    image: widget.args.products[index].image,
+                    id: widget.args.products[index].id,
+                    inFavorites: widget.args.products[index].isFav,
+                    oldPrice: widget.args.products[index].oldPrice,
+                    discount:
+                    widget.args.products[index].discount,
+                    favoriteCubit: favouriteCubit,
+                  );
+                },
+
               ),
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: widget.args.products.length,
-              itemBuilder: (context, index) {
-                return ProductItemWidget(
-                  price: widget.args.products[index].price,
-                  name: widget.args.products[index].name,
-                  image: widget.args.products[index].image,
-                  id: widget.args.products[index].id,
-                  inFavorites:widget.args.products[index].isFav,
-                  oldPrice: widget.args.products[index].oldPrice,
-                  discount:
-                  widget.args.products[index].discount,
-                  favoriteCubit: widget.favouriteCubit,
-                );
-              },
-            
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

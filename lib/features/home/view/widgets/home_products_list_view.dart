@@ -3,6 +3,7 @@ import 'package:e_shop/features/favorite/manager/favourite_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
+import '../../../../core/widgets/product_item_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 import '../../../suggested_products/view/suggested_products_args.dart';
@@ -49,25 +50,23 @@ class _HomeProductsListViewState extends State<HomeProductsListView> {
               ),
             ],
           ),
-          // SizedBox(
-          //   height: 350.h,
-          //   child: ListView.builder(
-          //       scrollDirection: Axis.horizontal,
-          //       shrinkWrap: true,
-          //       itemCount: 5,
-          //       itemBuilder: (context, index) {
-          //         return ProductItemWidget(
-          //           price: widget.products[index].price,
-          //           name: widget.products[index].name,
-          //           image: widget.products[index].image,
-          //           id: widget.products[index].id,
-          //           inFavorites: widget.products[index].isFav,
-          //           oldPrice: widget.products[index].oldPrice,
-          //           discount: widget.products[index].discount,
-          //           favoriteCubit: widget.favoriteCubit,
-          //         );
-          //       }),
-          // ),
+          ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: 5,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ProductItemWidget(
+                  price: widget.products[index].price,
+                  name: widget.products[index].name,
+                  image: widget.products[index].image,
+                  id: widget.products[index].id,
+                  inFavorites: widget.products[index].isFav,
+                  oldPrice: widget.products[index].oldPrice,
+                  discount: widget.products[index].discount,
+                  favoriteCubit: widget.favoriteCubit,
+                );
+              }),
         ],
       ),
     );

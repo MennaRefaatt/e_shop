@@ -1,6 +1,5 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/spacing.dart';
-import 'package:e_shop/core/utils/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -83,13 +82,12 @@ class AppTextField extends StatelessWidget {
             visible: withTitle!,
             child: Row(
               children: [
-                AppSVG(assetName: titleIcon!),
-                horizontalSpacing(10),
                 Text(
                   title,
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: AppColors.black,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -125,26 +123,24 @@ class AppTextField extends StatelessWidget {
                 fontSize: labelSize,
                 fontWeight: labelFontWeight,
               ),
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 20.h, horizontal: 19.sp),
-              fillColor: filledColor,
+              fillColor: AppColors.greyBorder.withOpacity(0.1),
               filled: true,
               errorMaxLines: 2,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.greyBorder),
+                borderRadius: BorderRadius.circular(30.r),
+                borderSide:  BorderSide(color:  AppColors.greyBorder.withOpacity(0.2)),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.greyBorder),
+                borderRadius: BorderRadius.circular(30.r),
+                borderSide:  BorderSide(color: AppColors.greyBorder.withOpacity(0.1)),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.greyBorder),
+                borderRadius: BorderRadius.circular(30.r),
+                borderSide:  BorderSide(color:  AppColors.greyBorder.withOpacity(0.1)),
               ),
               disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.greyBorder),
+                borderRadius: BorderRadius.circular(30.r),
+                borderSide:  BorderSide(color:  AppColors.greyBorder.withOpacity(0.1)),
               ),
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,

@@ -86,7 +86,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                 onPressed: () {
                   cubit.addConfirmOrderData(
                     addressId:
-                        MyShared.getInt(key: MySharedKeys.defaultAddressId),
+                        MyShared.getInt(key: MySharedKeys.defaultAddressId)!,
                     paymentMethod: selectedPaymentMethod,
                   );
                 },

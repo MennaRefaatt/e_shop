@@ -1,5 +1,6 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/navigators.dart';
+import 'package:e_shop/core/widgets/app_text_field.dart';
 import 'package:e_shop/features/home/manager/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,46 +39,28 @@ class Search extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.all(15.sp),
-                  child: TextField(
-                    controller: searchCubit.searchController,
-                    decoration: InputDecoration(
+                  child: SizedBox(
+                    child: AppTextField(
+                      hint: S().search,
+                      title: S().search,
+                      controller: searchCubit.searchController,
                       suffixIcon: Container(
-                        padding: EdgeInsets.all(10.sp),
-                        child: CircleAvatar(
-                          backgroundColor: AppColors.primary,
-                          radius: 25,
-                          child: IconButton(
-                              color: Colors.white,
-                              onPressed: () {
-                                searchCubit.searchData(
-                                    text: searchCubit.searchController.text);
-                              },
-                              icon: const Icon(Icons.search)),
+                        margin: EdgeInsets.all(10.sp),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(30.r),
                         ),
+                        child: IconButton(
+                            color: Colors.white,
+                            onPressed: () {
+                              searchCubit.searchData(
+                                  text: searchCubit.searchController.text);
+                            },
+                            icon: const Icon(Icons.search)),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.r),
-                        borderSide: BorderSide(
-                          color: AppColors.greyBorder,
-                          width: 0.2.sp,
-                        ),
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: S().search,
-                      hintStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.greyBorder,
-                          fontSize: 15.sp),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColors.greyBorder,
-                          width: 0.2.sp,
-                        ),
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
+                      filledColor: Colors.white,
+                      onChanged: searchCubit.onSearchChanged,
                     ),
-                    onChanged: searchCubit.onSearchChanged,
                   ),
                 ),
                 if (state is SearchLoading)
@@ -87,14 +70,15 @@ class Search extends StatelessWidget {
                 else if (state is SearchSuccess)
                   ListView.builder(
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: searchDataList.length,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: () => pushNamed(
-                              context, Routes.productDetailsScreen,
-                              arguments: ProductDetailsArgs(
-                                id: searchDataList[index].id,
-                              )),
+                          onTap: () =>
+                              pushNamed(context, Routes.productDetailsScreen,
+                                  arguments: ProductDetailsArgs(
+                                    id: searchDataList[index].id,
+                                  )),
                           borderRadius: BorderRadius.circular(20.r),
                           child: ListTile(
                             leading: Image.network(

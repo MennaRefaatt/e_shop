@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/utils/spacing.dart';
 import '../../../../../core/utils/validators.dart';
-import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_text_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../routing/routes.dart';
@@ -36,7 +35,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           );
         } else if (state is RegisterSuccessState) {
           ScaffoldMessenger.of(context).showSnackBar(
-             SnackBar(
+            SnackBar(
               content: Text(S().register),
             ),
           );
@@ -78,7 +77,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.phone,
               hint: "01XXXXXXXXX",
-              title:S().phone,
+              title: S().phone,
               filledColor: AppColors.greyInput,
               validator: (value) {
                 if (value!.isEmpty) {
@@ -103,7 +102,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 backgroundColor: AppColors.primaryLight,
                 keyboardType: TextInputType.emailAddress,
                 hint: "shop@gmail.com",
-                title:S().email,
+                title: S().email,
                 filledColor: AppColors.greyInput,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -140,9 +139,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   widget.cubit.obscureText1 = !widget.cubit.obscureText1;
                   setState(() {});
                 },
-                icon: Icon(widget.cubit.obscureText1
-                    ? Icons.visibility_off
-                    : Icons.visibility),
+                icon: Icon(
+                    widget.cubit.obscureText1
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                    color: AppColors.greyBorder),
               ),
               obscureText: widget.cubit.obscureText1,
               controller: widget.cubit.passController,
@@ -162,9 +163,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   widget.cubit.obscureText2 = !widget.cubit.obscureText2;
                   setState(() {});
                 },
-                icon: Icon(widget.cubit.obscureText2
-                    ? Icons.visibility_off
-                    : Icons.visibility),
+                icon: Icon(
+                    widget.cubit.obscureText2
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                    color: AppColors.greyBorder),
               ),
               obscureText: widget.cubit.obscureText2,
               validator: (value) {
@@ -180,48 +183,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 return null;
               },
             ),
-            verticalSpacing(15.h),
-            BlocBuilder<RegisterCubit, RegisterState>(
-              builder: (context, state) {
-                if (state is RegisterLoadingState) {
-                  return const Center(
-                      child: CircularProgressIndicator(
-                    color: AppColors.primary,
-                    backgroundColor: Colors.white70,
-                  ));
-                } else {
-                    return AppButton(
-                      margin: const EdgeInsets.all(0),
-                      backgroundColor: AppColors.primary,
-                      onPressed: () {
-                        if (widget.cubit.formKey.currentState!.validate()) {
-                          widget.cubit.register();
-                        }
-                      },
-                      label: S().register,
-                      fontSize: 20.sp,
-                      textColor: AppColors.primaryLight,
-                    );
-                }
-              },
-            ),
-            verticalSpacing(20.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                 Text(
-                  S().iAlreadyHaveAnAccount,
-                ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child:  Text(
-                      S().login,
-                      style: const TextStyle(color: AppColors.primary),
-                    )),
-              ],
-            )
+
           ]),
         ),
       ),

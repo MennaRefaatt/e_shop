@@ -135,6 +135,8 @@
   "itemDetails": "Item Details",
   "orderDetails": "Order Details",
   "continueShopping": "Continue Shopping",
-  "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon"
-
+  "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon",
+  "dontHaveAnAccount": "Don't Have An Account ?",
+  "signInToEShop": "Sign In To E-Shop",
+  "forgetPassword": " Forget Password?"
 }

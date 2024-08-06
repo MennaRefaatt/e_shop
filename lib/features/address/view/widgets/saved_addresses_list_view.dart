@@ -30,7 +30,7 @@ class SavedAddressesListView extends StatefulWidget {
 }
 
 class _SavedAddressesListViewState extends State<SavedAddressesListView> {
-  int selectedIndex = 0;
+   int selectedIndex=0  ;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddressCubit, AddressState>(
@@ -66,7 +66,7 @@ class _SavedAddressesListViewState extends State<SavedAddressesListView> {
                 margin: EdgeInsets.all(10.sp),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.r),
-                    color: selectedIndex == index
+                    color: MyShared.getInt(key: MySharedKeys.defaultAddressId) !=null && selectedIndex == index
                         ? AppColors.primary.withOpacity(0.3)
                         : Colors.transparent,
                     border: Border.all(

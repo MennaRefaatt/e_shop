@@ -134,8 +134,10 @@
   "itemDetails": "تفاصيل العنصر",
   "orderDetails": "تفاصيل الطلب",
   "continueShopping": "الذهاب للتسوق",
- "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "تم تقديم طلبك بنجاح وهو في الطريق لك قريبا"
-
+ "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "تم تقديم طلبك بنجاح وهو في الطريق لك قريبا",
+"dontHaveAnAccount": "ليس لديك حساب؟",
+  "signInToEShop": "تسجيل الدخول للمتجر",
+  "forgetPassword": "نسيت كلمة المرور؟"
 
 
 }

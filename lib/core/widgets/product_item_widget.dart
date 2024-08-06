@@ -1,5 +1,6 @@
 import 'package:e_shop/features/favorite/manager/favourite_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../features/product_details/product_details_args.dart';
@@ -10,7 +11,7 @@ import '../utils/spacing.dart';
 import 'app_image.dart';
 
 class ProductItemWidget extends StatefulWidget {
-  ProductItemWidget({
+   ProductItemWidget({
     super.key,
     required this.price,
     required this.name,
@@ -25,7 +26,7 @@ class ProductItemWidget extends StatefulWidget {
   final String name;
   final String image;
   final int id;
-  late final bool inFavorites;
+  late  bool inFavorites;
   final String oldPrice;
   final String discount;
 
@@ -38,12 +39,19 @@ class ProductItemWidget extends StatefulWidget {
 class _ProductItemWidgetState extends State<ProductItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return  BlocListener<FavouriteCubit, FavouriteState>(
+        listener: (context, state) {
+      if(state is FavouriteLoading){
+        const Center(
+          child: CircularProgressIndicator(color: AppColors.primary,),
+        );
+      }
+    },
+    child: InkWell(
       borderRadius: BorderRadius.circular(20.r),
       onTap: () => pushNamed(context, Routes.productDetailsScreen,
           arguments: ProductDetailsArgs(id: widget.id)),
       child: Container(
-        height: 120.h,
         margin: EdgeInsets.all(10.sp),
         padding: EdgeInsets.all(15.sp),
         decoration: BoxDecoration(
@@ -160,6 +168,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
           ],
         ),
       ),
+    )
     );
   }
 }

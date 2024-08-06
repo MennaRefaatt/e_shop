@@ -5,16 +5,16 @@ import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 import '../../manager/cart_cubit.dart';
-import '../../model/cart_model.dart';
 
 class OrderInfo extends StatefulWidget {
-  const OrderInfo({super.key, required this.cartModel});
-
-  final CartModel cartModel;
+  const OrderInfo({
+    super.key,
+    required this.cartCubit,
+  });
+  final CartCubit cartCubit;
 
   @override
   State<OrderInfo> createState() => _OrderInfoState();
@@ -35,86 +35,110 @@ class _OrderInfoState extends State<OrderInfo> {
         }
         if (state is CartSuccess) {
           setState(() {
-            widget.cartModel.data!.subTotal = state.cartModel.data!.subTotal;
+            state.cartModel.data!.subTotal = state.cartModel.data!.subTotal;
           });
         }
       },
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(15.sp),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.greyBorder.withOpacity(0.2),
-                spreadRadius: 10,
-                blurRadius: 10,
-                offset: const Offset(7, 3),
+      child: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          if (state is CartLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColors.primary,
               ),
-            ],
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.r),
-              topRight: Radius.circular(20.r),
-            )),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S().orderInfo,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
-            ),
-            verticalSpacing(10.h),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    "${S().subTotal}: ",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.greyBorder),
+            );
+          } else if (state is CartError) {
+            return Center(
+              child: Text(state.error.toString()),
+            );
+          } else if (state is CartSuccess) {
+            return Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(15.sp),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.greyBorder.withOpacity(0.2),
+                      spreadRadius: 10,
+                      blurRadius: 10,
+                      offset: const Offset(7, 3),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.r),
+                    topRight: Radius.circular(20.r),
+                  )),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S().orderInfo,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
                   ),
-                ),
-                Text(
-                  "\$${widget.cartModel.data!.subTotal.toString()}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            verticalSpacing(5.h),
-            Text(
-              "-------------------------------",
-              style: TextStyle(
-                  color: AppColors.greyBorder.withOpacity(0.2),
-                  fontSize: 40.sp),
-            ),
-            verticalSpacing(5.h),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    "${S().total}: ",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: AppColors.black),
+                  verticalSpacing(10.h),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "${S().subTotal}: ",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.greyBorder),
+                        ),
+                      ),
+                      Text(
+                        "\$${state.cartModel.data!.subTotal.toString()}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
-                ),
-                Text(
-                  "\$${widget.cartModel.data!.total.toString()}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            verticalSpacing(10.h),
-            Visibility(
-              visible: widget.cartModel.data!.items!.isNotEmpty,
-              child: AppButton(
-                  onPressed: () => pushNamed(context, Routes.addressScreen),
-                  backgroundColor: AppColors.primary,
-                  label: S().checkout,
-                  fontSize: 18.sp,
+                  verticalSpacing(5.h),
+                  Text(
+                    "-------------------------------",
+                    style: TextStyle(
+                        color: AppColors.greyBorder.withOpacity(0.2),
+                        fontSize: 40.sp),
+                  ),
+                  verticalSpacing(5.h),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "${S().total}: ",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.black),
+                        ),
+                      ),
+                      Text(
+                        "\$${state.cartModel.data!.total.toString()}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  verticalSpacing(10.h),
+                  Visibility(
+                    visible: state.cartModel.data!.items.isNotEmpty,
+                    child: AppButton(
+                      onPressed: () {
+                        widget.cartCubit.updateProductQuantity(
+                            cartId: state.cartModel.data!.items[0].id,
+                            quantity: state.cartModel.data!.items[0].quantity);
+                        pushNamed(context, Routes.addressScreen);
+                      },
+                      backgroundColor: AppColors.primary,
+                      label: S().checkout,
+                      fontSize: 18.sp,
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
+            );
+          }
+          return Container();
+        },
       ),
     );
   }

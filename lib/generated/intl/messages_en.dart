@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t Have An Account ?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "englishLanguage": MessageLookupByLibrary.simpleMessage("English"),
@@ -88,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter Your Phone"),
         "fAQs": MessageLookupByLibrary.simpleMessage("FAQs"),
         "favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage(" Forget Password?"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
@@ -197,6 +201,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "shopByCategory":
             MessageLookupByLibrary.simpleMessage("Shop By Category"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "signInToEShop":
+            MessageLookupByLibrary.simpleMessage("Sign In To E-Shop"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "spacialForYou":
             MessageLookupByLibrary.simpleMessage("Spacial For You"),

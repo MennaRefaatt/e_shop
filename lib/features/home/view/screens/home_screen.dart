@@ -45,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else if (state is HomeSuccess) {
-            return ListView(children: [
+            return ListView(
+                children: [
               const HomeAppbar(),
               Search(searchCubit: searchCubit,),
               HomeCarouselSlider(

@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "details": MessageLookupByLibrary.simpleMessage("التفاصيل"),
         "done": MessageLookupByLibrary.simpleMessage("تم"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("انجليزي"),
         "englishLanguage": MessageLookupByLibrary.simpleMessage("انجليزي"),
@@ -84,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل رقم هاتفك"),
         "fAQs": MessageLookupByLibrary.simpleMessage("الأسئلة والأجوبة"),
         "favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
@@ -194,6 +198,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "shopByCategory":
             MessageLookupByLibrary.simpleMessage("تسوق حسب الفئة"),
         "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "signInToEShop":
+            MessageLookupByLibrary.simpleMessage("تسجيل الدخول للمتجر"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل حساب جديد"),
         "spacialForYou": MessageLookupByLibrary.simpleMessage("مميز لك"),
         "subTotal": MessageLookupByLibrary.simpleMessage("المجموع الفرعي"),

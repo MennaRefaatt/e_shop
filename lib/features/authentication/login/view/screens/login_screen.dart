@@ -5,6 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/generated/l10n.dart';
+import '../../../../../core/utils/navigators.dart';
+import '../../../../../core/utils/safe_print.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../routing/routes.dart';
 import '../../manager/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -20,33 +24,62 @@ class LoginScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                    width: double.infinity,
-                    height: 230.h,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              AppColors.black,
-                              AppColors.primary
-                            ])),
-                    padding: EdgeInsets.all(20.sp),
-                    child: SafeArea(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          verticalSpacing(30.h),
-                          Text(S().login,
-                              style: TextStyle(
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.primaryLight)),
-                          verticalSpacing(5.h),
-                        ],
-                      ),
-                    )),
-                LoginWidget(cubit: cubit)
+                verticalSpacing(150.h),
+                Center(
+                  child: Text(
+                    S().signInToEShop,
+                    style: TextStyle(
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primary),
+                  ),
+                ),
+                LoginWidget(cubit: cubit),
+                verticalSpacing(15.h),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(S().forgotPassword,
+                        style: TextStyle(
+                            color: AppColors.primary,
+                            decoration: TextDecoration.underline,
+                            decorationColor: AppColors.primary,
+                            fontSize: 15.sp)),
+                  ),
+                ),
+                AppButton(
+                  backgroundColor: AppColors.primary,
+                  onPressed: () {
+                    safePrint("clicked");
+                    if (cubit.formKey.currentState!.validate()) {
+                      cubit.login();
+                    }
+                  },
+                  label: S().signIn,
+                ),
+                verticalSpacing(10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(S().dontHaveAnAccount,
+                        style: TextStyle(
+                            color: AppColors.greyBorder,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold)),
+                    TextButton(
+                        onPressed: () {
+                          pushNamed(context, Routes.register);
+                        },
+                        child: Text(
+                          S().signUp,
+                          style: TextStyle(
+                              color: AppColors.primary,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                ),
               ],
             ),
           ),

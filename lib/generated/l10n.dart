@@ -1393,6 +1393,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Don't Have An Account ?`
+  String get dontHaveAnAccount {
+    return Intl.message(
+      'Don\'t Have An Account ?',
+      name: 'dontHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In To E-Shop`
+  String get signInToEShop {
+    return Intl.message(
+      'Sign In To E-Shop',
+      name: 'signInToEShop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Forget Password?`
+  String get forgetPassword {
+    return Intl.message(
+      ' Forget Password?',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

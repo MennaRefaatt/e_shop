@@ -3,6 +3,8 @@ import 'package:e_shop/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/utils/navigators.dart';
+import '../../../../../core/widgets/app_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../manager/register_cubit.dart';
 import '../widgets/register_widget.dart';
@@ -19,43 +21,68 @@ class RegisterScreen extends StatelessWidget {
           body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-                width: double.infinity,
-                height: 230.h,
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.bottomRight,
-                        colors: [AppColors.black, AppColors.primary])),
-                padding: EdgeInsets.all(20.sp),
-                child: SafeArea(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            color: AppColors.primaryLight,
-                          )),
-                      verticalSpacing(30.h),
-                      Text(S().register,
-                          style: TextStyle(
-                              fontSize: 30.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryLight)),
-                      verticalSpacing(5.h),
-                      Text(S().createAccount,
-                          style: TextStyle(
-                              fontSize: 15.sp,
-                              color: AppColors.primaryLight,
-                              fontWeight: FontWeight.w300))
-                    ],
-                  ),
-                )),
+            verticalSpacing(150.h),
+            Center(
+              child: Text(
+                S().signUp,
+                style: TextStyle(
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary),
+              ),
+            ),
             RegisterWidget(
               cubit: cubit,
             ),
+            verticalSpacing(15.h),
+            BlocBuilder<RegisterCubit, RegisterState>(
+              builder: (context, state) {
+                if (state is RegisterLoadingState) {
+                  return const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primary,
+                        backgroundColor: Colors.white70,
+                      ));
+                } else {
+                  return AppButton(
+                    margin: const EdgeInsets.all(0),
+                    backgroundColor: AppColors.primary,
+                    onPressed: () {
+                      if (cubit.formKey.currentState!.validate()) {
+                        cubit.register();
+                      }
+                    },
+                    label: S().register,
+                    fontSize: 20.sp,
+                    textColor: AppColors.primaryLight,
+                  );
+                }
+              },
+            ),
+            verticalSpacing(20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  S().iAlreadyHaveAnAccount,
+                  style: TextStyle(
+                      color: AppColors.greyBorder,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                    onPressed: () {
+                      pop(context);
+                    },
+                    child: Text(
+                      S().signIn,
+                      style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold),
+                    )),
+              ],
+            )
           ],
         ),
       )),

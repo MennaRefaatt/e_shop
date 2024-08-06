@@ -20,43 +20,43 @@ class CartScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => cubit..getCartData(),
       child: Scaffold(
-        body: BlocBuilder<CartCubit, CartState>(
-          builder: (context, state) {
-            if (state is CartLoading) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.primary,
-                ),
-              );
-            } else if (state is CartError) {
-              return Center(
-                child: Text(state.error.toString()),
-              );
-            } else if (state is CartSuccess) {
-              final cartList = state.cartModel.data!.items;
-              if (cartList!.isEmpty) {
-                return const Center(child: Text('No products found'));
-              }
-              return Column(
-                children: [
-                  DefaultAppBar(text: S().cart, cartIcon: false, backArrow: true),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(15.sp),
-                      child: Column(
+        body: Column(
+          children: [
+            DefaultAppBar(text: S().cart, cartIcon: false, backArrow: true),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.all(15.sp),
+                child: BlocBuilder<CartCubit, CartState>(
+                  builder: (context, state) {
+                    if (state is CartLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      );
+                    } else if (state is CartError) {
+                      return Center(
+                        child: Text(state.error.toString()),
+                      );
+                    } else if (state is CartSuccess) {
+                      final cartList = state.cartModel.data!.items;
+                      if (cartList.isEmpty) {
+                        return const Center(child: Text('No products found'));
+                      }
+                      return Column(
                         children: [
                           Row(
                             children: [
                               Text(
-                                state.cartModel.data!.items!.length.toString(),
+                                state.cartModel.data!.items.length.toString(),
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               horizontalSpacing(2.w),
                               Text(S().products,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold)),
+                                  style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                             ],
                           ),
                           verticalSpacing(10.h),
@@ -65,15 +65,15 @@ class CartScreen extends StatelessWidget {
                             cartModel: state.cartModel,
                           ),
                         ],
-                      ),
-                    ),
-                  ),
-                  OrderInfo(cartModel: state.cartModel),
-                ],
-              );
-            }
-            return Container();
-          },
+                      );
+                    }
+                    return Container();
+                  },
+                ),
+              ),
+            ),
+             OrderInfo(cartCubit: cubit,),
+          ],
         ),
       ),
     );

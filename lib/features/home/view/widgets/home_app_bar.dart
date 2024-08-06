@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/utils/navigators.dart';
 import '../../../../core/utils/svg.dart';
 import '../../../../core/widgets/app_asset.dart';
@@ -13,7 +11,7 @@ class HomeAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15.sp),
+      margin: EdgeInsets.only(left: 15.sp, right: 15.sp),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -30,8 +28,12 @@ class HomeAppbar extends StatelessWidget {
           ),
           InkWell(
             onTap: () =>pushNamed(context, Routes.cartScreen),
-            child: const AppSVG(
-              assetName: "shopping-cart",
+            borderRadius: BorderRadius.circular(30.sp),
+            child: Container(
+              margin: EdgeInsets.all(15.sp),
+              child: const AppSVG(
+                assetName: "shopping-cart",
+              ),
             ),
           ),
         ],

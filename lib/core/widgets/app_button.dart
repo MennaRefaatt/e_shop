@@ -14,6 +14,8 @@ class AppButton extends StatelessWidget {
     this.height,
     this.fontSize,
     this.backgroundColor,
+    this.withIcon = false,
+    this.icons,
   });
 
   final VoidCallback onPressed;
@@ -26,26 +28,31 @@ class AppButton extends StatelessWidget {
   BorderRadius? borderRadius;
   EdgeInsetsGeometry? margin;
   EdgeInsetsGeometry? padding;
+ final bool? withIcon;
+ final IconData? icons;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 56.h,
-
+      height: height ?? 40.h,
       margin: margin ?? EdgeInsets.symmetric(horizontal: 30.sp),
       width: width,
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
+        icon: Visibility(
+          visible: withIcon!,
+          child: Icon(icons, color: textColor),
+        ),
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(backgroundColor),
           shape: WidgetStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(
-              borderRadius: borderRadius ?? BorderRadius.circular(10.r),
+              borderRadius: borderRadius ?? BorderRadius.circular(20.r),
             ),
           ),
         ),
         onPressed: onPressed,
-        child: Padding(
-          padding: padding ?? EdgeInsets.symmetric(vertical: 15.sp),
+        label: Padding(
+          padding: padding ?? EdgeInsets.all(0.sp),
           child: Text(
             label,
             maxLines: 1,

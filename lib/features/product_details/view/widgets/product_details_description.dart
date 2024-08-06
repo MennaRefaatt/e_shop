@@ -28,6 +28,7 @@ class ProductDetailsDescription extends StatefulWidget {
 }
 
 class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
+  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -127,13 +128,30 @@ class _ProductDetailsDescriptionState extends State<ProductDetailsDescription> {
           ),
           verticalSpacing(5.h),
           Text(
-            widget.productDetailsData.description,
+            isExpanded
+                ? widget.productDetailsData.description
+                : widget.productDetailsData.description.length > 100
+                    ? '${widget.productDetailsData.description.substring(0, 100)}...'
+                    : widget.productDetailsData.description,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: AppColors.greyBorder,
                 fontSize: 16.sp),
           ),
-          verticalSpacing(10.h),
+          InkWell(
+            onTap: () {
+              setState(() {
+                isExpanded = !isExpanded;
+              });
+            },
+            child: Text(
+              isExpanded ? "Show less" : "Read more",
+              style: TextStyle(
+                  color: AppColors.primary,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w800),
+            ),
+          ),
         ],
       ),
     );

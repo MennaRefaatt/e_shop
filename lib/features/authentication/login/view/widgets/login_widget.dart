@@ -1,4 +1,3 @@
-import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/features/authentication/login/manager/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +6,6 @@ import '../../../../../core/styles/colors.dart';
 import '../../../../../core/utils/navigators.dart';
 import '../../../../../core/utils/spacing.dart';
 import '../../../../../core/utils/validators.dart';
-import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_text_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../routing/routes.dart';
@@ -28,12 +26,11 @@ class _LoginWidgetState extends State<LoginWidget> {
       listener: (context, state) {
         if (state is LoginSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-             SnackBar(
+            SnackBar(
               content: Text(state.message),
             ),
           );
-          pushNamed(
-              context, Routes.mainScreen);
+          pushNamed(context, Routes.mainScreen);
         }
         if (state is LoginError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -56,7 +53,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                 keyboardType: TextInputType.emailAddress,
                 hint: "shop@gmail.com",
                 title: S().email,
-                filledColor: AppColors.greyInput,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return S().pleaseEnterYourEmail;
@@ -77,7 +73,6 @@ class _LoginWidgetState extends State<LoginWidget> {
               title: S().password,
               backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.visiblePassword,
-              filledColor: AppColors.greyInput,
               validator: (value) {
                 if (value!.isEmpty) {
                   return S().pleaseEnterYourPassword;
@@ -92,55 +87,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                   widget.cubit.obscureText1 = !widget.cubit.obscureText1;
                   setState(() {});
                 },
-                icon: Icon(widget.cubit.obscureText1
-                    ? Icons.visibility_off
-                    : Icons.visibility),
+                icon: Icon(
+                  widget.cubit.obscureText1
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                  color: AppColors.greyBorder,
+                ),
               ),
               obscureText: widget.cubit.obscureText1,
               controller: widget.cubit.passwordController,
             ),
-            verticalSpacing(15.h),
-            AppButton(
-              margin: const EdgeInsets.all(0),
-              backgroundColor: AppColors.primary,
-              onPressed: () {
-                safePrint("clicked");
-                if (!widget.cubit.formKey.currentState!.validate()) {
-                  widget.cubit.login();
-                }
-              },
-              label: S().signIn,
-            ),
-            // BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
-            //   if (state is LoginLoading) {
-            //     return const Center(
-            //       child: CircularProgressIndicator(
-            //         color: AppColors.primary,
-            //       ),
-            //     );
-            //   } else {
-            //     return AppButton(
-            //       margin: const EdgeInsets.all(0),
-            //       backgroundColor: AppColors.primary,
-            //       onPressed: () {
-            //         if (!widget.cubit.formKey.currentState!.validate()) {
-            //           widget.cubit.login();
-            //         }
-            //       },
-            //       label: S().signIn,
-            //     );
-            //   }
-            // }),
-            verticalSpacing(10.h),
-            AppButton(
-              margin: const EdgeInsets.all(0),
-              backgroundColor: AppColors.primaryLight,
-              onPressed: () {
-                pushNamed(context, Routes.register);
-              },
-              label: S().signUp,
-              textColor: AppColors.primary,
-            )
+
           ]),
         ),
       ),

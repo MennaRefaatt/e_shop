@@ -47,8 +47,8 @@ class MyShared {
   }) async {
     return await _preferences?.setInt(key.name, value ?? 0) ?? false;
   }
-  static int getInt({required MySharedKeys key}) {
-    return _preferences?.getInt(key.name) ?? 0;
+  static int? getInt({required MySharedKeys key}) {
+    return _preferences?.getInt(key.name) ;
   }
   static String getString({required MySharedKeys key}) {
     return _preferences?.getString(key.name) ?? "";

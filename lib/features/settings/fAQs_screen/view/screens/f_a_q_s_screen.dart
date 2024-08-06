@@ -23,6 +23,7 @@ class FAQsScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.all(15.sp),
                     child: ListView.builder(
+                      shrinkWrap: true,
                         itemCount: state.fAQsModel.data!.data.length,
                         itemBuilder: (context, index) {
                           return Column(

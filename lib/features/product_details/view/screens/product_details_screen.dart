@@ -1,8 +1,10 @@
 import 'package:e_shop/core/utils/navigators.dart';
+import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/core/widgets/app_image.dart';
 import 'package:e_shop/features/product_details/manager/product_details_cubit.dart';
 import 'package:e_shop/features/product_details/product_details_args.dart';
 import 'package:e_shop/features/product_details/view/widgets/product_details_description.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
@@ -28,7 +30,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final favoriteCubit = FavouriteCubit();
   final cartCubit = CartCubit();
   late final ProductDetailsData productDetailsData;
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +63,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             if (state is ProductDetailsSuccess) {
               return Column(
                 children: [
-                  DefaultAppBar(text: S().productDetails, cartIcon: false, backArrow: true,),
+                  DefaultAppBar(
+                    text: S().productDetails,
+                    cartIcon: false,
+                    backArrow: true,
+                  ),
                   ImageSlideshow(
                     indicatorColor: AppColors.primary,
                     initialPage: 0,
+                    indicatorRadius: 5.sp,
                     onPageChanged: (value) {
                       debugPrint('Page changed: $value');
                     },
@@ -88,24 +94,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     cartCubit: cartCubit,
                   ),
                   Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(15.sp),
-                    decoration: BoxDecoration(
-                        color:AppColors.primary.withOpacity(0.1),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.greyBorder.withOpacity(0.2),
-                            spreadRadius: 10,
-                            blurRadius: 10,
-                            offset: const Offset(7, 3),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.r),
-                          topRight: Radius.circular(20.r),
-                        )),
+                    margin: EdgeInsets.only(bottom: 15.sp),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         BlocListener<CartCubit, CartState>(
                           listener: (context, state) {
@@ -121,30 +112,46 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               Text(state.cartModel.message);
                             }
                           },
-                          child: AppButton(
+                          child: FloatingActionButton(
                             onPressed: () {
-                             cartCubit.addProductToCart(
-                                productId:  widget.args.id,
+                              cartCubit.addProductToCart(
+                                productId: widget.args.id,
                               );
                             },
-                            label: S().addToCart,
-                            borderRadius: BorderRadius.circular(10.r),
                             backgroundColor: AppColors.primaryLight,
-                            width: 150.w,
-                            height: 50.h,
-                            margin: EdgeInsets.all(3.sp),
-                            textColor: AppColors.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.r),
+                            ),
+                            child: const Icon(
+                              CupertinoIcons.cart_fill,
+                              color: AppColors.primary,
+                            ),
                           ),
                         ),
-                        AppButton(
-                          onPressed: () => pushNamed(context, Routes.cartScreen),
-                          label: S().buyNow,
-                          borderRadius: BorderRadius.circular(10.r),
-                          backgroundColor: AppColors.primary,
-                          width: 150.w,
-                          margin: EdgeInsets.all(3.sp),
-                          height: 50.h,
-                          textColor: AppColors.primaryLight,
+                        horizontalSpacing(15.w),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.greyBorder.withOpacity(0.5),
+                                  blurRadius: 3.r,
+                                  offset: const Offset(-1, 6),
+                                ),
+                              ]),
+                          child: AppButton(
+                            onPressed: () =>
+                                pushNamed(context, Routes.cartScreen),
+                            label: S().buyNow,
+                            withIcon: true,
+                            icons: CupertinoIcons.bag,
+                            borderRadius: BorderRadius.circular(30.r),
+                            backgroundColor: AppColors.primary,
+                            width: 150.w,
+                            margin: EdgeInsets.all(3.sp),
+                            height: 50.h,
+                            textColor: AppColors.primaryLight,
+                          ),
                         ),
                       ],
                     ),

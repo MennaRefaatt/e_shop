@@ -16,7 +16,6 @@ import '../features/authentication/login/view/screens/login_screen.dart';
 import '../features/cart/view/screens/cart_screen.dart';
 import '../features/category_details/category_details_args.dart';
 import '../features/category_details/view/screens/category_details_screen.dart';
-import '../features/favorite/manager/favourite_cubit.dart';
 import '../features/settings/complaints_screen/view/screens/complaints_screen.dart';
 import '../features/settings/fAQs_screen/view/screens/f_a_q_s_screen.dart';
 import '../features/settings/profile_screen/view/screens/change_password/view/screens/change_password_screen.dart';
@@ -60,7 +59,6 @@ class RouteServices {
           final args = routeSettings.arguments as SuggestedProductsArgs;
           return SuggestedProductsScreen(
             args: args,
-            favouriteCubit: FavouriteCubit(),
           );
         });
 
@@ -105,7 +103,7 @@ class RouteServices {
 
       case Routes.confirmOrderScreen:
         return MaterialPageRoute(builder: (_) {
-          return ConfirmOrderScreen();
+          return const ConfirmOrderScreen();
         });
 
       default:

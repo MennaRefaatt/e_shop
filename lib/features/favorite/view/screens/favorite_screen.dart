@@ -21,29 +21,31 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     return BlocProvider(
       create: (context) => cubit..getFavouriteData(),
       child: Scaffold(
-          body: BlocBuilder<FavouriteCubit, FavouriteState>(
-            builder: (context, state) {
-              if (state is FavouriteLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primary,
-                  ),
-                );
-              } else if (state is FavouriteError) {
-                return Center(
-                  child: Text(state.error.toString()),
-                );
-              } else if (state is FavouriteSuccess) {
-                return Column(
-                  children: [
-                    DefaultAppBar(text: S().favorite, cartIcon: false, backArrow: false,),
-                    FavouriteWidget(
-                        favouriteCubit: cubit, data: state.favouriteModel.data!, inFavorites: true),
-                  ],
-                );
-              }
-              return Text(state.toString());
-            },
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                DefaultAppBar(text: S().favorite, cartIcon: false, backArrow: false,),
+                BlocBuilder<FavouriteCubit, FavouriteState>(
+                  builder: (context, state) {
+                    if (state is FavouriteLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      );
+                    } else if (state is FavouriteError) {
+                      return Center(
+                        child: Text(state.error.toString()),
+                      );
+                    } else if (state is FavouriteSuccess) {
+                      return FavouriteWidget(
+                          favouriteCubit: cubit, data: state.favouriteModel.data!, inFavorites: true);
+                    }
+                    return Text(state.toString());
+                  },
+                ),
+              ],
+            ),
           )),
     );
   }

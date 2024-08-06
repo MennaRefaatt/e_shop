@@ -1,5 +1,6 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/navigators.dart';
+import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:e_shop/core/widgets/app_text_field.dart';
 import 'package:e_shop/features/settings/complaints_screen/manager/complaints_cubit.dart';
 import 'package:flutter/material.dart';
@@ -121,33 +122,20 @@ class ComplaintsScreen extends StatelessWidget {
                                   return null;
                                 }),
                             verticalSpacing(15.h),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
+                            AppButton(
+                                onPressed: () {
+                                  if (cubit.formKey.currentState!.validate()) {
+                                    cubit.sendComplaints();
+                                    SnackBar(
+                                      content: Text(state.toString()),
+                                      backgroundColor: AppColors.primary,
+                                      duration: const Duration(seconds: 3),
+                                    );
+                                    pop(context);
+                                  }
+                                },
                                 backgroundColor: AppColors.primary,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.r),
-                                ),
-                                minimumSize: Size(double.infinity, 50.sp),
-                              ),
-                              onPressed: () {
-                                if (cubit.formKey.currentState!.validate()) {
-                                  cubit.sendComplaints();
-
-                                  SnackBar(
-                                    content: Text(state.toString()),
-                                    backgroundColor: AppColors.primary,
-                                    duration: const Duration(seconds: 3),
-                                  );
-                                  pop(context);
-                                }
-                              },
-                              child: Text(
-                                S().complaints,
-                                style: TextStyle(
-                                    color: AppColors.primaryLight,
-                                    fontSize: 18.sp),
-                              ),
-                            ),
+                                label: S().complaints),
                           ],
                         ),
                       ),
