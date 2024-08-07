@@ -32,7 +32,6 @@ class OrdersCubit extends Cubit<OrdersState> {
               oldOrders.add(order);
             }
           }
-
           emit(OrdersSuccess(
               currentOrders: currentOrders, oldOrders: oldOrders));
         }

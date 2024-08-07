@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/spacing.dart';
 import '../../../../generated/l10n.dart';
+import '../widget/animatedButton.dart';
 import '../widget/order_list.dart';
 
 class OrdersScreen extends StatefulWidget {
@@ -27,7 +28,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
           DefaultAppBar(text: S().orders, cartIcon: false, backArrow: false),
           // const CurrentAndOldButtons(),
           Container(
-            width: 180.w,
             padding: EdgeInsets.symmetric(horizontal: 5.sp, vertical: 10.sp),
             decoration: BoxDecoration(
               color: AppColors.greyBorder.withOpacity(0.2),
@@ -35,61 +35,31 @@ class _OrdersScreenState extends State<OrdersScreen> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                GestureDetector(
+                AnimatedButton(
+                  isSelected: isCurrentSelected,
+                  text: "Current",
                   onTap: () {
                     setState(() {
                       isCurrentSelected = true;
                     });
                   },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10.sp, horizontal: 20.sp),
-                    decoration: BoxDecoration(
-                      color: isCurrentSelected
-                          ? AppColors.primary
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Text(
-                      "current",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: isCurrentSelected ? Colors.white : Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
                 ),
-                GestureDetector(
+                SizedBox(width: 10.sp), // Add spacing between buttons
+                AnimatedButton(
+                  isSelected: !isCurrentSelected,
+                  text: S().old,
                   onTap: () {
                     setState(() {
                       isCurrentSelected = false;
                     });
                   },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10.sp, horizontal: 20.sp),
-                    decoration: BoxDecoration(
-                      color: !isCurrentSelected
-                          ? AppColors.primary
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Text(
-                      S().old,
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: !isCurrentSelected ? Colors.white : Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
           ),
-          verticalSpacing(20.h),
+          verticalSpacing(10.h),
           Expanded(
             child: OrdersList(isCurrentSelected: isCurrentSelected),
           ),
