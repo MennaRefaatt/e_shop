@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("تم"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "eShop": MessageLookupByLibrary.simpleMessage("E-ShOp"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("انجليزي"),
         "englishLanguage": MessageLookupByLibrary.simpleMessage("انجليزي"),
@@ -128,6 +129,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("اسمك"),
         "newPassword": MessageLookupByLibrary.simpleMessage("الكلمة الجديدة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
+        "noOrdersFound":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على طلبات"),
         "notValid": MessageLookupByLibrary.simpleMessage("غير صالح"),
         "notValidConfirmPassword":
             MessageLookupByLibrary.simpleMessage("غير صالح تأكيد كلمة المرور"),
@@ -144,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("غير صالح رقم الهاتف"),
         "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
         "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
+        "old": MessageLookupByLibrary.simpleMessage("قديم"),
         "oldPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "optional": MessageLookupByLibrary.simpleMessage("اختياري"),

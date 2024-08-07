@@ -2,9 +2,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_shop/core/api/my_dio.dart';
 import 'package:e_shop/features/product_details/model/product_details_model.dart';
-import 'package:e_shop/generated/l10n.dart';
 import 'package:meta/meta.dart';
-
 import '../../../core/api/endpoints.dart';
 import '../../../core/utils/safe_print.dart';
 

@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t Have An Account ?"),
+        "eShop": MessageLookupByLibrary.simpleMessage("E-ShOp"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "englishLanguage": MessageLookupByLibrary.simpleMessage("English"),
@@ -129,6 +130,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noOrdersFound":
+            MessageLookupByLibrary.simpleMessage("No Orders Found"),
         "notValid": MessageLookupByLibrary.simpleMessage("Not Valid"),
         "notValidConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Not Valid Confirm Password"),
@@ -145,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Not Valid Phone"),
         "notes": MessageLookupByLibrary.simpleMessage("Notes"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "old": MessageLookupByLibrary.simpleMessage("Old"),
         "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),

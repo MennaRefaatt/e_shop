@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/navigators.dart';
 import '../../../../core/utils/svg.dart';
 import '../../../../core/widgets/app_asset.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 
 class HomeAppbar extends StatelessWidget {
@@ -15,7 +17,6 @@ class HomeAppbar extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppAssetImage(
             image: "app_icon2.png",
@@ -26,11 +27,16 @@ class HomeAppbar extends StatelessWidget {
             bottomLeftRadius: 0,
             bottomRightRadius: 0, fit: BoxFit.fill,
           ),
+          Expanded(child: Text(S().eShop,style: TextStyle(color: AppColors.primary,fontSize: 20.sp,fontWeight: FontWeight.bold),)),
           InkWell(
             onTap: () =>pushNamed(context, Routes.cartScreen),
             borderRadius: BorderRadius.circular(30.sp),
             child: Container(
-              margin: EdgeInsets.all(15.sp),
+              padding: EdgeInsets.all(15.sp),
+              decoration: BoxDecoration(
+                color: AppColors.greyBorder.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(30.r),
+              ),
               child: const AppSVG(
                 assetName: "shopping-cart",
               ),

@@ -137,7 +137,11 @@
  "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon": "تم تقديم طلبك بنجاح وهو في الطريق لك قريبا",
 "dontHaveAnAccount": "ليس لديك حساب؟",
   "signInToEShop": "تسجيل الدخول للمتجر",
-  "forgetPassword": "نسيت كلمة المرور؟"
+  "forgetPassword": "نسيت كلمة المرور؟",
+  "eShop": "E-ShOp",
+  "old": "قديم",
+  "current": "حالي",
+  "noOrdersFound": "لم يتم العثور على طلبات"
 
 
 }

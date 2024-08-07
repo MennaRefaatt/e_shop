@@ -1,6 +1,7 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/svg.dart';
 import 'package:e_shop/features/favorite/view/screens/favorite_screen.dart';
+import 'package:e_shop/features/orders/view/screen/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_shop/features/home/view/screens/home_screen.dart';
 
@@ -17,7 +18,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens = [
     const HomeScreen(),
-   SizedBox(),
+     OrdersScreen(),
     const FavoriteScreen(),
     const SettingsScreen()
   ];
@@ -39,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
             this.index = index;
           });
         },
-        items:  [
+        items: [
           BottomNavigationBarItem(
             icon: const AppSVG(assetName: "home"),
             label: S().home,

@@ -1423,6 +1423,38 @@ class S {
       args: [],
     );
   }
+
+  /// `E-ShOp`
+  String get eShop {
+    return Intl.message(
+      'E-ShOp',
+      name: 'eShop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old`
+  String get old {
+    return Intl.message(
+      'Old',
+      name: 'old',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'current' key
+
+  /// `No Orders Found`
+  String get noOrdersFound {
+    return Intl.message(
+      'No Orders Found',
+      name: 'noOrdersFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
