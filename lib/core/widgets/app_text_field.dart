@@ -123,12 +123,12 @@ class AppTextField extends StatelessWidget {
                 fontSize: labelSize,
                 fontWeight: labelFontWeight,
               ),
-              fillColor: AppColors.greyBorder.withOpacity(0.1),
+              fillColor: filledColor ?? AppColors.greyBorder.withOpacity(0.1),
               filled: true,
               errorMaxLines: 2,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30.r),
-                borderSide:  BorderSide(color:  AppColors.greyBorder.withOpacity(0.2)),
+                borderSide:  BorderSide(color:  AppColors.greyBorder.withOpacity(0.1)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30.r),

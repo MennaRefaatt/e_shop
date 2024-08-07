@@ -37,31 +37,27 @@ class Search extends StatelessWidget {
             alignment: Alignment.center,
             child: Column(
               children: [
-                Container(
+                AppTextField(
                   margin: EdgeInsets.all(15.sp),
-                  child: SizedBox(
-                    child: AppTextField(
-                      hint: S().search,
-                      title: S().search,
-                      controller: searchCubit.searchController,
-                      suffixIcon: Container(
-                        margin: EdgeInsets.all(10.sp),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(30.r),
-                        ),
-                        child: IconButton(
-                            color: Colors.white,
-                            onPressed: () {
-                              searchCubit.searchData(
-                                  text: searchCubit.searchController.text);
-                            },
-                            icon: const Icon(Icons.search)),
-                      ),
-                      filledColor: Colors.white,
-                      onChanged: searchCubit.onSearchChanged,
+                  hint: S().search,
+                  title: S().search,
+                  controller: searchCubit.searchController,
+                  suffixIcon: Container(
+                    margin: EdgeInsets.all(10.sp),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      borderRadius: BorderRadius.circular(30.r),
                     ),
+                    child: IconButton(
+                        color: Colors.white,
+                        onPressed: () {
+                          searchCubit.searchData(
+                              text: searchCubit.searchController.text);
+                        },
+                        icon: const Icon(Icons.search)),
                   ),
+                  filledColor:AppColors.primaryLight,
+                  onChanged: searchCubit.onSearchChanged,
                 ),
                 if (state is SearchLoading)
                   const Center(

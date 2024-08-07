@@ -1,3 +1,4 @@
+import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/features/categories/manager/categories_cubit.dart';
 import 'package:e_shop/features/favorite/manager/favourite_cubit.dart';
 import 'package:e_shop/features/home/view/widgets/home_app_bar.dart';
@@ -5,6 +6,7 @@ import 'package:e_shop/features/home/view/widgets/home_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_shop/features/home/manager/home_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
 import '../../manager/search/search_cubit.dart';
 import '../widgets/home_carousel_slider.dart';
@@ -45,19 +47,39 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else if (state is HomeSuccess) {
-            return ListView(
-                children: [
-              const HomeAppbar(),
-              Search(searchCubit: searchCubit,),
-              HomeCarouselSlider(
-                banners: state.homeModel.data!.banners,
+            return SingleChildScrollView(
+              child: Container(
+                color: AppColors.primary.withOpacity(0.3),
+                child: Column(
+                  children: [
+                    verticalSpacing(20.h),
+                    const HomeAppbar(),
+                    Search(searchCubit: searchCubit,),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.r),
+                          topRight: Radius.circular(30.r),
+                        ),
+                      ),
+                      child: Column(
+                          children: [
+                        verticalSpacing(20.h),
+                         HomeCarouselSlider(
+                          banners: state.homeModel.data!.banners,
+                        ),
+                        const HomeCategories(),
+                        HomeProductsListView(
+                          products: state.homeModel.data!.products,
+                          favoriteCubit: favoriteCubit,
+                        ),
+                      ]),
+                    ),
+                  ],
+                ),
               ),
-              const HomeCategories(),
-              HomeProductsListView(
-                products: state.homeModel.data!.products,
-                favoriteCubit: favoriteCubit,
-              ),
-            ]);
+            );
           } else {
             return const SizedBox();
           }
