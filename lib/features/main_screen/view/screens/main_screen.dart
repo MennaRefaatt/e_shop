@@ -1,10 +1,13 @@
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/svg.dart';
 import 'package:e_shop/features/favorite/view/screens/favorite_screen.dart';
+import 'package:e_shop/features/main_screen/view/widget/icons_widget.dart';
 import 'package:e_shop/features/orders/view/screen/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_shop/features/home/view/screens/home_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/safe_print.dart';
 import '../../../../generated/l10n.dart';
 import '../../../settings/settings_screen/view/screens/settings_screen.dart';
 
@@ -23,6 +26,8 @@ class _MainScreenState extends State<MainScreen> {
     const SettingsScreen()
   ];
   int index = 0;
+  final bool isSelected=true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +80,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
+
       body: screens[index],
     );
   }

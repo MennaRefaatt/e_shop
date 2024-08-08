@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (state is HomeSuccess) {
             return SingleChildScrollView(
               child: Container(
-                color: AppColors.primary.withOpacity(0.3),
+                color: AppColors.primary.withOpacity(0.2),
                 child: Column(
                   children: [
                     verticalSpacing(20.h),

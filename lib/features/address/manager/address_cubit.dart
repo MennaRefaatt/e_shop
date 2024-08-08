@@ -3,7 +3,6 @@ import 'package:e_shop/core/api/endpoints.dart';
 import 'package:e_shop/core/api/my_dio.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-
 import '../../../core/utils/safe_print.dart';
 import '../model/address_model.dart';
 
@@ -17,8 +16,6 @@ class AddressCubit extends Cubit<AddressState> {
   TextEditingController regionController = TextEditingController();
   TextEditingController detailsController = TextEditingController();
   TextEditingController notesController = TextEditingController();
-  TextEditingController latitude = TextEditingController();
-  TextEditingController longitude = TextEditingController();
   List<AddressDataListModel> addressData = [];
 
 
@@ -51,8 +48,8 @@ class AddressCubit extends Cubit<AddressState> {
       "region": regionController.text,
       "details": detailsController.text,
       "notes": notesController.text,
-      "latitude": latitude.text,
-      "longitude": longitude.text,
+      "latitude": 35.34,
+      "longitude": 43.43,
     }).then((onValue) {
       onValue.fold((ifLeft) {
         emit(AddressError(error: ifLeft.toString()));
@@ -71,8 +68,6 @@ class AddressCubit extends Cubit<AddressState> {
           regionController.clear();
           detailsController.clear();
           notesController.clear();
-          latitude.clear();
-          longitude.clear();
         }
       });
     }).catchError((onError) {

@@ -141,6 +141,9 @@
   "eShop": "E-ShOp",
   "old": "قديم",
   "current": "حالي",
+  "orderPlaced": "تم تقديم الطلب",
+  "myOrderDetails": "تفاصيل طلبي",
+  "productsYouMightLike": "المنتجات التي تعجبك",
   "noOrdersFound": "لم يتم العثور على طلبات"
 
 

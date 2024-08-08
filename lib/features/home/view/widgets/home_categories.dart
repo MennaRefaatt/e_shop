@@ -55,12 +55,11 @@ class HomeCategories extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 120.h,
+                  height: 130.h,
                   child: ListView.builder(
                       itemCount: 3,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      //physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () => pushNamed(
@@ -71,7 +70,12 @@ class HomeCategories extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.sp),
                           splashColor: Colors.transparent,
                           child: Container(
-                            margin: EdgeInsets.all(10.sp),
+                            margin: EdgeInsets.all(5.sp),
+                            padding: EdgeInsets.all(10.sp),
+                            decoration: BoxDecoration(
+                              color: AppColors.greyBorder.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [

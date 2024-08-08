@@ -1,4 +1,5 @@
 import 'package:e_shop/core/shared_preferences/my_shared.dart';
+import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:e_shop/features/confirm_order/manager/confirm_order_cubit.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/default_address.dart';
@@ -11,6 +12,7 @@ import '../../../../core/shared_preferences/my_shared_keys.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/widgets/app_bar.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../routing/routes.dart';
 import '../../../address/manager/address_cubit.dart';
 import '../../../cart/manager/cart_cubit.dart';
 
@@ -84,6 +86,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
               ),
               AppButton(
                 onPressed: () {
+                  pushNamedAndRemoveUntil(context,Routes.orderPlacedScreen);
                   cubit.addConfirmOrderData(
                     addressId:
                         MyShared.getInt(key: MySharedKeys.defaultAddressId)!,

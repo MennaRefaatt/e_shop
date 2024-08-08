@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class AppSVG extends StatelessWidget {
   const AppSVG({
-    Key? key,
+    super.key,
     required this.assetName,
     this.width,
     this.height,
     this.color,
-  }) : super(key: key);
+  });
 
   final String assetName;
   final double? width;
@@ -27,7 +27,7 @@ class AppSVG extends StatelessWidget {
       assetPath,
       height: height,
       width: width,
-      colorFilter: color == null ? ColorFilter.mode(AppColors.black, BlendMode.srcIn) : ColorFilter.mode(color ?? AppColors.primary, BlendMode.srcIn),
+      colorFilter: color == null ? const ColorFilter.mode(AppColors.black, BlendMode.srcIn) : ColorFilter.mode(color ?? AppColors.primary, BlendMode.srcIn),
     );
   }
 }

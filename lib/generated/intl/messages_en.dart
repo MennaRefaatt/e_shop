@@ -127,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeDifferent":
             MessageLookupByLibrary.simpleMessage("Must Be Different"),
         "myAddresses": MessageLookupByLibrary.simpleMessage("My Addresses"),
+        "myOrderDetails":
+            MessageLookupByLibrary.simpleMessage("My Order Details"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
@@ -154,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
         "orderInfo": MessageLookupByLibrary.simpleMessage("Order Info"),
+        "orderPlaced": MessageLookupByLibrary.simpleMessage("Order Placed!"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordChanged":
@@ -185,6 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "productDetails":
             MessageLookupByLibrary.simpleMessage("Product Details"),
         "products": MessageLookupByLibrary.simpleMessage("Products"),
+        "productsYouMightLike":
+            MessageLookupByLibrary.simpleMessage("Products You Might Like"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
         "region": MessageLookupByLibrary.simpleMessage("Region"),
@@ -224,6 +229,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon":
             MessageLookupByLibrary.simpleMessage(
-                "Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon")
+                "Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon.")
       };
 }

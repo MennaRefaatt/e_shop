@@ -89,8 +89,6 @@ class AddressDataListModel {
   String? _region;
   String? _details;
   String? _notes;
-  String? _latitude;
-  String? _longitude;
   int? _id;
 
   AddressDataListModel(
@@ -99,16 +97,12 @@ class AddressDataListModel {
       required String region,
       required String details,
       required String notes,
-      required String latitude,
-      required String longitude,
       required int id}) {
     _name = name;
     _city = city;
     _region = region;
     _details = details;
     _notes = notes;
-    _latitude = latitude;
-    _longitude = longitude;
     _id = id;
   }
 
@@ -118,8 +112,6 @@ class AddressDataListModel {
     _region = json["region"];
     _details = json["details"];
     _notes = json["notes"];
-    _latitude = json["latitude"].toString();
-    _longitude = json["longitude"].toString();
     _id = json["id"];
   }
 
@@ -131,8 +123,6 @@ class AddressDataListModel {
     data["region"] = _region;
     data["details"] = _details;
     data["notes"] = _notes;
-    data["latitude"] = _latitude.toString();
-    data["longitude"] = _longitude.toString();
     data["id"] = _id;
     return data;
   }
@@ -146,8 +136,6 @@ class AddressDataListModel {
   String get region => _region??'';
   String get details => _details??'';
   String get notes => _notes??'';
-  String get latitude => _latitude??'';
-  String get longitude => _longitude??'';
   int get id => _id??0;
 
   set city(String value) {
@@ -164,14 +152,6 @@ class AddressDataListModel {
 
   set notes(String value) {
     _notes = value;
-  }
-
-  set latitude(String value) {
-    _latitude = value;
-  }
-
-  set longitude(String value) {
-    _longitude = value;
   }
 
   set id(int value) {

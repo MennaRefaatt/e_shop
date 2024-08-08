@@ -1384,10 +1384,10 @@ class S {
     );
   }
 
-  /// `Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon`
+  /// `Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon.`
   String get yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon {
     return Intl.message(
-      'Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon',
+      'Your Order Has Been Placed Successfully Processed And Is On Its Way To You Soon.',
       name: 'yourOrderHasBeenPlacedSuccessfullyProcessedAndIsOnItsWayToYouSoon',
       desc: '',
       args: [],
@@ -1445,6 +1445,36 @@ class S {
   }
 
   // skipped getter for the 'current' key
+
+  /// `Order Placed!`
+  String get orderPlaced {
+    return Intl.message(
+      'Order Placed!',
+      name: 'orderPlaced',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Order Details`
+  String get myOrderDetails {
+    return Intl.message(
+      'My Order Details',
+      name: 'myOrderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products You Might Like`
+  String get productsYouMightLike {
+    return Intl.message(
+      'Products You Might Like',
+      name: 'productsYouMightLike',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `No Orders Found`
   String get noOrdersFound {

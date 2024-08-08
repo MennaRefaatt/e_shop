@@ -25,21 +25,29 @@ class HomeAppbar extends StatelessWidget {
             topLeftRadius: 0,
             topRightRadius: 0,
             bottomLeftRadius: 0,
-            bottomRightRadius: 0, fit: BoxFit.fill,
+            bottomRightRadius: 0,
+            fit: BoxFit.fill,
           ),
-          Expanded(child: Text(S().eShop,style: TextStyle(color: AppColors.primaryLight,fontSize: 20.sp,fontWeight: FontWeight.bold),)),
+          Expanded(
+              child: Text(
+            S().eShop,
+            style: TextStyle(
+                color: AppColors.primary,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold),
+          )),
           InkWell(
-            onTap: () =>pushNamed(context, Routes.cartScreen),
+            onTap: () => pushNamed(context, Routes.cartScreen),
             borderRadius: BorderRadius.circular(30.sp),
             child: Container(
               padding: EdgeInsets.all(15.sp),
               decoration: BoxDecoration(
-                color: AppColors.primaryLight.withOpacity(0.2),
+                color: AppColors.primaryLight.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(30.r),
               ),
               child: const AppSVG(
                 assetName: "shopping-cart",
-                color: Colors.white,
+                color: AppColors.primary,
               ),
             ),
           ),

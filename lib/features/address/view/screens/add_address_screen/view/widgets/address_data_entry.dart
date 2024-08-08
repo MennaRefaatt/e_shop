@@ -93,40 +93,6 @@ class AddressDataEntry extends StatelessWidget {
             AppTextField(
               withTitle: true,
               textInputAction: TextInputAction.next,
-              controller: cubit.longitude,
-              backgroundColor: AppColors.primaryLight,
-              keyboardType: TextInputType.number,
-              hint: "35.6876875",
-              title: S().longitude,
-              filledColor: AppColors.greyInput,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return S().required;
-                }
-                return null;
-              },
-            ),
-            verticalSpacing(15.h),
-            AppTextField(
-              withTitle: true,
-              textInputAction: TextInputAction.next,
-              controller: cubit.latitude,
-              backgroundColor: AppColors.primaryLight,
-              keyboardType: TextInputType.number,
-              hint: "35.6876875",
-              title: S().latitude,
-              filledColor: AppColors.greyInput,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return S().required;
-                }
-                return null;
-              },
-            ),
-            verticalSpacing(15.h),
-            AppTextField(
-              withTitle: true,
-              textInputAction: TextInputAction.next,
               controller: cubit.detailsController,
               backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.name,

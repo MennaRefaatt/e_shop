@@ -126,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeDifferent":
             MessageLookupByLibrary.simpleMessage("يجب الا تتطابق كلمة المرور"),
         "myAddresses": MessageLookupByLibrary.simpleMessage("عناويني"),
+        "myOrderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل طلبي"),
         "name": MessageLookupByLibrary.simpleMessage("اسمك"),
         "newPassword": MessageLookupByLibrary.simpleMessage("الكلمة الجديدة"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
@@ -154,6 +155,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "or": MessageLookupByLibrary.simpleMessage("او"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
         "orderInfo": MessageLookupByLibrary.simpleMessage("معلومات الطلب"),
+        "orderPlaced": MessageLookupByLibrary.simpleMessage("تم تقديم الطلب"),
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordChanged": MessageLookupByLibrary.simpleMessage(
@@ -184,6 +186,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("من فضلك ادخل رقم هاتفك"),
         "productDetails": MessageLookupByLibrary.simpleMessage("تفاصيل المنتج"),
         "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
+        "productsYouMightLike":
+            MessageLookupByLibrary.simpleMessage("المنتجات التي تعجبك"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("معلومات الحساب"),
         "region": MessageLookupByLibrary.simpleMessage("المنطقة"),

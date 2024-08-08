@@ -12,8 +12,8 @@ class AnimatedButton extends StatefulWidget {
     required this.isSelected,
     required this.text,
     required this.onTap,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();

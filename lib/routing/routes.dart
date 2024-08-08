@@ -19,6 +19,8 @@ static const cartScreen = '/cartScreen';
 static const addressScreen = '/addressScreen';
 static const addAddressScreen = '/addAddressScreen';
 static const confirmOrderScreen = '/confirmOrderScreen';
+static const orderDetailsScreen = '/orderDetailsScreen';
+static const orderPlacedScreen = '/orderPlacedScreen';
 
 }
 
