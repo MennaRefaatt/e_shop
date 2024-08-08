@@ -39,10 +39,17 @@ class AddToCartButtons extends StatelessWidget {
                     Text(state.error.toString());
                   }
                   if (state is CartSuccess) {
+                    state.cartModel.message == "Added Successfully"?
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("added to cart"),
-                        backgroundColor: AppColors.primary,
+                      SnackBar(
+                        content: Text(state.cartModel.message),
+                        backgroundColor: AppColors.green,
+                      ),
+                    ):
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.cartModel.message),
+                        backgroundColor: AppColors.red,
                       ),
                     );
                   }

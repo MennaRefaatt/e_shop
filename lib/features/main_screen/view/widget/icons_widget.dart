@@ -42,7 +42,7 @@ class _IconsWidgetState extends State<IconsWidget> {
               visible: widget.index==widget.inputIndex,
               child: Text(
                 widget.title,
-                style: TextStyle(fontWeight: FontWeight.w500),
+                style: const TextStyle(fontWeight: FontWeight.w500),
               )),
         ],
       ),

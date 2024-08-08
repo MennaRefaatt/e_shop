@@ -28,6 +28,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),
+              backgroundColor: AppColors.green,
             ),
           );
           pushNamed(context, Routes.mainScreen);
@@ -36,6 +37,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
+              backgroundColor: Colors.red[900],
             ),
           );
         }

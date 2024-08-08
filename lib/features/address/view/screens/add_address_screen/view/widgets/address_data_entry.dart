@@ -19,9 +19,9 @@ class AddressDataEntry extends StatelessWidget {
       listener: (context, state) {
         if (state is AddressSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-             SnackBar(
+            SnackBar(
               content: Text(state.addressModel.message),
-              backgroundColor: Colors.green[900],
+              backgroundColor: AppColors.green,
             ),
           );
           pushNamedAndRemoveUntil(context, Routes.addressScreen);

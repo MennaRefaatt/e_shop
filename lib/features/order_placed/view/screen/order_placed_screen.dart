@@ -1,5 +1,7 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:e_shop/core/styles/colors.dart';
 import 'package:e_shop/core/utils/navigators.dart';
+import 'package:e_shop/core/utils/safe_print.dart';
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/core/widgets/app_asset.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
@@ -9,15 +11,34 @@ import 'package:e_shop/features/order_placed/view/widget/products_you_might_like
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 
-class OrderPlacedScreen extends StatelessWidget {
-  OrderPlacedScreen({super.key});
+class OrderPlacedScreen extends StatefulWidget {
+  const OrderPlacedScreen({super.key});
 
+  @override
+  State<OrderPlacedScreen> createState() => _OrderPlacedScreenState();
+}
+
+class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
   final homeCubit = HomeCubit();
   final favoriteCubit = FavouriteCubit();
+  final AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playSound();
+  }
+  void _playSound() async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 500));
+      await _audioPlayer.play(AssetSource('assets/sound/success.mp3'));
+    }catch (e) {
+      safePrint("Error playing sound: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +83,7 @@ class OrderPlacedScreen extends StatelessWidget {
                     AppButton(
                       onPressed: () =>
                           pushNamed(context, Routes.orderDetailsScreen),
-                      label: 'My Order Details',
+                      label: S().myOrderDetails,
                       withIcon: false,
                       backgroundColor: AppColors.primary,
                     ),
@@ -70,7 +91,7 @@ class OrderPlacedScreen extends StatelessWidget {
                     AppButton(
                       onPressed: () =>
                           pushNamedAndRemoveUntil(context, Routes.mainScreen),
-                      label: 'Continue shopping',
+                      label: S().continueShopping,
                       textColor: AppColors.primary,
                       withIcon: false,
                       backgroundColor: AppColors.primaryLight,
@@ -89,5 +110,10 @@ class OrderPlacedScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
   }
 }
