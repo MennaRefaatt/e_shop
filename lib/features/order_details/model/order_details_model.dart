@@ -1,3 +1,4 @@
+
 class OrderDetailsModel {
   bool? _status;
   String? _message;
@@ -27,44 +28,44 @@ class OrderDetailsModel {
 
 class OrderDetailsData {
   int? _id;
-  double? _total;
+  String? _total;
   String? _date;
   int? _cost;
   double? _vat;
   String? _paymentMethod;
   String? _status;
-  OrderAddressDetails? _address;
-  List<OrderProductsDetails>? _products;
+  OrderAddressDetailsModel? _address;
+  List<OrderProductsDetailsModel>? _products;
 
   OrderDetailsData.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
-    _total = json['total'];
+    _total = json['total'].toString();
     _date = json['date'];
     _cost = json['cost'];
     _vat = json['vat'];
     _paymentMethod = json['payment_method'];
     _status = json['status'];
     _address = json['address'] != null
-        ? OrderAddressDetails.fromJson(json['address'])
+        ? OrderAddressDetailsModel.fromJson(json['address'])
         : null;
     if (json['products'] != null) {
-      _products = <OrderProductsDetails>[];
+      _products = <OrderProductsDetailsModel>[];
       json['products'].forEach((v) {
-        _products!.add(OrderProductsDetails.fromJson(v));
+        _products!.add(OrderProductsDetailsModel.fromJson(v));
       });
     }
   }
 
   OrderDetailsData({
     required int id,
-    required double total,
+    required String total,
     required String date,
     required int cost,
     required double vat,
     required String paymentMethod,
     required String status,
-    required OrderAddressDetails address,
-    required List<OrderProductsDetails> products,
+    required OrderAddressDetailsModel address,
+    required List<OrderProductsDetailsModel> products,
   }) {
     _id = id;
     _total = total;
@@ -79,7 +80,7 @@ class OrderDetailsData {
 
   int get id => _id ?? 0;
 
-  double get total => _total ?? 0.0;
+  String get total => _total ?? '';
 
   String get date => _date ?? "";
 
@@ -91,40 +92,34 @@ class OrderDetailsData {
 
   String get status => _status ?? "";
 
-  OrderAddressDetails? get address => _address;
+  OrderAddressDetailsModel? get address => _address;
 
-  List<OrderProductsDetails> get products => _products ?? [];
+  List<OrderProductsDetailsModel> get products => _products ?? [];
 }
 
-class OrderAddressDetails {
+class OrderAddressDetailsModel {
   String? _name;
   String? _city;
   String? _region;
   String? _details;
   String? _notes;
-  double? _latitude;
-  double? _longitude;
   int? _id;
 
-  OrderAddressDetails.fromJson(Map<String, dynamic> json) {
+  OrderAddressDetailsModel.fromJson(Map<String, dynamic> json) {
     _name = json['name'];
     _city = json['city'];
     _region = json['region'];
     _details = json['details'];
     _notes = json['notes'];
-    _latitude = json['latitude'];
-    _longitude = json['longitude'];
     _id = json['id'];
   }
 
-  OrderAddressDetails({
+  OrderAddressDetailsModel({
     required String name,
     required String city,
     required String region,
     required String details,
     required String notes,
-    required double latitude,
-    required double longitude,
     required int id,
   }) {
     _name = name;
@@ -132,8 +127,6 @@ class OrderAddressDetails {
     _region = region;
     _details = details;
     _notes = notes;
-    _latitude = latitude;
-    _longitude = longitude;
     _id = id;
   }
 
@@ -147,33 +140,29 @@ class OrderAddressDetails {
 
   String get notes => _notes ?? "";
 
-  double get latitude => _latitude ?? 0.0;
-
-  double get longitude => _longitude ?? 0.0;
-
   int get id => _id ?? 0;
 }
 
-class OrderProductsDetails {
+class OrderProductsDetailsModel {
   String? _name;
   String? _image;
   int? _quantity;
-  double? _price;
+  String? _price;
   int? _id;
 
-  OrderProductsDetails.fromJson(Map<String, dynamic> json) {
+  OrderProductsDetailsModel.fromJson(Map<String, dynamic> json) {
     _name = json['name'];
     _image = json['image'];
     _quantity = json['quantity'];
-    _price = json['price'];
+    _price = json['price'].toString();
     _id = json['id'];
   }
 
-  OrderProductsDetails({
+  OrderProductsDetailsModel({
     required String name,
     required String image,
     required int quantity,
-    required double price,
+    required String price,
     required int id,
   }) {
     _name = name;
@@ -189,7 +178,7 @@ class OrderProductsDetails {
 
   int get quantity => _quantity ?? 0;
 
-  double get price => _price ?? 0.0;
+  String get price => _price ?? '';
 
   int get id => _id ?? 0;
 }

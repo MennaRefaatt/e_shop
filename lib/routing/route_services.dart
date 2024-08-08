@@ -2,6 +2,7 @@ import 'package:e_shop/features/address/view/screens/address_screen.dart';
 import 'package:e_shop/features/authentication/register/view/screen/register_screen.dart';
 import 'package:e_shop/features/categories/view/screens/categories_screen.dart';
 import 'package:e_shop/features/confirm_order/view/screens/confirm_order_screen.dart';
+import 'package:e_shop/features/order_details/view/screens/order_details_screen.dart';
 import 'package:e_shop/features/product_details/product_details_args.dart';
 import 'package:e_shop/features/product_details/view/screens/product_details_screen.dart';
 import 'package:e_shop/features/settings/contact_us_screen/view/screens/contact_us_screen.dart';
@@ -16,6 +17,7 @@ import '../features/authentication/login/view/screens/login_screen.dart';
 import '../features/cart/view/screens/cart_screen.dart';
 import '../features/category_details/category_details_args.dart';
 import '../features/category_details/view/screens/category_details_screen.dart';
+import '../features/order_details/order_details_args.dart';
 import '../features/order_placed/view/screen/order_placed_screen.dart';
 import '../features/settings/complaints_screen/view/screens/complaints_screen.dart';
 import '../features/settings/fAQs_screen/view/screens/f_a_q_s_screen.dart';
@@ -109,13 +111,14 @@ class RouteServices {
 
       case Routes.orderPlacedScreen:
         return MaterialPageRoute(builder: (_) {
-          return  OrderPlacedScreen();
+          return  const OrderPlacedScreen();
         });
 
-        // case Routes.orderDetailsScreen:
-        // return MaterialPageRoute(builder: (_) {
-        //   return const NotificationScreen();
-        // });
+        case Routes.orderDetailsScreen:
+        return MaterialPageRoute(builder: (_) {
+          final args = routeSettings.arguments as OrderDetailsArgs;   
+          return  OrderDetailsScreen(orderDetailsArgs: args,);
+        });
 
       default:
         return _errorRoute();

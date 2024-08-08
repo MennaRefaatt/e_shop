@@ -1486,6 +1486,66 @@ class S {
     );
   }
 
+  /// `Quantity: `
+  String get quantity {
+    return Intl.message(
+      'Quantity: ',
+      name: 'quantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Summary`
+  String get paymentSummary {
+    return Intl.message(
+      'Payment Summary',
+      name: 'paymentSummary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cost: `
+  String get cost {
+    return Intl.message(
+      'Cost: ',
+      name: 'cost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VAT: `
+  String get vat {
+    return Intl.message(
+      'VAT: ',
+      name: 'vat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery Address `
+  String get deliveryAddress {
+    return Intl.message(
+      'Delivery Address ',
+      name: 'deliveryAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipment Details`
+  String get shipmentDetails {
+    return Intl.message(
+      'Shipment Details',
+      name: 'shipmentDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Products You Might Like`
   String get productsYouMightLike {
     return Intl.message(

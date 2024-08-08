@@ -28,6 +28,7 @@ static const String addressDelete = 'addresses/';
 static const String search = 'products/search';
 static const String addOrders = 'orders';
   static const String getOrders = 'orders';
+  static const String getOrderDetails = 'orders/';
 
 
 

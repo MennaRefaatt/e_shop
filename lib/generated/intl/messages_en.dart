@@ -63,9 +63,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "continueShopping":
             MessageLookupByLibrary.simpleMessage("Continue Shopping"),
+        "cost": MessageLookupByLibrary.simpleMessage("Cost: "),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
+        "deliveryAddress":
+            MessageLookupByLibrary.simpleMessage("Delivery Address "),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -173,6 +176,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordNotMatch":
             MessageLookupByLibrary.simpleMessage("Password Not Match"),
         "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+        "paymentSummary":
+            MessageLookupByLibrary.simpleMessage("Payment Summary"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "pleaseEnterConfirmPassword": MessageLookupByLibrary.simpleMessage(
             "Please Enter Confirm Password"),
@@ -195,6 +200,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Products You Might Like"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
+        "quantity": MessageLookupByLibrary.simpleMessage("Quantity: "),
         "region": MessageLookupByLibrary.simpleMessage("Region"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerText": MessageLookupByLibrary.simpleMessage("Register Screen"),
@@ -210,6 +216,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shipmentDetails":
+            MessageLookupByLibrary.simpleMessage("Shipment Details"),
         "shopByCategory":
             MessageLookupByLibrary.simpleMessage("Shop By Category"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
@@ -225,6 +233,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "updateAccount": MessageLookupByLibrary.simpleMessage("Update Account"),
+        "vat": MessageLookupByLibrary.simpleMessage("VAT: "),
         "writeYourComplaintHere":
             MessageLookupByLibrary.simpleMessage("Write Your Complaint Here"),
         "wrongPassword": MessageLookupByLibrary.simpleMessage("Wrong Password"),

@@ -146,6 +146,12 @@
   "myOrderDetails": "My Order Details",
   "cashOnDelivery": "Cash On Delivery",
   "onlinePayment": "Online Payment",
+  "quantity": "Quantity: ",
+  "paymentSummary": "Payment Summary",
+  "cost": "Cost: ",
+  "vat": "VAT: ",
+  "deliveryAddress": "Delivery Address ",
+  "shipmentDetails": "Shipment Details",
   "productsYouMightLike": "Products You Might Like",
   "noOrdersFound": "No Orders Found"
 

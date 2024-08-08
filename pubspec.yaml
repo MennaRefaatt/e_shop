@@ -57,7 +57,6 @@ dependencies:
   audioplayers: ^6.0.0
   awesome_dialog: ^3.2.1
   rive: ^0.13.12
-  just_audio: ^0.9.39
 
 
 dev_dependencies:
@@ -86,7 +85,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
-    - assets/sound/success.mp3
+    - assets/sound/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "continueShopping":
             MessageLookupByLibrary.simpleMessage("الذهاب للتسوق"),
+        "cost": MessageLookupByLibrary.simpleMessage("التكلفة"),
         "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("الكلمة الحالية"),
@@ -173,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير متطابقة"),
         "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+        "paymentSummary": MessageLookupByLibrary.simpleMessage("ملخص الدفع"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "pleaseEnterConfirmPassword": MessageLookupByLibrary.simpleMessage(
             "من فضلك ادخل تأكيد كلمة المرور"),
@@ -194,6 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("المنتجات التي تعجبك"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "profileInfo": MessageLookupByLibrary.simpleMessage("معلومات الحساب"),
+        "quantity": MessageLookupByLibrary.simpleMessage("الكمية: "),
         "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerText": MessageLookupByLibrary.simpleMessage("تسجيل حساب جديد"),
@@ -220,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الشروط والاحكام"),
         "total": MessageLookupByLibrary.simpleMessage("المجموع"),
         "updateAccount": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
+        "vat": MessageLookupByLibrary.simpleMessage("ضريبة القيمة المضافة"),
         "writeYourComplaintHere":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك هنا"),
         "wrongPassword":
