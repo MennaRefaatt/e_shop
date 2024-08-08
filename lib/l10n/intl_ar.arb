@@ -141,6 +141,8 @@
   "eShop": "E-ShOp",
   "old": "قديم",
   "current": "حالي",
+  "cashOnDelivery": "الدفع عند الاستلام",
+  "onlinePayment": "الدفع عند الاستلام",
   "orderPlaced": "تم تقديم الطلب",
   "myOrderDetails": "تفاصيل طلبي",
   "productsYouMightLike": "المنتجات التي تعجبك",

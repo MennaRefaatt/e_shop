@@ -1,3 +1,4 @@
+import 'package:e_shop/features/confirm_order/payment_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors.dart';
@@ -7,17 +8,22 @@ import '../../../../generated/l10n.dart';
 class PaymentMethod extends StatefulWidget {
   final String? initialPaymentMethod;
   final void Function(String) onChange;
-  const PaymentMethod({super.key, required this.initialPaymentMethod, required this.onChange});
+  const PaymentMethod(
+      {super.key, required this.initialPaymentMethod, required this.onChange});
   @override
   State<PaymentMethod> createState() => _PaymentMethodState();
 }
+
 class _PaymentMethodState extends State<PaymentMethod> {
   late String selectedPaymentMethod;
   @override
   void initState() {
     super.initState();
-    selectedPaymentMethod = widget.initialPaymentMethod ?? '1'; // Initialize with initial value or empty string
+    selectedPaymentMethod = widget.initialPaymentMethod ??
+        PaymentEnum.cashOnDelivery
+            .toString(); // Initialize with initial value or empty string
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +44,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
               });
             },
             selectedPaymentMethod: selectedPaymentMethod,
-            title: 'Cash on Delivery',
+            title: S().cashOnDelivery,
             value: 1.toString(),
             icon: Icons.delivery_dining,
           ),
@@ -49,7 +55,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 });
               },
               selectedPaymentMethod: selectedPaymentMethod,
-              title: 'Visa',
+              title: S().onlinePayment,
               value: 2.toString(),
               icon: Icons.credit_card,
               subtitle: "XXXX XXXX XXXX 1111"),
@@ -59,8 +65,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
   }
 }
 
-selectPaymentMethod({
-  required void Function(String?) onChange,
+selectPaymentMethod(
+    {required void Function(String?) onChange,
     required String selectedPaymentMethod,
     required IconData icon,
     required String title,

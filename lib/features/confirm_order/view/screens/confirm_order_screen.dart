@@ -2,6 +2,7 @@ import 'package:e_shop/core/shared_preferences/my_shared.dart';
 import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:e_shop/features/confirm_order/manager/confirm_order_cubit.dart';
+import 'package:e_shop/features/confirm_order/payment_enum.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/default_address.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/item_details.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/payment_method.dart';
@@ -39,7 +40,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
 
   void _updatePaymentMethod(String method) {
     setState(() {
-      selectedPaymentMethod = method == 'Cash on Delivery' ? 1 : 2;
+      selectedPaymentMethod = method == PaymentEnum.cashOnDelivery.toString() ? 1 : 2;
     });
   }
 

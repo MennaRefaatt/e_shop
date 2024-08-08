@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "buyNow": MessageLookupByLibrary.simpleMessage("اشتري الان"),
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "cart": MessageLookupByLibrary.simpleMessage("عربة التسوق"),
+        "cashOnDelivery":
+            MessageLookupByLibrary.simpleMessage("الدفع عند الاستلام"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
         "categoryComplaint":
             MessageLookupByLibrary.simpleMessage("الفئات المقترحة"),
@@ -151,6 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "old": MessageLookupByLibrary.simpleMessage("قديم"),
         "oldPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
+        "onlinePayment":
+            MessageLookupByLibrary.simpleMessage("الدفع عند الاستلام"),
         "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
         "or": MessageLookupByLibrary.simpleMessage("او"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),

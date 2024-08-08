@@ -1466,6 +1466,26 @@ class S {
     );
   }
 
+  /// `Cash On Delivery`
+  String get cashOnDelivery {
+    return Intl.message(
+      'Cash On Delivery',
+      name: 'cashOnDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Online Payment`
+  String get onlinePayment {
+    return Intl.message(
+      'Online Payment',
+      name: 'onlinePayment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Products You Might Like`
   String get productsYouMightLike {
     return Intl.message(

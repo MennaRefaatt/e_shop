@@ -144,6 +144,8 @@
   "current": "Current",
   "orderPlaced": "Order Placed!",
   "myOrderDetails": "My Order Details",
+  "cashOnDelivery": "Cash On Delivery",
+  "onlinePayment": "Online Payment",
   "productsYouMightLike": "Products You Might Like",
   "noOrdersFound": "No Orders Found"
 

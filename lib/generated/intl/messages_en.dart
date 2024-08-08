@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "buyNow": MessageLookupByLibrary.simpleMessage("Buy Now"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+        "cashOnDelivery":
+            MessageLookupByLibrary.simpleMessage("Cash On Delivery"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "categoryComplaint":
             MessageLookupByLibrary.simpleMessage("Category Complaint"),
@@ -152,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "old": MessageLookupByLibrary.simpleMessage("Old"),
         "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
+        "onlinePayment": MessageLookupByLibrary.simpleMessage("Online Payment"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
