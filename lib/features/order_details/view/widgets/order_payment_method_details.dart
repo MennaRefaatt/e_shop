@@ -49,57 +49,43 @@ class OrderPaymentMethodDetails extends StatelessWidget {
                 S().paymentSummary,
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(S().cost,
-                      style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.greyBorder)),
-                  Text(
-                    orderDetailsModel.data!.cost.toString(),
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(S().vat,
-                      style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.greyBorder)),
-                  Text(
-                    "${orderDetailsModel.data!.vat} vat",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(S().total,
-                      style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.greyBorder)),
-                  Text(
-                    orderDetailsModel.data!.total,
-                    style:
-                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+              verticalSpacing(10.h),
+              rows(
+                  title: S().cost,
+                  value: orderDetailsModel.data!.cost.toString(),
+                 ),
+              rows(
+                  title: S().vat,
+                  value: orderDetailsModel.data!.vat.toString(),),
+              verticalSpacing(10.h),
+              rows(
+                  title: S().total,
+                  value: orderDetailsModel.data!.total.toString(),
+                  fontWeight: FontWeight.bold),
             ],
           ),
         ),
       ],
     );
   }
+}
+
+Row rows(
+    {required String title,
+    required String value,
+     FontWeight? fontWeight}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(title,
+          style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+              color: AppColors.greyBorder)),
+      Text(
+        value,
+        style: TextStyle(fontSize: 16.sp, fontWeight: fontWeight),
+      ),
+    ],
+  );
 }
