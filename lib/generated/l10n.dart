@@ -1526,6 +1526,16 @@ class S {
     );
   }
 
+  /// `Cancel Order`
+  String get cancelOrder {
+    return Intl.message(
+      'Cancel Order',
+      name: 'cancelOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delivery Address `
   String get deliveryAddress {
     return Intl.message(

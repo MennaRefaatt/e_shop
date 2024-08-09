@@ -1,7 +1,7 @@
 import 'package:e_shop/core/utils/spacing.dart';
 import 'package:e_shop/core/widgets/app_bar.dart';
-import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:e_shop/features/order_details/order_details_args.dart';
+import 'package:e_shop/features/order_details/view/widgets/cancel_order_button.dart';
 import 'package:e_shop/features/order_details/view/widgets/order_address_details.dart';
 import 'package:e_shop/features/order_details/view/widgets/order_payment_method_details.dart';
 import 'package:e_shop/features/order_details/view/widgets/order_products_details.dart';
@@ -9,7 +9,6 @@ import 'package:e_shop/features/order_details/view/widgets/order_tracking_detail
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/styles/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../manager/order_details_cubit.dart';
@@ -28,13 +27,14 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => orderDetailsCubit..getOrderDetails(id: widget.orderDetailsArgs.id.toString()),
+      create: (context) => orderDetailsCubit
+        ..getOrderDetails(id: widget.orderDetailsArgs.id.toString()),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
               DefaultAppBar(
-                  text: S().orderDetails, cartIcon: false, backArrow: false),
+                  text: S().orderDetails, cartIcon: false, backArrow: true),
               BlocBuilder<OrderDetailsCubit, OrderDetailsState>(
                 builder: (context, state) {
                   if (state is OrderDetailsLoading) {
@@ -50,7 +50,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     );
                   }
                   if (state is OrderDetailsSuccess) {
-                    if(state.orderDetailsModel.data!.products.isEmpty){
+                    if (state.orderDetailsModel.data!.products.isEmpty) {
                       return const Center(
                         child: Text('No products found'),
                       );
@@ -60,27 +60,33 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          OrderTrackingDetails(orderDetailsModel: state.orderDetailsModel,),
+                          OrderTrackingDetails(
+                            orderDetailsModel: state.orderDetailsModel,
+                          ),
                           verticalSpacing(10.h),
-                          OrderAddressDetails(orderDetailsModel: state.orderDetailsModel,),
+                          OrderAddressDetails(
+                            orderDetailsModel: state.orderDetailsModel,
+                          ),
                           verticalSpacing(10.h),
-                          OrderProductsDetails(products: state.orderDetailsModel
-                              .data!.products,),
+                          OrderProductsDetails(
+                            products: state.orderDetailsModel.data!.products,
+                          ),
                           verticalSpacing(10.h),
-                          OrderPaymentMethodDetails(orderDetailsModel: state.orderDetailsModel,),
+                          OrderPaymentMethodDetails(
+                            orderDetailsModel: state.orderDetailsModel,
+                          ),
                           verticalSpacing(10.h),
-                          AppButton(onPressed: (){},
-                              backgroundColor:Colors.red[900],
-                              label: "S().cancelOrder"),
+                          CancelOrderButton(
+                            args: widget.orderDetailsArgs,
+                            orderDetailsModel: state.orderDetailsModel,
+                          ),
                         ],
-          
                       ),
                     );
                   }
                   return const SizedBox();
                 },
               ),
-          
             ],
           ),
         ),

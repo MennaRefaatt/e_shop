@@ -150,6 +150,7 @@
   "paymentSummary": "Payment Summary",
   "cost": "Cost: ",
   "vat": "VAT: ",
+  "cancelOrder": "Cancel Order",
   "deliveryAddress": "Delivery Address ",
   "shipmentDetails": "Shipment Details",
   "productsYouMightLike": "Products You Might Like",

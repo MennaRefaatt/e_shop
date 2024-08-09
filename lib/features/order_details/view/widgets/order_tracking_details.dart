@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/spacing.dart';
+import '../../../orders/get_progress.dart';
 import '../../model/order_details_model.dart';
 
 class OrderTrackingDetails extends StatefulWidget {
@@ -85,8 +86,8 @@ class _OrderTrackingDetailsState extends State<OrderTrackingDetails> {
                     fontSize: 16.sp,),
               ),
               LinearProgressIndicator(
-                value: getProgressValue(widget.orderDetailsModel.data!.status),
-                color: getProgressColor(widget.orderDetailsModel.data!.status),
+                value: GetProgress().getProgressValue(widget.orderDetailsModel.data!.status),
+                color: GetProgress().getProgressColor(widget.orderDetailsModel.data!.status),
                 backgroundColor: AppColors.greyBorder.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(20.r),
                 minHeight: 7.h,
@@ -96,32 +97,5 @@ class _OrderTrackingDetailsState extends State<OrderTrackingDetails> {
         )
       ],
     );
-  }
-}
-
-double getProgressValue(String status) {
-  switch (status) {
-    case 'Cancelled':
-      return 0.0;
-    case 'delivered':
-      return 1.0;
-    case 'New':
-      return 0.5;
-    default:
-      return 0.0; // Default value if status doesn't match any case
-  }
-}
-
-Color getProgressColor(String status) {
-  switch (status) {
-    case 'Cancelled':
-      return AppColors.greyBorder.withOpacity(0.3);
-    case 'delivered':
-      return AppColors.primary;
-    case 'New':
-      return AppColors.primary;
-    default:
-      return AppColors.greyBorder.withOpacity(0.3);
-    // Default color if status doesn't match any case
   }
 }

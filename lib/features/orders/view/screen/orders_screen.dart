@@ -26,7 +26,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
       child: Column(
         children: [
           DefaultAppBar(text: S().orders, cartIcon: false, backArrow: false),
-          // const CurrentAndOldButtons(),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 5.sp, vertical: 10.sp),
             decoration: BoxDecoration(
@@ -46,7 +45,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     });
                   },
                 ),
-                SizedBox(width: 10.sp), // Add spacing between buttons
+                horizontalSpacing(10.w),
                 AnimatedButton(
                   isSelected: !isCurrentSelected,
                   text: S().old,

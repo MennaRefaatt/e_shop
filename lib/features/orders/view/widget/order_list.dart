@@ -1,4 +1,5 @@
 import 'package:e_shop/core/utils/safe_print.dart';
+import 'package:e_shop/features/orders/get_progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,10 +44,10 @@ class OrdersList extends StatelessWidget {
             itemCount: orders.length,
             itemBuilder: (context, index) {
               return InkWell(
+                borderRadius: BorderRadius.circular(20.sp),
                 onTap: () {
                   pushNamed(context, Routes.orderDetailsScreen,
-                    arguments: OrderDetailsArgs(id: orders[index].id)
-                  );
+                      arguments: OrderDetailsArgs(id: orders[index].id));
                   safePrint(orders[index].id);
                 },
                 child: Container(
@@ -60,7 +61,8 @@ class OrdersList extends StatelessWidget {
                         color: AppColors.greyBorder.withOpacity(0.1),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -90,8 +92,8 @@ class OrdersList extends StatelessWidget {
                               color: AppColors.primary),
                           horizontalSpacing(5.w),
                           Expanded(
-                            child:
-                                Text(MyShared.getString(key: MySharedKeys.city)),
+                            child: Text(
+                                MyShared.getString(key: MySharedKeys.city)),
                           ),
                           Text(
                             orders[index].date,
@@ -104,15 +106,25 @@ class OrdersList extends StatelessWidget {
                         children: [
                           Expanded(
                             child: LinearProgressIndicator(
-                              value: getProgressValue(orders[index].status),
-                              color: getProgressColor(orders[index].status),
-                              backgroundColor: AppColors.greyBorder.withOpacity(0.3),
+                              value: GetProgress()
+                                  .getProgressValue(orders[index].status),
+                              color: GetProgress()
+                                  .getProgressColor(orders[index].status),
+                              backgroundColor:
+                                  AppColors.greyBorder.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20.r),
                               minHeight: 7.h,
                             ),
                           ),
                           horizontalSpacing(10.w),
-                          Text(orders[index].status),
+                          Text(
+                            orders[index]
+                                .status
+                                .toString()
+                                .split('.')
+                                .last, // Display only the enum value
+                            style: const TextStyle(color: AppColors.primary),
+                          ),
                         ],
                       ),
                     ],
@@ -125,31 +137,5 @@ class OrdersList extends StatelessWidget {
         return Container();
       },
     );
-  }
-  double getProgressValue(String status) {
-    switch (status) {
-      case 'Cancelled':
-        return 0.0;
-      case 'delivered':
-        return 1.0;
-      case 'New':
-        return 0.5;
-      default:
-        return 0.0; // Default value if status doesn't match any case
-    }
-  }
-
-  Color getProgressColor(String status) {
-    switch (status) {
-      case 'Cancelled':
-        return AppColors.greyBorder.withOpacity(0.3);
-      case 'delivered':
-        return AppColors.primary;
-      case 'New':
-        return AppColors.primary;
-      default:
-        return AppColors.greyBorder.withOpacity(0.3);
-    // Default color if status doesn't match any case
-    }
   }
 }

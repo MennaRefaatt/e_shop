@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you surely you want to logout ?"),
         "buyNow": MessageLookupByLibrary.simpleMessage("Buy Now"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel Order"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cashOnDelivery":
             MessageLookupByLibrary.simpleMessage("Cash On Delivery"),

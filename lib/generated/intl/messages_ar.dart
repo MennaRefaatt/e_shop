@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل تريد تسجيل الخروج ؟"),
         "buyNow": MessageLookupByLibrary.simpleMessage("اشتري الان"),
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+        "cancelOrder": MessageLookupByLibrary.simpleMessage("الغاء الطلب"),
         "cart": MessageLookupByLibrary.simpleMessage("عربة التسوق"),
         "cashOnDelivery":
             MessageLookupByLibrary.simpleMessage("الدفع عند الاستلام"),

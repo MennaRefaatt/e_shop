@@ -16,3 +16,17 @@ final class OrderDetailsError extends OrderDetailsState {
   final String error;
   OrderDetailsError({required this.error});
 }
+
+
+final class CancelOrderLoading extends OrderDetailsState {}
+
+final class CancelOrderSuccess extends OrderDetailsState {
+  final CancelOrderModel cancelOrderModel;
+  CancelOrderSuccess({required this.cancelOrderModel});
+}
+
+final class CancelOrderError extends OrderDetailsState {
+  final String error;
+  CancelOrderError({required this.error});
+}
+
