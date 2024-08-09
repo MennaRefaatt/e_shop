@@ -1,5 +1,5 @@
 import 'package:e_shop/core/utils/safe_print.dart';
-import 'package:e_shop/features/orders/get_progress.dart';
+import 'package:e_shop/features/orders/view/widget/animated_linear_progress_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +14,15 @@ import '../../../../routing/routes.dart';
 import '../../../order_details/order_details_args.dart';
 import '../../manager/orders_cubit.dart';
 
-class OrdersList extends StatelessWidget {
+class OrdersList extends StatefulWidget {
   final bool isCurrentSelected;
   const OrdersList({super.key, required this.isCurrentSelected});
 
+  @override
+  State<OrdersList> createState() => _OrdersListState();
+}
+
+class _OrdersListState extends State<OrdersList> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OrdersCubit, OrdersState>(
@@ -34,7 +39,7 @@ class OrdersList extends StatelessWidget {
         }
         if (state is OrdersSuccess) {
           final orders =
-              isCurrentSelected ? state.currentOrders : state.oldOrders;
+              widget.isCurrentSelected ? state.currentOrders : state.oldOrders;
           if (orders.isEmpty) {
             return Center(
               child: Text(S().noOrdersFound),
@@ -105,24 +110,12 @@ class OrdersList extends StatelessWidget {
                       Row(
                         children: [
                           Expanded(
-                            child: LinearProgressIndicator(
-                              value: GetProgress()
-                                  .getProgressValue(orders[index].status),
-                              color: GetProgress()
-                                  .getProgressColor(orders[index].status),
-                              backgroundColor:
-                                  AppColors.greyBorder.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(20.r),
-                              minHeight: 7.h,
-                            ),
+                            child: AnimatedLinearProgressIndicator(status: orders[index].status),
                           ),
                           horizontalSpacing(10.w),
                           Text(
                             orders[index]
-                                .status
-                                .toString()
-                                .split('.')
-                                .last, // Display only the enum value
+                                .status,
                             style: const TextStyle(color: AppColors.primary),
                           ),
                         ],

@@ -1,9 +1,9 @@
+import 'package:e_shop/features/orders/view/widget/animated_linear_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/spacing.dart';
-import '../../../orders/get_progress.dart';
 import '../../model/order_details_model.dart';
 
 class OrderTrackingDetails extends StatefulWidget {
@@ -14,7 +14,7 @@ class OrderTrackingDetails extends StatefulWidget {
   State<OrderTrackingDetails> createState() => _OrderTrackingDetailsState();
 }
 
-class _OrderTrackingDetailsState extends State<OrderTrackingDetails> {
+class _OrderTrackingDetailsState extends State<OrderTrackingDetails>  {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -85,13 +85,7 @@ class _OrderTrackingDetailsState extends State<OrderTrackingDetails> {
                     fontWeight: FontWeight.bold,
                     fontSize: 16.sp,),
               ),
-              LinearProgressIndicator(
-                value: GetProgress().getProgressValue(widget.orderDetailsModel.data!.status),
-                color: GetProgress().getProgressColor(widget.orderDetailsModel.data!.status),
-                backgroundColor: AppColors.greyBorder.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(20.r),
-                minHeight: 7.h,
-              ),
+             AnimatedLinearProgressIndicator(status: widget.orderDetailsModel.data!.status),
             ],
           ),
         )
