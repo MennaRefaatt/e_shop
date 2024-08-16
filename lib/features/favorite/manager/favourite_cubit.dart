@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_shop/core/utils/easy_loading.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/api/endpoints.dart';
@@ -29,18 +30,19 @@ class FavouriteCubit extends Cubit<FavouriteState> {
     });
   }
 
-  toggleFavourite({required int productId}) {
-    emit(FavouriteLoading());
+  Future toggleFavourite({required int productId}) async{
+showLoading();
     MyDio.postData(endPoint: EndPoints.favorites, data: {'product_id': productId}).then((onValue) {
       onValue.fold((ifLeft) {
         emit(FavouriteError(error: ifLeft.toString()));
       }, (ifRight) {
         if (ifRight['status'] == false) {
+          showError("");
           emit(FavouriteError(error: "ERROR"));
         } else {
           FavouriteModel favouriteModel = FavouriteModel.fromJson(ifRight);
           safePrint(favouriteModel.data!.data);
-          emit(FavouriteSuccess(favouriteModel: favouriteModel));
+          showSuccess("message");
         }
       });
     });

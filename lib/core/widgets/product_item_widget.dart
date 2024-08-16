@@ -21,6 +21,7 @@ class ProductItemWidget extends StatefulWidget {
     required this.oldPrice,
     required this.discount,
     required this.favoriteCubit,
+     this.isFavScreen = false,
   });
   final String price;
   final String name;
@@ -29,7 +30,7 @@ class ProductItemWidget extends StatefulWidget {
   late  bool inFavorites;
   final String oldPrice;
   final String discount;
-
+  bool isFavScreen;
   final FavouriteCubit favoriteCubit;
 
   @override
@@ -84,12 +85,16 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                   ),
                   child: IconButton(
                       onPressed: () {
+                      if(widget.isFavScreen){
+
+                      }else{
                         widget.favoriteCubit.toggleFavourite(
                           productId: widget.id,
                         );
                         setState(() {
                           widget.inFavorites = !widget.inFavorites;
                         });
+                      }
                       },
                       icon: Icon(
                         widget.inFavorites

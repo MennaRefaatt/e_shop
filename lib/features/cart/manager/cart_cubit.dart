@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_shop/core/utils/easy_loading.dart';
 import 'package:meta/meta.dart';
 import '../../../core/api/endpoints.dart';
 import '../../../core/api/my_dio.dart';
@@ -68,7 +69,8 @@ class CartCubit extends Cubit<CartState> {
   }
 
   updateProductQuantity({required int cartId, required int quantity}) {
-    emit(CartLoading());
+    showLoading();
+   // emit(CartLoading());
     MyDio.putData(
         endPoint: EndPoints.cartUpdate + cartId.toString(),
         data: {'quantity': quantity}).then((onValue) {
@@ -76,13 +78,16 @@ class CartCubit extends Cubit<CartState> {
         emit(CartError(error: ifLeft.toString()));
       }, (ifRight) {
         if (ifRight['status'] == false) {
-          emit(CartError(error: "ERROR"));
+          showError(ifRight['message'].toString());
+         // emit(CartError(error: "ERROR"));
         }
         if (ifRight['status'] == true) {
           CartModel cartModel = CartModel.fromJson(ifRight);
           recalculateTotals(cartModel);
           safePrint(cartModel.data!);
-          emit(CartSuccess(cartModel: cartModel));
+          showSuccess("");
+          safePrint(cartModel.data!.quantity.toString());
+          //emit(CartSuccess(cartModel: cartModel));
         }
       });
     });

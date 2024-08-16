@@ -39,7 +39,7 @@ class _OrdersListState extends State<OrdersList> {
         }
         if (state is OrdersSuccess) {
           final orders =
-              widget.isCurrentSelected ? state.currentOrders : state.oldOrders;
+          widget.isCurrentSelected ? state.currentOrders : state.oldOrders;
           if (orders.isEmpty) {
             return Center(
               child: Text(S().noOrdersFound),

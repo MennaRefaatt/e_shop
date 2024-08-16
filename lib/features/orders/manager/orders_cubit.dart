@@ -25,10 +25,10 @@ class OrdersCubit extends Cubit<OrdersState> {
           List<OrderDataList> oldOrders = [];
 
           for (var order in ordersModel.data.data) {
-            if (order.status == "New") {
+            if (order.status == "New" || order.status == "جديد") {
               currentOrders.add(order);
             } else if (order.status == "Cancelled" ||
-                order.status == "delivered") {
+                order.status == "delivered" || order.status == "ملغي") {
               oldOrders.add(order);
             }
           }

@@ -27,13 +27,16 @@ class _FavouriteWidgetState extends State<FavouriteWidget> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10.sp,
                 crossAxisSpacing: 0.sp,
-                childAspectRatio: 0.62.sp,
+                childAspectRatio: 0.61.sp,
+
               ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: widget.data.data.length,
               itemBuilder: (context, index) {
+
                 return ProductItemWidget(
+                  //TODO:   widget.data.data.removeAt(index);
                   price: widget.data.data[index].product!.price,
                   name: widget.data.data[index].product!.name,
                   image: widget.data.data[index].product!.image,

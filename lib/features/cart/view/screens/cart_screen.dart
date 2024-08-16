@@ -41,6 +41,7 @@ class CartScreen extends StatelessWidget {
                     } else if (state is CartSuccess) {
                       final cartList = state.cartModel.data!.items;
                       if (cartList.isEmpty) {
+                        // TOD0 Translate
                         return const Center(child: Text('No products found'));
                       }
                       return Column(
