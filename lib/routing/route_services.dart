@@ -111,7 +111,8 @@ class RouteServices {
 
       case Routes.orderPlacedScreen:
         return MaterialPageRoute(builder: (_) {
-          return  const OrderPlacedScreen();
+          final args = routeSettings.arguments as OrderDetailsArgs;
+          return   OrderPlacedScreen(id: args.id,);
         });
 
         case Routes.orderDetailsScreen:

@@ -14,7 +14,7 @@ class OrderTrackingDetails extends StatefulWidget {
   State<OrderTrackingDetails> createState() => _OrderTrackingDetailsState();
 }
 
-class _OrderTrackingDetailsState extends State<OrderTrackingDetails>  {
+class _OrderTrackingDetailsState extends State<OrderTrackingDetails> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -82,10 +82,12 @@ class _OrderTrackingDetailsState extends State<OrderTrackingDetails>  {
               Text(
                 widget.orderDetailsModel.data!.date,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.sp,),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.sp,
+                ),
               ),
-             AnimatedLinearProgressIndicator(status: widget.orderDetailsModel.data!.status),
+              AnimatedLinearProgressIndicator(
+                  status: widget.orderDetailsModel.data!.status),
             ],
           ),
         )

@@ -7,6 +7,7 @@ import 'package:e_shop/core/widgets/app_asset.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
 import 'package:e_shop/features/favorite/manager/favourite_cubit.dart';
 import 'package:e_shop/features/home/manager/home_cubit.dart';
+import 'package:e_shop/features/order_details/order_details_args.dart';
 import 'package:e_shop/features/order_placed/view/widget/products_you_might_like.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +16,8 @@ import '../../../../generated/l10n.dart';
 import '../../../../routing/routes.dart';
 
 class OrderPlacedScreen extends StatefulWidget {
-  const OrderPlacedScreen({super.key});
-
+  const OrderPlacedScreen({super.key, required this.id});
+final int id;
   @override
   State<OrderPlacedScreen> createState() => _OrderPlacedScreenState();
 }
@@ -82,7 +83,7 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
                     verticalSpacing(30.h),
                     AppButton(
                       onPressed: () =>
-                          pushNamed(context, Routes.orderDetailsScreen),
+                          pushNamed(context, Routes.orderDetailsScreen,arguments: OrderDetailsArgs(id: widget.id)),
                       label: S().myOrderDetails,
                       withIcon: false,
                       backgroundColor: AppColors.primary,

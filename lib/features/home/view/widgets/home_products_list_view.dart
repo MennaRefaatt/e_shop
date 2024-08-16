@@ -53,7 +53,7 @@ class _HomeProductsListViewState extends State<HomeProductsListView> {
           ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: 5,
+              itemCount:  widget.products.length > 5 ? 5 : widget.products.length,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return ProductItemWidget(

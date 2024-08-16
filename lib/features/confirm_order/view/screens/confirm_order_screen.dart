@@ -1,6 +1,7 @@
 import 'package:e_shop/core/shared_preferences/my_shared.dart';
 import 'package:e_shop/core/utils/navigators.dart';
 import 'package:e_shop/core/widgets/app_button.dart';
+import 'package:e_shop/features/confirm_order/confirm_order_args.dart';
 import 'package:e_shop/features/confirm_order/manager/confirm_order_cubit.dart';
 import 'package:e_shop/features/confirm_order/payment_enum.dart';
 import 'package:e_shop/features/confirm_order/view/widgets/default_address.dart';
@@ -21,7 +22,6 @@ class ConfirmOrderScreen extends StatefulWidget {
   const ConfirmOrderScreen({
     super.key,
   });
-
   @override
   State<ConfirmOrderScreen> createState() => _ConfirmOrderScreenState();
 }
@@ -87,7 +87,8 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
               ),
               AppButton(
                 onPressed: () {
-                  pushNamedAndRemoveUntil(context,Routes.orderPlacedScreen);
+                  // TODO: COMPLETE NAVIGATION
+                  pushNamedAndRemoveUntil(context,Routes.orderPlacedScreen,arguments:ConfirmOrderArgs(id: 1));///toDo add id
                   cubit.addConfirmOrderData(
                     addressId:
                         MyShared.getInt(key: MySharedKeys.defaultAddressId)!,

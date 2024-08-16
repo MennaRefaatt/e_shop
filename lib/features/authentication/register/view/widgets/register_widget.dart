@@ -58,11 +58,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               withTitle: true,
               textInputAction: TextInputAction.next,
               controller: widget.cubit.nameController,
-              backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.name,
               hint: "shop",
               title: S().name,
-              filledColor: AppColors.greyInput,
               validator: (value) {
                 if (value!.isEmpty) {
                   return S().pleaseEnterYourName;
@@ -74,11 +72,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             AppTextField(
               withTitle: true,
               textInputAction: TextInputAction.next,
-              backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.phone,
               hint: "01XXXXXXXXX",
               title: S().phone,
-              filledColor: AppColors.greyInput,
               validator: (value) {
                 if (value!.isEmpty) {
                   return S().pleaseEnterYourPhone;
@@ -99,11 +95,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 textInputAction: TextInputAction.next,
                 withTitle: true,
                 controller: widget.cubit.emailController,
-                backgroundColor: AppColors.primaryLight,
                 keyboardType: TextInputType.emailAddress,
                 hint: "shop@gmail.com",
                 title: S().email,
-                filledColor: AppColors.greyInput,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return S().pleaseEnterYourEmail;
@@ -122,9 +116,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               hint: "xxxxxxxxx",
               textInputAction: TextInputAction.next,
               title: S().password,
-              backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.visiblePassword,
-              filledColor: AppColors.greyInput,
               validator: (value) {
                 if (value!.isEmpty) {
                   return S().pleaseEnterYourPassword;
@@ -152,12 +144,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             AppTextField(
               textInputAction: TextInputAction.done,
               withTitle: true,
-              backgroundColor: AppColors.primaryLight,
               keyboardType: TextInputType.visiblePassword,
               hint: "xxxxxxxxx",
               title: S().confirmPassword,
               controller: widget.cubit.confirmPasswordController,
-              filledColor: AppColors.greyInput,
               suffixIcon: IconButton(
                 onPressed: () {
                   widget.cubit.obscureText2 = !widget.cubit.obscureText2;

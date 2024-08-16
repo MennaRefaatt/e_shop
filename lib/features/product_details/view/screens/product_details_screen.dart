@@ -41,65 +41,71 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         BlocProvider(create: (context) => cartCubit),
       ],
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              DefaultAppBar(
-                text: S().productDetails,
-                cartIcon: false,
-                backArrow: true,
-              ),
-              BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
-                  builder: (context, state) {
-                if (state is ProductDetailsLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.primary,
-                    ),
-                  );
-                }
-                if (state is ProductDetailsError) {
-                  return Center(
-                    child: Text(state.error),
-                  );
-                }
-                if (state is ProductDetailsSuccess) {
-                  return Column(
+        body: Column(
+          children: [
+            DefaultAppBar(
+              text: S().productDetails,
+              cartIcon: false,
+              backArrow: true,
+            ),
+            BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+                builder: (context, state) {
+              if (state is ProductDetailsLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primary,
+                  ),
+                );
+              }
+              if (state is ProductDetailsError) {
+                return Center(
+                  child: Text(state.error),
+                );
+              }
+              if (state is ProductDetailsSuccess) {
+                return Expanded(
+                  child: Column(
                     children: [
-                      ImageSlideshow(
-                        indicatorColor: AppColors.primary,
-                        initialPage: 0,
-                        indicatorRadius: 5.sp,
-                        onPageChanged: (value) {
-                          debugPrint('Page changed: $value');
-                        },
-                        autoPlayInterval: 3000,
-                        isLoop: false,
-                        children: state.productDetailsModel.data!.images
-                            .map(
-                              (e) => AppImage(
-                                  imageUrl: e,
-                                  width: double.infinity,
-                                  borderRadius: BorderRadius.circular(0.sp)),
-                            )
-                            .toList(),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            ImageSlideshow(
+                              indicatorColor: AppColors.primary,
+                              initialPage: 0,
+                              indicatorRadius: 5.sp,
+                              onPageChanged: (value) {
+                                debugPrint('Page changed: $value');
+                              },
+                              autoPlayInterval: 3000,
+                              isLoop: false,
+                              children: state.productDetailsModel.data!.images
+                                  .map(
+                                    (e) => AppImage(
+                                        imageUrl: e,
+                                        width: double.infinity,
+                                        borderRadius: BorderRadius.circular(0.sp)),
+                                  )
+                                  .toList(),
+                            ),
+                            ProductDetailsDescription(
+                              productDetailsData: state.productDetailsModel.data!,
+                              productId: widget.args.id,
+                              isFavourite: state.productDetailsModel.data!.inFavorites,
+                              favoriteCubit: favoriteCubit,
+                              cartCubit: cartCubit,
+                            ),
+                  
+                          ],
+                        ),
                       ),
-                      ProductDetailsDescription(
-                        productDetailsData: state.productDetailsModel.data!,
-                        productId: widget.args.id,
-                        isFavourite:
-                            state.productDetailsModel.data!.inFavorites,
-                        favoriteCubit: favoriteCubit,
-                        cartCubit: cartCubit,
-                      ),
+                      AddToCartButtons(args: widget.args, cartCubit: cartCubit, inCart: state.productDetailsModel.data!.inCart,),
                     ],
-                  );
-                }
-                return const SizedBox();
-              }),
-              AddToCartButtons(args: widget.args, cartCubit: cartCubit),
-            ],
-          ),
+                  ),
+                );
+              }
+              return const SizedBox();
+            }),
+          ],
         ),
       ),
     );

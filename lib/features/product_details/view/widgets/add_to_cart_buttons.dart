@@ -12,9 +12,10 @@ import '../../../cart/manager/cart_cubit.dart';
 import '../../product_details_args.dart';
 
 class AddToCartButtons extends StatelessWidget {
-  const AddToCartButtons(
-      {super.key, required this.args, required this.cartCubit});
+   AddToCartButtons(
+      {super.key, required this.args, required this.cartCubit, required this.inCart});
   final ProductDetailsArgs args;
+   bool inCart;
   final CartCubit cartCubit;
   @override
   Widget build(BuildContext context) {
@@ -54,11 +55,20 @@ class AddToCartButtons extends StatelessWidget {
                     );
                   }
                 },
-                child: FloatingActionButton(
+                child: inCart ? FloatingActionButton(onPressed: (){
+                  cartCubit.addProductToCart(
+                    productId: args.id,
+                  );
+                  inCart = !inCart;
+
+                },backgroundColor: AppColors.red,
+                  child:  Text("Remove from cart")
+                ):FloatingActionButton(
                   onPressed: () {
                     cartCubit.addProductToCart(
                       productId: args.id,
                     );
+                    inCart = !inCart;
                   },
                   backgroundColor: AppColors.primaryLight,
                   shape: RoundedRectangleBorder(
@@ -82,7 +92,19 @@ class AddToCartButtons extends StatelessWidget {
                       ),
                     ]),
                 child: AppButton(
-                  onPressed: () => pushNamed(context, Routes.cartScreen),
+                  onPressed: () {
+                  if(inCart == true){
+                    pushNamed(context, Routes.cartScreen);
+                  }else{
+                    cartCubit.addProductToCart(
+                      productId: args.id,
+                    ).then((value) {
+                      inCart = !inCart;
+                       pushNamed(context, Routes.cartScreen);
+                    });
+
+                  }
+                  },
                   label: S().buyNow,
                   withIcon: true,
                   icons: CupertinoIcons.bag,

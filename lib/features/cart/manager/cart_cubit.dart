@@ -27,7 +27,7 @@ class CartCubit extends Cubit<CartState> {
     });
   }
 
-  addProductToCart({required int productId}) {
+ Future addProductToCart({required int productId}) async{
     emit(CartLoading());
     MyDio.postData(endPoint: EndPoints.cart, data: {'product_id': productId})
         .then((onValue) {
